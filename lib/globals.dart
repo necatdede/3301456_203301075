@@ -1,4 +1,6 @@
 library diyetlendin.globals;
+
+import 'widgets/besin_widget.dart';
 String resimUrl="https://l24.im/CIT";
 String kullaniciAdi = "";
 String sifre="";
@@ -43,3 +45,15 @@ void hesapla() {
     alinacakProtein=gunlukAlinacakKalori*0.2/4;
     alinacakYag=gunlukAlinacakKalori*0.3/9;
 }
+
+List urunler = [
+  BesinWidget("Muz", 89, 22.84, 1.09, 0.33, "https://l24.im/ckpeG0"),
+  BesinWidget("Çilek", 32, 7.68, 0.67, 0.3, "https://l24.im/efWC"),
+  BesinWidget("Yulaf", 351, 57.25, 11.35, 5.8, "https://l24.im/QLewxf"),
+  BesinWidget("Ekmek", 238, 43.91, 10.66, 2.15, "https://l24.im/NRUvAO"),
+  BesinWidget("Çikolata", 528, 57.9, 4.4, 35.1, "https://l24.im/jGiHt2"),
+  BesinWidget("Cips", 532, 7.75, 0.91, 55.39, "https://l24.im/f8GP"),
+  BesinWidget("Peynir", 310, 2.53, 20.38, 24.31, "https://l24.im/ZR7u")];
+
+ List yenmisler = [
+];

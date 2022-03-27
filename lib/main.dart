@@ -3,6 +3,7 @@ import 'package:diyetlendin/screens/ayarlar.dart';
 import 'package:diyetlendin/screens/besin_detay.dart';
 import 'package:diyetlendin/screens/cerceve.dart';
 import 'package:diyetlendin/screens/besin_ekle.dart';
+import 'package:diyetlendin/screens/eklenen_besinler.dart';
 import 'package:diyetlendin/screens/giris_yap.dart';
 import 'package:diyetlendin/screens/kayit_ol.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         "/routeCerceve": (context) => Cerceve(),
         "/routeBesinEkle": (context) => BesinEkle(),
         "/routeBesinDetay": (context) => BesinDetay(),
+        "/routeEklenenBesinler": (context) => EklenenBesinler(),
       },
       title: 'Diyetlendin',
       theme: ThemeData().copyWith(

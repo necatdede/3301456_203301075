@@ -1,9 +1,9 @@
 import 'package:diyetlendin/main.dart';
-import 'package:diyetlendin/widgets/besin_widget.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:line_icons/line_icons.dart';
+import '../globals.dart' as globals;
 
 class BesinEkle extends StatefulWidget {
   const BesinEkle({Key? key}) : super(key: key);
@@ -15,23 +15,13 @@ class BesinEkle extends StatefulWidget {
 class _BesinEkleState extends State<BesinEkle> {
   final besinArama = TextEditingController();
 
-  static List yenmisler = [
-    0,
-    1,
-  ];
+
 
   @override
   Widget build(BuildContext context) {
     String ogunAd = ModalRoute.of(context)!.settings.arguments as String;
 
-    List urunler = [
-      BesinWidget("Muz", 89, 22.84, 1.09, 0.33, "https://l24.im/ckpeG0"),
-      BesinWidget("Çilek", 32, 7.68, 0.67, 0.3, "https://l24.im/efWC"),
-      BesinWidget("Yulaf", 351, 57.25, 11.35, 5.8, "https://l24.im/QLewxf"),
-      BesinWidget("Ekmek", 238, 43.91, 10.66, 2.15, "https://l24.im/NRUvAO"),
-      BesinWidget("Çikolata", 528, 57.9, 4.4, 35.1, "https://l24.im/jGiHt2"),
-      BesinWidget("Cips", 532, 7.75, 0.91, 55.39, "https://l24.im/f8GP"),
-      BesinWidget("Peynir", 310, 2.53, 20.38, 24.31, "https://l24.im/ZR7u")];
+
 
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
@@ -46,8 +36,8 @@ class _BesinEkleState extends State<BesinEkle> {
         title: Text(ogunAd),
         actions: [
           IconButton(onPressed: (){
-            Navigator.pop(context);
-          }, icon: Icon(LineIcons.save,size: 40,)),
+            Navigator.pushNamed(context, "/routeEklenenBesinler");
+          }, icon: Icon(LineIcons.shoppingBasket,size: 40,)),
         ],
 
       ),
@@ -69,13 +59,13 @@ class _BesinEkleState extends State<BesinEkle> {
               child: ListView.builder(
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.vertical,
-                  itemCount: urunler.length,
+                  itemCount: globals.urunler.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       borderRadius: BorderRadius.circular(30),
                       onTap: () {
                         setState(() {
-                          yenmisler.add(index);
+                          globals.yenmisler.add(index);
                         });
                       },
                       child: Card(
@@ -83,7 +73,7 @@ class _BesinEkleState extends State<BesinEkle> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         color: Colors.white,
-                        child: urunler[index],
+                        child: globals.urunler[index],
                       ),
                     );
                   }),
