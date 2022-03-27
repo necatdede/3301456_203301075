@@ -29,6 +29,7 @@ class _BesinWidgetState extends State<BesinWidget> {
 
     return Stack(children: [
       Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Flexible(
             flex: 1,
@@ -60,12 +61,11 @@ class _BesinWidgetState extends State<BesinWidget> {
           Flexible(
             flex: 2,
             child: Padding(
-              padding: const EdgeInsets.only(left:8.0),
+              padding: const EdgeInsets.only(left: 8.0),
               child: Container(
                 height: 100,
                 //width: width*0.6,
                 decoration: BoxDecoration(
-
                   // boxShadow: [
                   //   BoxShadow(
                   //     color: Colors.black.withOpacity(0.5),
@@ -89,82 +89,23 @@ class _BesinWidgetState extends State<BesinWidget> {
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
-                    Row(
-                      //verticalDirection: VerticalDirection.up,
-                      //crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "images/kalori.png",
-                              width: 30,
-                              height: 30,
-                              color: Colors.blue,
-                            ),
-                            Text(
-                              widget.kalori.toString() + " ",
-                              style:
-                                  buildTextStyle(Colors.blue, 25, FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "images/karbonhidrat.png",
-                              width: 30,
-                              height: 30,
-                              color: Colors.yellow,
-                            ),
-                            Text(
-                              widget.karbonhidrat.toString() + " ",
-                              style:
-                                  buildTextStyle(Colors.yellow, 20, FontWeight.bold),
-                            ),
-
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "images/protein.png",
-                              width: 30,
-                              height: 30,
-                              color: Colors.red,
-                            ),
-                            Text(
-                              widget.protein.toString() + " ",
-                              style: buildTextStyle(Colors.red, 20, FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "images/yag.png",
-                              width: 30,
-                              height: 30,
-                              color: Colors.green,
-                            ),
-                            Text(
-                              widget.yag.toString() + " ",
-                              style:
-                                  buildTextStyle(Colors.green, 20, FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ],
+                    Text(
+                      " " + widget.kalori.toString() + " Kalori",
+                      style: buildTextStyle(Colors.blue, 25, FontWeight.bold),
                     ),
                   ],
                 ),
               ),
             ),
           ),
-          IconButton(onPressed: (){}, icon: Icon(LineIcons.infoCircle),iconSize: 40,)
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, "/routeBesinDetay",
+                  arguments: widget);
+            },
+            icon: Icon(LineIcons.infoCircle),
+            iconSize: 40,
+          )
         ],
       ),
       // Container(

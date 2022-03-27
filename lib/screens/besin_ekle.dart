@@ -51,112 +51,51 @@ class _BesinEkleState extends State<BesinEkle> {
         ],
 
       ),
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          Column(
+      body: SingleChildScrollView(
+        child: Column(
 
-            children: [
-              buildTextFieldWidget(
-                kontrol: false,
-                control: besinArama,
-                icon: Icons.search,
-                klavyetur: TextInputType.text,
-                str: "Besin Arama",
-              ),
-              Container(
-                height: queryHeight*0.7,
-                margin: EdgeInsets.only(top: 5, bottom: 5),
-                //width: queryWidth*0.9,
-                child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    itemCount: urunler.length,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        borderRadius: BorderRadius.circular(30),
-                        onTap: () {
-                          setState(() {
-                            yenmisler.add(index);
-                          });
-                        },
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          color: Colors.white,
-                          child: urunler[index],
+          children: [
+            buildTextFieldWidget(
+              kontrol: false,
+              control: besinArama,
+              icon: Icons.search,
+              klavyetur: TextInputType.text,
+              str: "Besin Arama",
+            ),
+            Container(
+              height: queryHeight*0.8,
+              margin: EdgeInsets.only(top: 5, bottom: 5),
+              //width: queryWidth*0.9,
+              child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: urunler.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(30),
+                      onTap: () {
+                        setState(() {
+                          yenmisler.add(index);
+                        });
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
                         ),
-                      );
-                    }),
-                // color: MyApp().bgColor,
-              ),
-              // Text(
-              //   ogunAd,
-              //   style: TextStyle(fontSize: 30),
-              //   textAlign: TextAlign.start,
-              // ),
-            ],
-          ),
-          // DraggableScrollableSheet(
-          //   initialChildSize: 0.2,
-          //   minChildSize: 0.2,
-          //   maxChildSize: 1,
-          //
-          //   builder: (BuildContext context,
-          //       ScrollController scrollController) {
-          //     return Container(
-          //
-          //       decoration: BoxDecoration(
-          //         color: MyApp().bgColor,
-          //
-          //         border: Border(
-          //           top: BorderSide(
-          //             color: MyApp().textfieldColor,
-          //             width: 3,
-          //           ),
-          //           left: BorderSide(
-          //             color: MyApp().textfieldColor,
-          //             width: 3,
-          //           ),
-          //           right: BorderSide(
-          //             color: MyApp().textfieldColor,
-          //             width: 3,
-          //           ),
-          //
-          //         ),
-          //       ),
-          //       height: queryHeight*0.4,
-          //         //color: Colors.white70,
-          //         child: ListView.builder(
-          //           physics: BouncingScrollPhysics(),
-          //             controller: scrollController,
-          //             //scrollDirection: Axis.vertical,
-          //             itemCount: yenmisler.length,
-          //             itemBuilder: (context, index) {
-          //               return Padding(
-          //                 padding:
-          //                     const EdgeInsets.only(right: 10, left: 10),
-          //                 child: InkWell(
-          //                   borderRadius: BorderRadius.circular(30),
-          //                   onTap: () {
-          //                     setState(() {
-          //                       yenmisler.removeAt(index);
-          //                     });
-          //                   },
-          //                   child: Card(
-          //                     shape: RoundedRectangleBorder(
-          //                       borderRadius: BorderRadius.circular(30),
-          //                     ),
-          //                     color: Colors.white,
-          //                     child: urunler[yenmisler[index]],
-          //                   ),
-          //                 ),
-          //               );
-          //             }));
-          //   },
-          // ),
-        ],
+                        color: Colors.white,
+                        child: urunler[index],
+                      ),
+                    );
+                  }),
+              // color: MyApp().bgColor,
+            ),
+            // Text(
+            //   ogunAd,
+            //   style: TextStyle(fontSize: 30),
+            //   textAlign: TextAlign.start,
+            // ),
+          ],
+        ),
       ),
     );
   }
