@@ -1,7 +1,6 @@
 import 'package:diyetlendin/main.dart';
 import 'package:diyetlendin/widgets/besin_widget.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:line_icons/line_icons.dart';
@@ -99,64 +98,64 @@ class _BesinEkleState extends State<BesinEkle> {
               // ),
             ],
           ),
-          DraggableScrollableSheet(
-            initialChildSize: 0.2,
-            minChildSize: 0.2,
-            maxChildSize: 1,
-
-            builder: (BuildContext context,
-                ScrollController scrollController) {
-              return Container(
-
-                decoration: BoxDecoration(
-                  color: MyApp().bgColor,
-
-                  border: Border(
-                    top: BorderSide(
-                      color: MyApp().textfieldColor,
-                      width: 3,
-                    ),
-                    left: BorderSide(
-                      color: MyApp().textfieldColor,
-                      width: 3,
-                    ),
-                    right: BorderSide(
-                      color: MyApp().textfieldColor,
-                      width: 3,
-                    ),
-
-                  ),
-                ),
-                height: queryHeight*0.4,
-                  //color: Colors.white70,
-                  child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                      controller: scrollController,
-                      //scrollDirection: Axis.vertical,
-                      itemCount: yenmisler.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding:
-                              const EdgeInsets.only(right: 10, left: 10),
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(30),
-                            onTap: () {
-                              setState(() {
-                                yenmisler.removeAt(index);
-                              });
-                            },
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              color: Colors.white,
-                              child: urunler[yenmisler[index]],
-                            ),
-                          ),
-                        );
-                      }));
-            },
-          ),
+          // DraggableScrollableSheet(
+          //   initialChildSize: 0.2,
+          //   minChildSize: 0.2,
+          //   maxChildSize: 1,
+          //
+          //   builder: (BuildContext context,
+          //       ScrollController scrollController) {
+          //     return Container(
+          //
+          //       decoration: BoxDecoration(
+          //         color: MyApp().bgColor,
+          //
+          //         border: Border(
+          //           top: BorderSide(
+          //             color: MyApp().textfieldColor,
+          //             width: 3,
+          //           ),
+          //           left: BorderSide(
+          //             color: MyApp().textfieldColor,
+          //             width: 3,
+          //           ),
+          //           right: BorderSide(
+          //             color: MyApp().textfieldColor,
+          //             width: 3,
+          //           ),
+          //
+          //         ),
+          //       ),
+          //       height: queryHeight*0.4,
+          //         //color: Colors.white70,
+          //         child: ListView.builder(
+          //           physics: BouncingScrollPhysics(),
+          //             controller: scrollController,
+          //             //scrollDirection: Axis.vertical,
+          //             itemCount: yenmisler.length,
+          //             itemBuilder: (context, index) {
+          //               return Padding(
+          //                 padding:
+          //                     const EdgeInsets.only(right: 10, left: 10),
+          //                 child: InkWell(
+          //                   borderRadius: BorderRadius.circular(30),
+          //                   onTap: () {
+          //                     setState(() {
+          //                       yenmisler.removeAt(index);
+          //                     });
+          //                   },
+          //                   child: Card(
+          //                     shape: RoundedRectangleBorder(
+          //                       borderRadius: BorderRadius.circular(30),
+          //                     ),
+          //                     color: Colors.white,
+          //                     child: urunler[yenmisler[index]],
+          //                   ),
+          //                 ),
+          //               );
+          //             }));
+          //   },
+          // ),
         ],
       ),
     );
