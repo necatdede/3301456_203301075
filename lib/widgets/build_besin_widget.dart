@@ -36,10 +36,10 @@ class build_besin_widget extends StatelessWidget {
                 topLeft: Radius.circular(30),
               ),
               image: DecorationImage(
-                  colorFilter:
-                  ColorFilter.mode(Colors.black, BlendMode.dstATop),
-                  opacity: 30,
-                  fit: BoxFit.cover,
+                  // colorFilter:
+                  // ColorFilter.mode(Colors.black, BlendMode.dstATop),
+                  // opacity: 30,
+                  fit: BoxFit.fill,
                   image: NetworkImage(besinler[index].besinFoto)),
             ),
           ),

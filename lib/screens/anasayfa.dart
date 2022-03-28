@@ -64,7 +64,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
                             onTap: () {
                               var alert = AlertDialog(
                                 backgroundColor: MyApp().bgColor,
-                                actions: [Profil()],
+                                content: Profil(),
+                                //actions: [Profil()],
                                // title: Profil(),
                               );
                               showDialog(

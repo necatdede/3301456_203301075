@@ -26,10 +26,13 @@ class _KayitOl extends State<KayitOl> {
 
   Cinsiyet _cinsiyet = Cinsiyet.Kadin;
   String secilenAktivite = "Az Hareketli";
+
   String secilenHedef = "Kilomu Korumak";
 
   @override
   Widget build(BuildContext context) {
+    globals.secilenAktivite=secilenAktivite;
+    globals.secilenHedef=secilenHedef;
     // TODO: implement build
     return Scaffold(
       backgroundColor: MyApp().bgColor,
@@ -185,21 +188,37 @@ class _KayitOl extends State<KayitOl> {
                               context: context,
                               str: "Kayıt Ol",
                               islem: () {
-                                var user = Kullanici(
-                                    "https://l24.im/CIT",
-                                    kullaniciAdi.text,
-                                    sifre.text,
-                                    ad.text,
-                                    _cinsiyet.index == 0 ? false : true,
-                                    double.parse(kilo.text),
-                                    int.parse(boy.text),
-                                    int.parse(yas.text));
 
-                                globals.kullanici=user;
+                                try{
+                                  var user = Kullanici(
+                                      "https://l24.im/CIT",
+                                      kullaniciAdi.text,
+                                      sifre.text,
+                                      ad.text,
+                                      _cinsiyet.index == 0 ? false : true,
+                                      double.parse(kilo.text),
+                                      int.parse(boy.text),
+                                      int.parse(yas.text));
 
-                                globals.hesapla();
+                                  globals.kullanici=user;
 
-                                Navigator.pop(context);
+                                  globals.hesapla();
+
+                                  final snackbar = SnackBar(
+                                    content: Text("Kayıt Olundu!"),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackbar);
+
+                                  Navigator.pop(context);
+                                }catch(e){
+                                  final snackbar = SnackBar(
+                                    content: Text("Kayıt Olunamadı!"),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackbar);
+                                }
+
                               }),
                         ],
                       ),

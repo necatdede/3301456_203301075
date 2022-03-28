@@ -22,13 +22,13 @@ String secilenHedef = "";
 double alinanKalori = 300;
 
 double alinacakKarbonhidrat = 1;
-double alinanKarbonhidrat = 50;
+double alinanKarbonhidrat = 5;
 
 double alinacakProtein = 1;
-double alinanProtein = 45;
+double alinanProtein = 5;
 
 double alinacakYag = 1;
-double alinanYag = 67;
+double alinanYag = 5;
 
 void hesapla() {
   (kullanici.cinsiyet == false)
