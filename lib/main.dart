@@ -1,3 +1,4 @@
+import 'package:diyetlendin/screens/acilis.dart';
 import 'package:diyetlendin/screens/anasayfa.dart';
 import 'package:diyetlendin/screens/ayarlar.dart';
 import 'package:diyetlendin/screens/besin_detay.dart';
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "/": (context) => const GirisYap(),
+        "/":(context)=>const Acilis(),
+        "/routeGirisYap": (context) => const GirisYap(),
         "/routeKayitOl": (context) => const KayitOl(),
         "/routeAnaSayfa": (context) => AnaSayfa(),
         "/routeAyarlar": (context) => Ayarlar(),
