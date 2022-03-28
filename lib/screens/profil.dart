@@ -15,7 +15,7 @@ class Profil extends StatelessWidget {
 
     final bos = TextEditingController();
     return Container(
-      //height: 500,
+      height: MediaQuery.of(context).size.height,
       color: MyApp().bgColor,
       child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
