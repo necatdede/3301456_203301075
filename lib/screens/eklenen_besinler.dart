@@ -1,4 +1,6 @@
+import 'package:diyetlendin/widgets/build_besin_widget.dart';
 import 'package:flutter/material.dart';
+import '../models/besin.dart';
 import '../globals.dart' as globals;
 
 class EklenenBesinler extends StatefulWidget {
@@ -11,8 +13,12 @@ class EklenenBesinler extends StatefulWidget {
 class _EklenenBesinlerState extends State<EklenenBesinler> {
   @override
   Widget build(BuildContext context) {
+
+    List<Besin> eklenenBesinler = ModalRoute.of(context)!.settings.arguments as List<Besin>;
+
+
     return Scaffold(
-      appBar: AppBar(title: Text("Diyetlendin"),),
+      appBar: AppBar(title: Text("Eklenenler"),),
       body: Container(
         height: double.infinity,
         margin: EdgeInsets.only(top: 5, bottom: 5),
@@ -20,13 +26,13 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
         child: ListView.builder(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
-            itemCount: globals.yenmisler.length,
+            itemCount: eklenenBesinler.length,
             itemBuilder: (context, index) {
               return InkWell(
                 borderRadius: BorderRadius.circular(30),
                 onTap: () {
                   setState(() {
-                    globals.yenmisler.removeAt(index);
+                   eklenenBesinler.removeAt(index);
                   });
                 },
                 child: Card(
@@ -34,7 +40,9 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   color: Colors.white,
-                  child: globals.urunler[globals.yenmisler[index]],
+                  child: Stack(children: [
+                    build_besin_widget(besinler: eklenenBesinler, index: index),
+                  ],),
                 ),
               );
             }),

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -14,6 +15,7 @@ class GirisYap extends StatefulWidget {
 }
 
 class _GirisYapState extends State<GirisYap> {
+
   var alert = AlertDialog(
     title: Column(
       children: [
@@ -67,12 +69,12 @@ class _GirisYapState extends State<GirisYap> {
               children: [
                 Image.asset(
                   "images/logo.png",
-                  width: screenSize.width*0.7,
-                  height: screenSize.height*0.5,
+                  width: screenSize.width * 0.7,
+                  height: screenSize.height * 0.5,
                 ),
                 Container(
-                  width: screenSize.width*0.7,
-                  height: screenSize.height*0.5,
+                  width: screenSize.width * 0.7,
+                  height: screenSize.height * 0.5,
                   child: Card(
                     elevation: 20,
                     shape: const RoundedRectangleBorder(
@@ -100,20 +102,28 @@ class _GirisYapState extends State<GirisYap> {
                               context: context,
                               str: "Giriş Yap",
                               islem: () {
-                                (globals.kullaniciAdi == kullaniciAdi.text &&
-                                        globals.sifre == sifre.text)
-                                    ? Navigator.popAndPushNamed(
-                                        context,
-                                        "/routeCerceve",
-                                      )
-                                    : showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            alert);
+                                try {
+                                  (globals.kullanici.kullaniciAdi ==
+                                              kullaniciAdi.text &&
+                                          globals.kullanici.sifre == sifre.text)
+                                      ? Navigator.popAndPushNamed(
+                                          context,
+                                          "/routeCerceve",
+                                        )
+                                      : showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              alert);
+                                } catch (e) {
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) => alert);
+                                }
                               }),
                           TextButton(
-                              onPressed: () => Navigator.pushNamed(
-                                  context, "/routeKayitOl"),
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/routeKayitOl");
+                              },
                               child: Text(
                                 "Üye Değil Misin ?",
                                 style: TextStyle(

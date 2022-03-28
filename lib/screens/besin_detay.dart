@@ -1,15 +1,14 @@
 import 'package:diyetlendin/main.dart';
-import 'package:diyetlendin/widgets/besin_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../models/besin.dart';
 
 class BesinDetay extends StatelessWidget {
   const BesinDetay({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    BesinWidget besin =
-        ModalRoute.of(context)?.settings.arguments as BesinWidget;
-    final bos = TextEditingController();
+    Besin besin = ModalRoute.of(context)?.settings.arguments as Besin;
     return Scaffold(
       appBar: AppBar(
         title: Text(besin.besinAd),

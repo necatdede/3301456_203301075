@@ -106,7 +106,7 @@ class _Ayarlar extends State<Ayarlar> {
                   },
                 ),
                 BuildAyarlarWidget(
-                  yazi2: globals.boy.toString(),
+                  yazi2: globals.kullanici.boy.toString(),
                   yazi: "Boy",
                   icon: LineIcons.ruler,
                   islem: () {
@@ -124,8 +124,8 @@ class _Ayarlar extends State<Ayarlar> {
                               islem: () {
                                 setState(() {
                                   (boy.text.isEmpty)
-                                      ? globals.boy = globals.boy
-                                      : globals.boy = (int.parse(boy.text));
+                                      ? globals.kullanici.boy = globals.kullanici.boy
+                                      : globals.kullanici.boy = (int.parse(boy.text));
                                 });
                                 boy.text = "";
                                 Navigator.pop(context);
@@ -142,7 +142,7 @@ class _Ayarlar extends State<Ayarlar> {
                   },
                 ),
                 BuildAyarlarWidget(
-                  yazi2: globals.agirlik.toString(),
+                  yazi2: globals.kullanici.kilo.toString(),
                   yazi: "Kilo",
                   icon: LineIcons.weight,
                   islem: () {
@@ -160,8 +160,8 @@ class _Ayarlar extends State<Ayarlar> {
                               islem: () {
                                 setState(() {
                                   (kilo.text.isEmpty)
-                                      ? globals.agirlik = globals.agirlik
-                                      : globals.agirlik =
+                                      ? globals.kullanici.kilo = globals.kullanici.kilo
+                                      : globals.kullanici.kilo =
                                           (double.parse(kilo.text));
                                 });
                                 kilo.text = "";

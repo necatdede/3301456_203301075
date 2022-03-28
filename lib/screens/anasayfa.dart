@@ -1,7 +1,9 @@
 import 'package:diyetlendin/main.dart';
+import 'package:diyetlendin/models/kullanici.dart';
 import 'package:diyetlendin/screens/profil.dart';
 import 'package:flutter/material.dart';
 
+import '../models/besin.dart';
 import '../widgets/kalori_detay_getir.dart';
 import '../widgets/OgunGetir.dart';
 import '../widgets/kalori_sayac_getir.dart';
@@ -15,6 +17,16 @@ class AnaSayfa extends StatefulWidget {
 
 class _AnaSayfaState extends State<AnaSayfa> {
   String ogunAd = "";
+
+  List<Besin> besinler = [
+    Besin("Muz", 89, 22.84, 1.09, 0.33, "https://l24.im/ckpeG0"),
+    Besin("Çilek", 32, 7.68, 0.67, 0.3, "https://l24.im/efWC"),
+    Besin("Yulaf", 351, 57.25, 11.35, 5.8, "https://l24.im/QLewxf"),
+    Besin("Ekmek", 238, 43.91, 10.66, 2.15, "https://l24.im/NRUvAO"),
+    Besin("Çikolata", 528, 57.9, 4.4, 35.1, "https://l24.im/jGiHt2"),
+    Besin("Cips", 532, 7.75, 0.91, 55.39, "https://l24.im/f8GP"),
+    Besin("Peynir", 310, 2.53, 20.38, 24.31, "https://l24.im/ZR7u"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +50,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Hoşgeldin,${globals.kullaniciAdi}",
+                        "Hoşgeldin,${globals.kullanici.kullaniciAdi}",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 30,
@@ -46,24 +58,23 @@ class _AnaSayfaState extends State<AnaSayfa> {
                         ),
                       ),
                       Container(
-                        child: InkWell(
-                          onTap: (){
-                            var alert = AlertDialog(
-                              title: Profil(),
-                            );
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) => alert);
-
-                          },
-                        ),
+                          child: InkWell(
+                            onTap: () {
+                              var alert = AlertDialog(
+                                title: Profil(),
+                              );
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) => alert);
+                            },
+                          ),
                           width: 70,
                           height: 70,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 fit: BoxFit.fill,
-                                image: NetworkImage(globals.resimUrl)),
+                                image: NetworkImage(globals.kullanici.resimUrl)),
                           )),
                     ],
                   ),
@@ -121,7 +132,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                           });
 
                           Navigator.pushNamed(context, "/routeBesinEkle",
-                              arguments: ogunAd);
+                              arguments: [ogunAd, besinler]);
                         },
                       ),
                       OgunGetir(
@@ -135,7 +146,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                           });
 
                           Navigator.pushNamed(context, "/routeBesinEkle",
-                              arguments: ogunAd);
+                              arguments: [ogunAd, besinler]);
                         },
                       ),
                       OgunGetir(
@@ -149,7 +160,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                           });
 
                           Navigator.pushNamed(context, "/routeBesinEkle",
-                              arguments: ogunAd);
+                              arguments: [ogunAd, besinler]);
                         },
                       ),
                       OgunGetir(
@@ -162,7 +173,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                             ogunAd = "Atıştırma";
                           });
                           Navigator.pushNamed(context, "/routeBesinEkle",
-                              arguments: ogunAd);
+                              arguments: [ogunAd, besinler]);
                         },
                       ),
                     ],

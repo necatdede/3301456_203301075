@@ -1,3 +1,4 @@
+import 'package:diyetlendin/models/kullanici.dart';
 import 'package:diyetlendin/screens/anasayfa.dart';
 import 'package:diyetlendin/screens/ayarlar.dart';
 import 'package:diyetlendin/screens/profil.dart';

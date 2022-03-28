@@ -1,3 +1,4 @@
+import 'package:diyetlendin/models/kullanici.dart';
 import 'package:diyetlendin/widgets/build_button_widget.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
 import 'package:diyetlendin/main.dart';
@@ -46,7 +47,8 @@ class _KayitOl extends State<KayitOl> {
                 ),
                 Card(
                   shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(50)),
                   ),
                   color: Colors.white,
                   child: Padding(
@@ -56,7 +58,7 @@ class _KayitOl extends State<KayitOl> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: SizedBox(
-                            width: MediaQuery.of(context).size.width*0.8,
+                            width: MediaQuery.of(context).size.width * 0.8,
                             child: Row(
                               children: [
                                 Flexible(
@@ -64,8 +66,7 @@ class _KayitOl extends State<KayitOl> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                       side: BorderSide(
-                                          color: MyApp().bgColor,
-                                          width: 3),
+                                          color: MyApp().bgColor, width: 3),
                                     ),
                                     title: Text(
                                       "Kadın",
@@ -88,8 +89,7 @@ class _KayitOl extends State<KayitOl> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                       side: BorderSide(
-                                          color: MyApp().bgColor,
-                                          width: 3),
+                                          color: MyApp().bgColor, width: 3),
                                     ),
                                     title: Text(
                                       "Erkek",
@@ -132,11 +132,10 @@ class _KayitOl extends State<KayitOl> {
                           kontrol: true,
                           klavyetur: TextInputType.name,
                         ),
-
                         buildTextFieldWidget(
                             control: yas,
                             str: "Yaş",
-                            icon:LineIcons.birthdayCake,
+                            icon: LineIcons.birthdayCake,
                             kontrol: false,
                             klavyetur: TextInputType.number),
                         buildTextFieldWidget(
@@ -183,16 +182,17 @@ class _KayitOl extends State<KayitOl> {
                             context: context,
                             str: "Kayıt Ol",
                             islem: () {
-                              (_cinsiyet.index == 0)
-                                  ? globals.cinsiyet = false
-                                  : globals.cinsiyet = true;
+                              var user = Kullanici(
+                                  "https://l24.im/CIT",
+                                  kullaniciAdi.text,
+                                  sifre.text,
+                                  ad.text,
+                                  _cinsiyet.index == 0 ? false : true,
+                                  double.parse(kilo.text),
+                                  int.parse(boy.text),
+                                  int.parse(yas.text));
 
-                              globals.kullaniciAdi = kullaniciAdi.text;
-                              globals.sifre = sifre.text;
-                              globals.ad = ad.text;
-                              globals.yas = int.parse(yas.text);
-                              globals.boy = int.parse(boy.text);
-                              globals.agirlik = double.parse(kilo.text);
+                              globals.kullanici=user;
 
                               globals.hesapla();
 
