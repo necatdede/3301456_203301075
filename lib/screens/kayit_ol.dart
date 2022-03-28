@@ -35,6 +35,7 @@ class _KayitOl extends State<KayitOl> {
       backgroundColor: MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Container(
             width: MediaQuery.of(context).size.width,
             //height: MediaQuery.of(context).size.height,
@@ -45,160 +46,163 @@ class _KayitOl extends State<KayitOl> {
                   width: MediaQuery.of(context).size.width / 1.5,
                   height: MediaQuery.of(context).size.height / 1.5,
                 ),
-                Card(
-                  shape: const RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(50)),
-                  ),
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            child: Row(
-                              children: [
-                                Flexible(
-                                  child: ListTile(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                      side: BorderSide(
-                                          color: MyApp().bgColor, width: 3),
-                                    ),
-                                    title: Text(
-                                      "Kadın",
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                    leading: Radio<Cinsiyet>(
-                                      value: Cinsiyet.Kadin,
-                                      groupValue: _cinsiyet,
-                                      activeColor: MyApp().textfieldColor,
-                                      onChanged: (Cinsiyet? value) {
-                                        setState(() {
-                                          _cinsiyet = value!;
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  child: ListTile(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                      side: BorderSide(
-                                          color: MyApp().bgColor, width: 3),
-                                    ),
-                                    title: Text(
-                                      "Erkek",
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                    leading: Radio<Cinsiyet>(
-                                      activeColor: MyApp().textfieldColor,
-                                      value: Cinsiyet.Erkek,
-                                      groupValue: _cinsiyet,
-                                      onChanged: (Cinsiyet? value) {
-                                        setState(() {
-                                          _cinsiyet = value!;
-                                        });
-                                      },
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: Card(
+                    shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(50)),
+                    ),
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Row(
+                                children: [
+                                  Flexible(
+                                    child: ListTile(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                        side: BorderSide(
+                                            color: MyApp().bgColor, width: 3),
+                                      ),
+                                      title: Text(
+                                        "Kadın",
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      leading: Radio<Cinsiyet>(
+                                        value: Cinsiyet.Kadin,
+                                        groupValue: _cinsiyet,
+                                        activeColor: MyApp().textfieldColor,
+                                        onChanged: (Cinsiyet? value) {
+                                          setState(() {
+                                            _cinsiyet = value!;
+                                          });
+                                        },
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                  Flexible(
+                                    child: ListTile(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                        side: BorderSide(
+                                            color: MyApp().bgColor, width: 3),
+                                      ),
+                                      title: Text(
+                                        "Erkek",
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      leading: Radio<Cinsiyet>(
+                                        activeColor: MyApp().textfieldColor,
+                                        value: Cinsiyet.Erkek,
+                                        groupValue: _cinsiyet,
+                                        onChanged: (Cinsiyet? value) {
+                                          setState(() {
+                                            _cinsiyet = value!;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        buildTextFieldWidget(
-                          control: ad,
-                          str: "Ad Soyad",
-                          icon: LineIcons.addressCard,
-                          kontrol: false,
-                          klavyetur: TextInputType.name,
-                        ),
-                        buildTextFieldWidget(
-                          control: kullaniciAdi,
-                          str: "Kullanıcı Adı",
-                          icon: LineIcons.user,
-                          kontrol: false,
-                          klavyetur: TextInputType.name,
-                        ),
-                        buildTextFieldWidget(
-                          control: sifre,
-                          str: "Şifre",
-                          icon: LineIcons.userLock,
-                          kontrol: true,
-                          klavyetur: TextInputType.name,
-                        ),
-                        buildTextFieldWidget(
-                            control: yas,
-                            str: "Yaş",
-                            icon: LineIcons.birthdayCake,
+                          buildTextFieldWidget(
+                            control: ad,
+                            str: "Ad Soyad",
+                            icon: LineIcons.addressCard,
                             kontrol: false,
-                            klavyetur: TextInputType.number),
-                        buildTextFieldWidget(
-                          control: boy,
-                          str: "Boy",
-                          icon: LineIcons.ruler,
-                          kontrol: false,
-                          klavyetur: TextInputType.number,
-                        ),
-                        buildTextFieldWidget(
-                          control: kilo,
-                          str: "Kilo",
-                          icon: LineIcons.weight,
-                          kontrol: false,
-                          klavyetur: TextInputType.number,
-                        ),
-                        BuildDropDownWidget(
-                          secilen: secilenAktivite,
-                          veri: [
-                            'Az Hareketli',
-                            'Orta Hareketli(Haftada 1-3 Egzersiz)',
-                            'Çok Hareketli(Haftada 4-5 Egzersiz)'
-                          ],
-                          islem: (String? newValue) {
-                            setState(() {
-                              secilenAktivite = newValue!;
-                              globals.secilenAktivite = newValue;
-                              print(globals.secilenAktivite);
-                            });
-                          },
-                        ),
-                        BuildDropDownWidget(
-                          secilen: secilenHedef,
-                          veri: ['Kilomu Korumak', 'Kilo Almak', 'Kilo Vermek'],
-                          islem: (String? newValue) {
-                            setState(() {
-                              secilenHedef = newValue!;
-                              globals.secilenHedef = newValue;
-                              print(globals.secilenHedef);
-                            });
-                          },
-                        ),
-                        build_button_widget(
-                            context: context,
-                            str: "Kayıt Ol",
-                            islem: () {
-                              var user = Kullanici(
-                                  "https://l24.im/CIT",
-                                  kullaniciAdi.text,
-                                  sifre.text,
-                                  ad.text,
-                                  _cinsiyet.index == 0 ? false : true,
-                                  double.parse(kilo.text),
-                                  int.parse(boy.text),
-                                  int.parse(yas.text));
+                            klavyetur: TextInputType.name,
+                          ),
+                          buildTextFieldWidget(
+                            control: kullaniciAdi,
+                            str: "Kullanıcı Adı",
+                            icon: LineIcons.user,
+                            kontrol: false,
+                            klavyetur: TextInputType.name,
+                          ),
+                          buildTextFieldWidget(
+                            control: sifre,
+                            str: "Şifre",
+                            icon: LineIcons.userLock,
+                            kontrol: true,
+                            klavyetur: TextInputType.name,
+                          ),
+                          buildTextFieldWidget(
+                              control: yas,
+                              str: "Yaş",
+                              icon: LineIcons.birthdayCake,
+                              kontrol: false,
+                              klavyetur: TextInputType.number),
+                          buildTextFieldWidget(
+                            control: boy,
+                            str: "Boy",
+                            icon: LineIcons.ruler,
+                            kontrol: false,
+                            klavyetur: TextInputType.number,
+                          ),
+                          buildTextFieldWidget(
+                            control: kilo,
+                            str: "Kilo",
+                            icon: LineIcons.weight,
+                            kontrol: false,
+                            klavyetur: TextInputType.number,
+                          ),
+                          BuildDropDownWidget(
+                            secilen: secilenAktivite,
+                            veri: [
+                              'Az Hareketli',
+                              'Orta Hareketli(Haftada 1-3 Egzersiz)',
+                              'Çok Hareketli(Haftada 4-5 Egzersiz)'
+                            ],
+                            islem: (String? newValue) {
+                              setState(() {
+                                secilenAktivite = newValue!;
+                                globals.secilenAktivite = newValue;
+                                print(globals.secilenAktivite);
+                              });
+                            },
+                          ),
+                          BuildDropDownWidget(
+                            secilen: secilenHedef,
+                            veri: ['Kilomu Korumak', 'Kilo Almak', 'Kilo Vermek'],
+                            islem: (String? newValue) {
+                              setState(() {
+                                secilenHedef = newValue!;
+                                globals.secilenHedef = newValue;
+                                print(globals.secilenHedef);
+                              });
+                            },
+                          ),
+                          build_button_widget(
+                              context: context,
+                              str: "Kayıt Ol",
+                              islem: () {
+                                var user = Kullanici(
+                                    "https://l24.im/CIT",
+                                    kullaniciAdi.text,
+                                    sifre.text,
+                                    ad.text,
+                                    _cinsiyet.index == 0 ? false : true,
+                                    double.parse(kilo.text),
+                                    int.parse(boy.text),
+                                    int.parse(yas.text));
 
-                              globals.kullanici=user;
+                                globals.kullanici=user;
 
-                              globals.hesapla();
+                                globals.hesapla();
 
-                              Navigator.pop(context);
-                            }),
-                      ],
+                                Navigator.pop(context);
+                              }),
+                        ],
+                      ),
                     ),
                   ),
                 ),

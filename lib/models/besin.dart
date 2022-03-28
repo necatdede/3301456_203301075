@@ -1,16 +1,15 @@
- class Besin{
+class Besin {
+  String _besinAd;
+  int _kalori;
+  double _karbonhidrat;
+  double _protein;
+  double _yag;
+  String _besinFoto;
 
-   String _besinAd;
-    int _kalori;
-   double _karbonhidrat;
-   double _protein;
-   double _yag;
-   String _besinFoto;
-
-   Besin(this._besinAd, this._kalori, this._karbonhidrat, this._protein,
+  Besin(this._besinAd, this._kalori, this._karbonhidrat, this._protein,
       this._yag, this._besinFoto);
 
-   String get besinFoto => _besinFoto;
+  String get besinFoto => _besinFoto;
 
   double get yag => _yag;
 

@@ -28,8 +28,8 @@ class buildTextFieldWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(25),
           color: Colors.white,
         ),
-        width: MediaQuery.of(context).size.width * 0.8,
-        // height: MediaQuery.of(context).size.height / 15,
+        width: MediaQuery.of(context).size.width,
+        //height: MediaQuery.of(context).size.height,
         //padding: const EdgeInsets.all(8),
         child: TextField(
           enabled: isEnable,
@@ -44,6 +44,10 @@ class buildTextFieldWidget extends StatelessWidget {
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: MyApp().bgColor, width: 3),
+              borderRadius: BorderRadius.circular(25),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.white, width: 3),
               borderRadius: BorderRadius.circular(25),
             ),
             prefixIcon: Icon(

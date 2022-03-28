@@ -32,14 +32,14 @@ class build_besin_widget extends StatelessWidget {
               //   ),
               // ],
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                topLeft: Radius.circular(20),
+                bottomLeft: Radius.circular(30),
+                topLeft: Radius.circular(30),
               ),
               image: DecorationImage(
                   colorFilter:
                   ColorFilter.mode(Colors.black, BlendMode.dstATop),
                   opacity: 30,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                   image: NetworkImage(besinler[index].besinFoto)),
             ),
           ),
@@ -59,8 +59,8 @@ class build_besin_widget extends StatelessWidget {
               //   ),
               // ],
               borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  bottomRight: Radius.circular(20)),
+                  topRight: Radius.circular(30),
+                  bottomRight: Radius.circular(30)),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

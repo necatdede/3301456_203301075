@@ -73,7 +73,7 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Flexible(
               flex: 1,

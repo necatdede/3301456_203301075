@@ -33,7 +33,7 @@ class _BuildDropDownWidgetState extends State<BuildDropDownWidget> {
         borderRadius: BorderRadius.circular(25),
         color: Colors.white,
       ),
-      width: MediaQuery.of(context).size.width*0.8,
+      width: MediaQuery.of(context).size.width,
       child: Center(
         child: DropdownButton<String>(
           alignment: Alignment.center,

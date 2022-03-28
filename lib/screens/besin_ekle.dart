@@ -29,65 +29,73 @@ class _BesinEkleState extends State<BesinEkle> {
     var queryHeight = queryData.size.height;
     var queryWidth = queryData.size.width;
 
+    double appbar = AppBar().preferredSize.height;
+    double bottombar=kBottomNavigationBarHeight;
+
+
     return Scaffold(
       backgroundColor: MyApp().bgColor,
       appBar: AppBar(
         title: Text(ogunAdveBesinler[0]),
         actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, "/routeEklenenBesinler",
-                    arguments: eklenen);
-              },
-              icon: Icon(
-                LineIcons.shoppingBasket,
-                size: 40,
-              )),
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/routeEklenenBesinler",
+                      arguments: eklenen);
+                },
+                icon: Icon(
+                  LineIcons.shoppingBasket,
+                  size: 40,
+                )),
+          ),
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            buildTextFieldWidget(
-              kontrol: false,
-              control: besinArama,
-              icon: Icons.search,
-              klavyetur: TextInputType.text,
-              str: "Besin Arama",
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.8,
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              //width: queryWidth*0.9,
-              child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemCount: besinler.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      borderRadius: BorderRadius.circular(30),
-                      onTap: () {
-                        setState(() {
-                          eklenen.add(besinler[index]);
-                        });
+        child: Container(
+          height: queryHeight-appbar,
+          width: queryWidth,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              buildTextFieldWidget(
+                kontrol: false,
+                control: besinArama,
+                icon: Icons.search,
+                klavyetur: TextInputType.text,
+                str: "Besin Arama",
+              ),
+              Expanded(
+                child: ListView.builder(
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: besinler.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        borderRadius: BorderRadius.circular(30),
+                        onTap: () {
+                          setState(() {
+                            eklenen.add(besinler[index]);
+                          });
 
-                      },
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                        },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          color: Colors.white,
+                          child: Stack(
+                            children: [
+                              build_besin_widget(besinler: besinler,index: index,),
+                            ],
+                          ),
                         ),
-                        color: Colors.white,
-                        child: Stack(
-                          children: [
-                            build_besin_widget(besinler: besinler,index: index,),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
-              // color: MyApp().bgColor,
-            ),
-          ],
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -28,21 +28,23 @@ class _AnaSayfaState extends State<AnaSayfa> {
     Besin("Peynir", 310, 2.53, 20.38, 24.31, "https://l24.im/ZR7u"),
   ];
 
+  double appbar = AppBar().preferredSize.height;
+  double bottombar=kBottomNavigationBarHeight;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       backgroundColor: MyApp().bgColor,
       body: Padding(
-        padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0),
+        padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.9,
-            //margin: EdgeInsets.only(top: 30),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
@@ -61,7 +63,9 @@ class _AnaSayfaState extends State<AnaSayfa> {
                           child: InkWell(
                             onTap: () {
                               var alert = AlertDialog(
-                                title: Profil(),
+                                backgroundColor: MyApp().bgColor,
+                                actions: [Profil()],
+                               // title: Profil(),
                               );
                               showDialog(
                                   context: context,
@@ -117,7 +121,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                   ),
                 ),
                 SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [

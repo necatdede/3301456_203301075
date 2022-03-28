@@ -8,46 +8,55 @@ class BesinDetay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Besin besin = ModalRoute.of(context)?.settings.arguments as Besin;
+
+
+
+      Besin besin = ModalRoute.of(context)?.settings.arguments as Besin;
+
+
+      MediaQueryData queryData;
+      queryData = MediaQuery.of(context);
+      var queryHeight = queryData.size.height;
+      var queryWidth = queryData.size.width;
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text(besin.besinAd),
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height-AppBar().preferredSize.height,
         color: MyApp().bgColor,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(top: 16.0),
+            padding: const EdgeInsets.all(16),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                    width: 200,
-                    height: 200,
+                    width: MediaQuery.of(context).size.width/3,
+                    height: MediaQuery.of(context).size.height/3,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                           image: NetworkImage(besin.besinFoto)),
                     )),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       buildBesinDetayWidget(
-                          besin.kalori, "images/kalori.png", Colors.blue),
+                          besin.kalori, "images/kalori.png", Colors.blue,context),
                       buildBesinDetayWidget(besin.karbonhidrat,
-                          "images/karbonhidrat.png", Colors.yellow),
+                          "images/karbonhidrat.png", Colors.yellow,context),
                     ]),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       buildBesinDetayWidget(
-                          besin.protein, "images/protein.png", Colors.red),
+                          besin.protein, "images/protein.png", Colors.red,context),
                       buildBesinDetayWidget(
-                          besin.yag, "images/yag.png", Colors.green),
+                          besin.yag, "images/yag.png", Colors.green,context),
                     ]),
               ],
             ),
@@ -57,17 +66,17 @@ class BesinDetay extends StatelessWidget {
     );
   }
 
-  Card buildBesinDetayWidget(num besin, String resim, Color renk) {
+  Card buildBesinDetayWidget(num besin, String resim, Color renk,BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       color: Colors.white,
       elevation: 10,
       child: Column(
         children: [
-          Image.asset(resim, width: 150, height: 120, color: renk),
+          Image.asset(resim, width:MediaQuery.of(context).size.width/4, height: MediaQuery.of(context).size.height/8, color: renk),
           Text(
             besin.toString(),
-            style: TextStyle(fontSize: 40, color: renk),
+            style: TextStyle(fontSize: MediaQuery.of(context).size.width/21, color: renk),
           ),
         ],
       ),

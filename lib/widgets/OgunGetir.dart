@@ -32,7 +32,7 @@ class OgunGetir extends StatelessWidget {
           padding: const EdgeInsets.all(5.0),
           child: Container(
             width: 130,
-            height: 180,
+            height: 160,
             decoration: BoxDecoration(
 
               boxShadow: [
@@ -72,6 +72,14 @@ class OgunGetir extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "0 kcal",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

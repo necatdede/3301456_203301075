@@ -28,13 +28,18 @@ class _Ayarlar extends State<Ayarlar> {
     var queryHeight = queryData.size.height;
     var queryWidth = queryData.size.width;
 
+    double appbar = AppBar().preferredSize.height;
+    double bottombar=kBottomNavigationBarHeight;
+
     // TODO: implement build
     return Scaffold(
+      backgroundColor: MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Container(
             width: queryWidth,
-            height: queryHeight,
+            height: queryHeight-(appbar+bottombar),
             color: MyApp().bgColor,
             child: Column(
               children: [
