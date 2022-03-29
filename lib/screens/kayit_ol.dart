@@ -34,7 +34,7 @@ class _KayitOl extends State<KayitOl> {
     (int.parse(boy.text) > 139 && (int.parse(boy.text) < 221))
         ? boySonuc = true
         : boySonuc = false;
-    (int.parse(yas.text) > 17 && (int.parse(yas.text) < 100))
+    (int.parse(yas.text) > 17 && (int.parse(yas.text) < 101))
         ? yasSonuc = true
         : yasSonuc = false;
 
@@ -170,20 +170,20 @@ class _KayitOl extends State<KayitOl> {
                           ),
                           buildTextFieldWidget(
                               control: yas,
-                              str: "Yaş",
+                              str: "Yaş (18-100)",
                               icon: LineIcons.birthdayCake,
                               kontrol: false,
                               klavyetur: TextInputType.number),
                           buildTextFieldWidget(
                             control: boy,
-                            str: "Boy",
+                            str: "Boy (140-220)",
                             icon: LineIcons.ruler,
                             kontrol: false,
                             klavyetur: TextInputType.number,
                           ),
                           buildTextFieldWidget(
                             control: kilo,
-                            str: "Kilo",
+                            str: "Kilo (30-200)",
                             icon: LineIcons.weight,
                             kontrol: false,
                             klavyetur: TextInputType.number,
