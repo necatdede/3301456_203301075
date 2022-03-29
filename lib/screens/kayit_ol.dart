@@ -34,7 +34,7 @@ class _KayitOl extends State<KayitOl> {
     (int.parse(boy.text) > 139 && (int.parse(boy.text) < 221))
         ? boySonuc = true
         : boySonuc = false;
-    (int.parse(yas.text) > 17 && (int.parse(kilo.text) < 100))
+    (int.parse(yas.text) > 17 && (int.parse(yas.text) < 100))
         ? yasSonuc = true
         : yasSonuc = false;
 
