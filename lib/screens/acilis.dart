@@ -13,7 +13,7 @@ class _AcilisState extends State<Acilis> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushNamed(context, "/routeGirisYap");
+      Navigator.popAndPushNamed(context, "/routeGirisYap");
     });
   }
 

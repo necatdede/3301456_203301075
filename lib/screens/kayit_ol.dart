@@ -24,6 +24,36 @@ class _KayitOl extends State<KayitOl> {
   final boy = TextEditingController();
   final kilo = TextEditingController();
 
+  bool kontrol() {
+    bool kiloSonuc = false;
+    bool boySonuc = false;
+    bool yasSonuc = false;
+    (int.parse(kilo.text) > 29 && (int.parse(kilo.text) < 201))
+        ? kiloSonuc = true
+        : kiloSonuc = false;
+    (int.parse(boy.text) > 139 && (int.parse(boy.text) < 221))
+        ? boySonuc = true
+        : boySonuc = false;
+    (int.parse(yas.text) > 17 && (int.parse(kilo.text) < 100))
+        ? yasSonuc = true
+        : yasSonuc = false;
+
+    return (kiloSonuc && boySonuc && yasSonuc)?true:false;
+  }
+
+  bool bosKontrol() {
+    bool sonuc = true;
+    (ad.text.isEmpty ||
+            kullaniciAdi.text.isEmpty ||
+            sifre.text.isEmpty ||
+            yas.text.isEmpty ||
+            boy.text.isEmpty ||
+            kilo.text.isEmpty)
+        ? sonuc = false
+        : sonuc = true;
+    return sonuc;
+  }
+
   Cinsiyet _cinsiyet = Cinsiyet.Kadin;
   String secilenAktivite = "Az Hareketli";
 
@@ -31,8 +61,8 @@ class _KayitOl extends State<KayitOl> {
 
   @override
   Widget build(BuildContext context) {
-    globals.secilenAktivite=secilenAktivite;
-    globals.secilenHedef=secilenHedef;
+    globals.secilenAktivite = secilenAktivite;
+    globals.secilenHedef = secilenHedef;
     // TODO: implement build
     return Scaffold(
       backgroundColor: MyApp().bgColor,
@@ -175,7 +205,11 @@ class _KayitOl extends State<KayitOl> {
                           ),
                           BuildDropDownWidget(
                             secilen: secilenHedef,
-                            veri: ['Kilomu Korumak', 'Kilo Almak', 'Kilo Vermek'],
+                            veri: [
+                              'Kilomu Korumak',
+                              'Kilo Almak',
+                              'Kilo Vermek'
+                            ],
                             islem: (String? newValue) {
                               setState(() {
                                 secilenHedef = newValue!;
@@ -188,32 +222,49 @@ class _KayitOl extends State<KayitOl> {
                               context: context,
                               str: "Kayıt Ol",
                               islem: () {
+                                if(bosKontrol()){
+                                  if (kontrol()) {
+                                    try {
+                                      var user = Kullanici(
+                                          "https://l24.im/CIT",
+                                          kullaniciAdi.text,
+                                          sifre.text,
+                                          ad.text,
+                                          _cinsiyet.index == 0 ? false : true,
+                                          double.parse(kilo.text),
+                                          int.parse(boy.text),
+                                          int.parse(yas.text));
 
-                                try{
-                                  var user = Kullanici(
-                                      "https://l24.im/CIT",
-                                      kullaniciAdi.text,
-                                      sifre.text,
-                                      ad.text,
-                                      _cinsiyet.index == 0 ? false : true,
-                                      double.parse(kilo.text),
-                                      int.parse(boy.text),
-                                      int.parse(yas.text));
+                                      globals.kullanici = user;
 
-                                  globals.kullanici=user;
+                                      globals.hesapla();
 
-                                  globals.hesapla();
+                                      final snackbar = SnackBar(
+                                        content: Text("Kayıt Olundu!"),
+                                      );
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackbar);
 
+                                      Navigator.pop(context);
+                                    } catch (e) {
+                                      final snackbar = SnackBar(
+                                        content: Text("Kayıt Olunamadı!"),
+                                      );
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackbar);
+                                    }
+                                  } else {
+                                    final snackbar = SnackBar(
+                                      content: Text(
+                                          "Lütfen Geçerli Değerler Giriniz!"),
+                                    );
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackbar);
+                                  }
+                                }else{
                                   final snackbar = SnackBar(
-                                    content: Text("Kayıt Olundu!"),
-                                  );
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(snackbar);
-
-                                  Navigator.pop(context);
-                                }catch(e){
-                                  final snackbar = SnackBar(
-                                    content: Text("Kayıt Olunamadı!"),
+                                    content: Text(
+                                        "Boş Bırakılan Alanları Doldurunuz!"),
                                   );
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(snackbar);
