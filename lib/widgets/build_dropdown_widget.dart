@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 
-import '../globals.dart' as globals;
-
 class BuildDropDownWidget extends StatefulWidget {
   const BuildDropDownWidget({
     Key? key,
@@ -24,7 +22,7 @@ class _BuildDropDownWidgetState extends State<BuildDropDownWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8) ,
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(
           color: MyApp().bgColor,
@@ -38,7 +36,7 @@ class _BuildDropDownWidgetState extends State<BuildDropDownWidget> {
         child: DropdownButton<String>(
           alignment: Alignment.center,
           //itemHeight: 10,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 15,
             color: Colors.black,
           ),

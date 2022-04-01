@@ -1,10 +1,11 @@
-import 'package:diyetlendin/models/kullanici.dart';
 import 'package:diyetlendin/screens/anasayfa.dart';
 import 'package:diyetlendin/screens/ayarlar.dart';
 import 'package:diyetlendin/screens/profil.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 class Cerceve extends StatefulWidget {
+  const Cerceve({Key? key}) : super(key: key);
+
 
 
 
@@ -25,9 +26,9 @@ class _CerceveState extends State<Cerceve> {
 
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: Text("Diyetlendin",)),
+      appBar: AppBar(title: const Text("Diyetlendin",)),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(LineIcons.home), label: "AnaSayfa"),
           BottomNavigationBarItem(icon: Icon(LineIcons.addressCard), label: "Profil"),
           BottomNavigationBarItem(icon: Icon(LineIcons.cog), label: "Ayarlar"),

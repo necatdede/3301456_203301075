@@ -38,7 +38,7 @@ class _KayitOl extends State<KayitOl> {
         ? yasSonuc = true
         : yasSonuc = false;
 
-    return (kiloSonuc && boySonuc && yasSonuc)?true:false;
+    return (kiloSonuc && boySonuc && yasSonuc) ? true : false;
   }
 
   bool bosKontrol() {
@@ -68,8 +68,8 @@ class _KayitOl extends State<KayitOl> {
       backgroundColor: MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Container(
+          physics: const BouncingScrollPhysics(),
+          child: SizedBox(
             width: MediaQuery.of(context).size.width,
             //height: MediaQuery.of(context).size.height,
             child: Column(
@@ -79,7 +79,7 @@ class _KayitOl extends State<KayitOl> {
                   width: MediaQuery.of(context).size.width / 1.5,
                   height: MediaQuery.of(context).size.height / 1.5,
                 ),
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: Card(
                     shape: const RoundedRectangleBorder(
@@ -104,7 +104,7 @@ class _KayitOl extends State<KayitOl> {
                                         side: BorderSide(
                                             color: MyApp().bgColor, width: 3),
                                       ),
-                                      title: Text(
+                                      title: const Text(
                                         "Kadın",
                                         style: TextStyle(fontSize: 20),
                                       ),
@@ -127,7 +127,7 @@ class _KayitOl extends State<KayitOl> {
                                         side: BorderSide(
                                             color: MyApp().bgColor, width: 3),
                                       ),
-                                      title: Text(
+                                      title: const Text(
                                         "Erkek",
                                         style: TextStyle(fontSize: 20),
                                       ),
@@ -190,7 +190,7 @@ class _KayitOl extends State<KayitOl> {
                           ),
                           BuildDropDownWidget(
                             secilen: secilenAktivite,
-                            veri: [
+                            veri: const [
                               'Az Hareketli',
                               'Orta Hareketli(Haftada 1-3 Egzersiz)',
                               'Çok Hareketli(Haftada 4-5 Egzersiz)'
@@ -205,7 +205,7 @@ class _KayitOl extends State<KayitOl> {
                           ),
                           BuildDropDownWidget(
                             secilen: secilenHedef,
-                            veri: [
+                            veri: const [
                               'Kilomu Korumak',
                               'Kilo Almak',
                               'Kilo Vermek'
@@ -222,7 +222,7 @@ class _KayitOl extends State<KayitOl> {
                               context: context,
                               str: "Kayıt Ol",
                               islem: () {
-                                if(bosKontrol()){
+                                if (bosKontrol()) {
                                   if (kontrol()) {
                                     try {
                                       var user = Kullanici(
@@ -239,7 +239,7 @@ class _KayitOl extends State<KayitOl> {
 
                                       globals.hesapla();
 
-                                      final snackbar = SnackBar(
+                                      const snackbar = SnackBar(
                                         content: Text("Kayıt Olundu!"),
                                       );
                                       ScaffoldMessenger.of(context)
@@ -247,29 +247,28 @@ class _KayitOl extends State<KayitOl> {
 
                                       Navigator.pop(context);
                                     } catch (e) {
-                                      final snackbar = SnackBar(
+                                      const snackbar = SnackBar(
                                         content: Text("Kayıt Olunamadı!"),
                                       );
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(snackbar);
                                     }
                                   } else {
-                                    final snackbar = SnackBar(
+                                    const snackbar = SnackBar(
                                       content: Text(
                                           "Lütfen Geçerli Değerler Giriniz!"),
                                     );
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(snackbar);
                                   }
-                                }else{
-                                  final snackbar = SnackBar(
+                                } else {
+                                  const snackbar = SnackBar(
                                     content: Text(
                                         "Boş Bırakılan Alanları Doldurunuz!"),
                                   );
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(snackbar);
                                 }
-
                               }),
                         ],
                       ),

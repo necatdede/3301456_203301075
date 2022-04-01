@@ -6,6 +6,8 @@ import '../main.dart';
 import '../globals.dart' as globals;
 
 class KaloriSayacGetir extends StatefulWidget {
+  const KaloriSayacGetir({Key? key}) : super(key: key);
+
 
 
   @override
@@ -96,7 +98,7 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           LineIcons.calendarWithDayFocus,
                           color: Colors.black,
                           size: 80,

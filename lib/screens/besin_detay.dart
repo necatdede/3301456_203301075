@@ -25,8 +25,8 @@ class BesinDetay extends StatelessWidget {
         title: Text(besin.besinAd),
       ),
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height-AppBar().preferredSize.height,
+        width: queryWidth,
+        height: queryHeight,
         color: MyApp().bgColor,
         child: SingleChildScrollView(
           child: Padding(

@@ -7,21 +7,18 @@ import 'package:diyetlendin/screens/besin_ekle.dart';
 import 'package:diyetlendin/screens/eklenen_besinler.dart';
 import 'package:diyetlendin/screens/giris_yap.dart';
 import 'package:diyetlendin/screens/kayit_ol.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/build_button_widget.dart';
-import 'widgets/build_textfield_widget.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final Color bgColor = Color(0xffEDF0F2);
-  final Color textfieldColor = Color(0xff70D188);
+  final Color bgColor = const Color(0xffEDF0F2);
+  final Color textfieldColor = const Color(0xff70D188);
 
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -35,10 +32,10 @@ class MyApp extends StatelessWidget {
         "/routeKayitOl": (context) => const KayitOl(),
         "/routeAnaSayfa": (context) => AnaSayfa(),
         "/routeAyarlar": (context) => Ayarlar(),
-        "/routeCerceve": (context) => Cerceve(),
-        "/routeBesinEkle": (context) => BesinEkle(),
-        "/routeBesinDetay": (context) => BesinDetay(),
-        "/routeEklenenBesinler": (context) => EklenenBesinler(),
+        "/routeCerceve": (context) => const Cerceve(),
+        "/routeBesinEkle": (context) => const BesinEkle(),
+        "/routeBesinDetay": (context) => const BesinDetay(),
+        "/routeEklenenBesinler": (context) => const EklenenBesinler(),
       },
       title: 'Diyetlendin',
       theme: ThemeData().copyWith(

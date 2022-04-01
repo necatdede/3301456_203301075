@@ -18,7 +18,7 @@ class _GirisYapState extends State<GirisYap> {
 
   var alert = AlertDialog(
     title: Column(
-      children: [
+      children: const [
         Icon(
           Icons.error_outline,
           color: Colors.red,
@@ -45,34 +45,18 @@ class _GirisYapState extends State<GirisYap> {
       backgroundColor: MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
-          child: Container(
-            // decoration: BoxDecoration(
-            //   image: DecorationImage(
-            //       colorFilter: ColorFilter.mode(
-            //           Colors.black.withOpacity(0.1), BlendMode.dstATop),
-            //       image: AssetImage('images/logo.png'),
-            //       fit: BoxFit.cover),
-            // ),
+          child: SizedBox(
             width: screenSize.width,
             height: screenSize.height,
-            /*
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFFEDF0F2),Color(0xFFFEFEFE)],
-              ),
-            ),
-
-             */
 
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Image.asset(
                   "images/logo.png",
                   width: screenSize.width * 0.7,
                   height: screenSize.height * 0.5,
                 ),
-                Container(
+                SizedBox(
                   width: screenSize.width * 0.7,
                   height: screenSize.height * 0.5,
                   child: Card(

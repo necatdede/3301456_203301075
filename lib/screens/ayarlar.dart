@@ -28,17 +28,14 @@ class _Ayarlar extends State<Ayarlar> {
     var queryHeight = queryData.size.height;
     var queryWidth = queryData.size.width;
 
-    double appbar = AppBar().preferredSize.height;
-    double bottombar=kBottomNavigationBarHeight;
 
     // TODO: implement build
     return Scaffold(
       backgroundColor: MyApp().bgColor,
-      body: Container(
-        color: MyApp().bgColor,
-        height: queryHeight,
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: SizedBox(
+          height: queryHeight,
           child: Column(
             children: [
               BuildAyarlarWidget(
@@ -46,7 +43,7 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Hakkımızda",
                 icon: LineIcons.infoCircle,
                 islem: () {
-                  var alert = AlertDialog(
+                  var alert = const AlertDialog(
                     title: Text(
                         "Bu uygulama,\nüstad Ahmet Cevahir ÇINAR tarafından verilen,\n3301456 numaralı Mobil Programlama dersinin ara sınavı için,\nBekir Necat Dede tarafından yapılmıştır.\n\nİletişim için,\n05419714711"),
                   );
@@ -63,7 +60,7 @@ class _Ayarlar extends State<Ayarlar> {
                   var alert = AlertDialog(
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
                           "Gizlilik",
                           style: TextStyle(
@@ -94,12 +91,21 @@ class _Ayarlar extends State<Ayarlar> {
                   var alert = AlertDialog(
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Diyetlendin Nedir?",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-                        Text("Diyetlendin seni ideal kilona ve sağlıklı bir yaşama kavuşturmak için var olan ücretsiz bir online diyet uygulamasıdır."),
-
-                        Text("\nDiyetlendin Üyeliğinde Yaş Sınırı Var Mı?",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-                        Text("Diyetlendin hukuki gerekçelerle 18 yaşın altındaki kişilere diyet önerisinde bulunamaz."),
+                      children: const [
+                        Text(
+                          "Diyetlendin Nedir?",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 25),
+                        ),
+                        Text(
+                            "Diyetlendin seni ideal kilona ve sağlıklı bir yaşama kavuşturmak için var olan ücretsiz bir online diyet uygulamasıdır."),
+                        Text(
+                          "\nDiyetlendin Üyeliğinde Yaş Sınırı Var Mı?",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 25),
+                        ),
+                        Text(
+                            "Diyetlendin hukuki gerekçelerle 18 yaşın altındaki kişilere diyet önerisinde bulunamaz."),
                       ],
                     ),
                   );
@@ -127,8 +133,10 @@ class _Ayarlar extends State<Ayarlar> {
                             islem: () {
                               setState(() {
                                 (boy.text.isEmpty)
-                                    ? globals.kullanici.boy = globals.kullanici.boy
-                                    : globals.kullanici.boy = (int.parse(boy.text));
+                                    ? globals.kullanici.boy =
+                                        globals.kullanici.boy
+                                    : globals.kullanici.boy =
+                                        (int.parse(boy.text));
                               });
                               boy.text = "";
                               Navigator.pop(context);
@@ -163,7 +171,8 @@ class _Ayarlar extends State<Ayarlar> {
                             islem: () {
                               setState(() {
                                 (kilo.text.isEmpty)
-                                    ? globals.kullanici.kilo = globals.kullanici.kilo
+                                    ? globals.kullanici.kilo =
+                                        globals.kullanici.kilo
                                     : globals.kullanici.kilo =
                                         (double.parse(kilo.text));
                               });
@@ -205,7 +214,7 @@ class _Ayarlar extends State<Ayarlar> {
                             str: "Gönder",
                             islem: () {
                               Navigator.pop(context);
-                              final snackbar = SnackBar(
+                              const snackbar =  SnackBar(
                                 content: Text("Mesajınız Gönderildi!"),
                               );
                               ScaffoldMessenger.of(context)

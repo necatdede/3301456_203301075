@@ -5,24 +5,23 @@ import 'package:line_icons/line_icons.dart';
 import '../globals.dart' as globals;
 
 class Profil extends StatelessWidget {
-  Profil({Key? key}) : super(key: key);
+  const Profil({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    double appbar = AppBar().preferredSize.height;
-    double bottombar=kBottomNavigationBarHeight;
 
     final bos = TextEditingController();
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      color: MyApp().bgColor,
-      child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+    return Scaffold(
+      backgroundColor: MyApp().bgColor,
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
           child: Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
@@ -68,6 +67,7 @@ class Profil extends StatelessWidget {
             ),
           ),
         ),
+      ),
     );
   }
 }

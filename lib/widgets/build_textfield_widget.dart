@@ -1,6 +1,5 @@
 import 'package:diyetlendin/main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class buildTextFieldWidget extends StatelessWidget {
   buildTextFieldWidget({
@@ -47,7 +46,7 @@ class buildTextFieldWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
             ),
             disabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white, width: 3),
+              borderSide: const BorderSide(color: Colors.white, width: 3),
               borderRadius: BorderRadius.circular(25),
             ),
             prefixIcon: Icon(

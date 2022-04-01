@@ -1,5 +1,4 @@
 import 'package:diyetlendin/main.dart';
-import 'package:diyetlendin/models/kullanici.dart';
 import 'package:diyetlendin/screens/profil.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,10 @@ class AnaSayfa extends StatefulWidget {
 }
 
 class _AnaSayfaState extends State<AnaSayfa> {
-  String ogunAd = "";
+
+
+   String? ogunAd;
+
 
   List<Besin> besinler = [
     Besin("Muz", 89, 22.84, 1.09, 0.33, "https://l24.im/ckpeG0"),
@@ -39,8 +41,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Container(
+          physics: const BouncingScrollPhysics(),
+          child: SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,7 +55,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                     children: [
                       Text(
                         "Hoşgeldin,${globals.kullanici.kullaniciAdi}",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -65,8 +67,6 @@ class _AnaSayfaState extends State<AnaSayfa> {
                               var alert = AlertDialog(
                                 backgroundColor: MyApp().bgColor,
                                 content: Profil(),
-                                //actions: [Profil()],
-                               // title: Profil(),
                               );
                               showDialog(
                                   context: context,
@@ -122,14 +122,14 @@ class _AnaSayfaState extends State<AnaSayfa> {
                   ),
                 ),
                 SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
                       OgunGetir(
                         tur: "images/breakfast.png",
                         renk: Colors.lightBlueAccent.shade200,
-                        renk2: Color(0xffcee1f4),
+                        renk2: const Color(0xffcee1f4),
                         yazi: "Kahvaltı",
                         ontab: () {
                           setState(() {
@@ -143,7 +143,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                       OgunGetir(
                         tur: "images/lunch.png",
                         renk: Colors.pinkAccent.shade200,
-                        renk2: Color(0xfff9dbd2),
+                        renk2: const Color(0xfff9dbd2),
                         yazi: "Öğle Yemeği",
                         ontab: () {
                           setState(() {
@@ -157,7 +157,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                       OgunGetir(
                         tur: "images/dinner.png",
                         renk: Colors.orangeAccent.shade200,
-                        renk2: Color(0xfffce0a2),
+                        renk2: const Color(0xfffce0a2),
                         yazi: "Akşam Yemeği",
                         ontab: () {
                           setState(() {
@@ -171,7 +171,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                       OgunGetir(
                         tur: "images/snack.png",
                         renk: Colors.lightGreenAccent.shade200,
-                        renk2: Color(0xffe6edb7),
+                        renk2: const Color(0xffe6edb7),
                         yazi: "Atıştırma",
                         ontab: () {
                           setState(() {

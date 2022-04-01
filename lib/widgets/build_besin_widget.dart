@@ -18,7 +18,7 @@ class build_besin_widget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Flexible(
-          flex:1,
+          flex: 1,
           child: Container(
             height: 100,
             // width: width*0.4,
@@ -31,7 +31,7 @@ class build_besin_widget extends StatelessWidget {
               //     offset: Offset(0, 3), // changes position of shadow
               //   ),
               // ],
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(30),
                 topLeft: Radius.circular(30),
               ),
@@ -49,15 +49,7 @@ class build_besin_widget extends StatelessWidget {
           child: Container(
             height: 100,
             //width: width*0.6,
-            decoration: BoxDecoration(
-              // boxShadow: [
-              //   BoxShadow(
-              //     color: Colors.black.withOpacity(0.5),
-              //     spreadRadius: 1,
-              //     blurRadius: 7,
-              //     offset: Offset(0, 3), // changes position of shadow
-              //   ),
-              // ],
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(30),
                   bottomRight: Radius.circular(30)),
@@ -68,14 +60,17 @@ class build_besin_widget extends StatelessWidget {
               children: [
                 Text(
                   besinler[index].besinAd,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 30,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
                   " " + besinler[index].kalori.toString() + " Kalori",
-                  style: TextStyle(color:Colors.blue, fontSize:25, fontWeight:FontWeight.bold),
+                  style: const TextStyle(
+                      color: Colors.blue,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -86,7 +81,7 @@ class build_besin_widget extends StatelessWidget {
             Navigator.pushNamed(context, "/routeBesinDetay",
                 arguments: besinler[index]);
           },
-          icon: Icon(LineIcons.infoCircle),
+          icon: const Icon(LineIcons.infoCircle),
           iconSize: 40,
         ),
       ],

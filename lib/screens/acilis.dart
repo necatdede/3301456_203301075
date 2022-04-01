@@ -9,10 +9,12 @@ class Acilis extends StatefulWidget {
 }
 
 class _AcilisState extends State<Acilis> {
+
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.popAndPushNamed(context, "/routeGirisYap");
     });
   }
@@ -25,7 +27,7 @@ class _AcilisState extends State<Acilis> {
         alignment: Alignment.bottomCenter,
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage("images/logo.png"), fit: BoxFit.contain)),
           ),

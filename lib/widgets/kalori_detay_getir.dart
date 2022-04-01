@@ -35,7 +35,7 @@ class KaloriDetayGetir extends StatelessWidget {
             color: renk2,
           ),
           Text(tur,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -51,7 +51,7 @@ class KaloriDetayGetir extends StatelessWidget {
             backgroundColor: renk3,
           ),
           Text(alinan.toInt().toString() + "/" + alinacak.toInt().toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,

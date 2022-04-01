@@ -1,7 +1,6 @@
 import 'package:diyetlendin/widgets/build_besin_widget.dart';
 import 'package:flutter/material.dart';
 import '../models/besin.dart';
-import '../globals.dart' as globals;
 
 class EklenenBesinler extends StatefulWidget {
   const EklenenBesinler({Key? key}) : super(key: key);
@@ -18,13 +17,12 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
 
 
     return Scaffold(
-      appBar: AppBar(title: Text("Eklenenler"),),
+      appBar: AppBar(title: const Text("Eklenenler"),),
       body: Container(
-        height: double.infinity,
-        margin: EdgeInsets.only(top: 5, bottom: 5),
-        //width: queryWidth*0.9,
+        height: MediaQuery.of(context).size.height,
+        margin: const EdgeInsets.only(top: 5, bottom: 5),
         child: ListView.builder(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
             itemCount: eklenenBesinler.length,
             itemBuilder: (context, index) {

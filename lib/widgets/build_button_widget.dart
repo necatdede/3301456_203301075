@@ -27,7 +27,7 @@ class build_button_widget extends StatelessWidget {
             color: Colors.white.withOpacity(0.5),
             spreadRadius: 5,
             blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3), // changes position of shadow
           ),
         ],
         borderRadius: BorderRadius.circular(50),
@@ -44,7 +44,7 @@ class build_button_widget extends StatelessWidget {
         child: Ink(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0)),
           child: Container(
-            constraints: BoxConstraints(maxWidth: 250.0, minHeight: 50.0),
+            constraints: const BoxConstraints(maxWidth: 250.0, minHeight: 50.0),
             alignment: Alignment.center,
             child: Text(
               str,

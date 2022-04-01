@@ -2,9 +2,7 @@ import 'package:diyetlendin/models/besin.dart';
 import 'package:diyetlendin/main.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:line_icons/line_icons.dart';
-import '../globals.dart' as globals;
 import '../widgets/build_besin_widget.dart';
 
 class BesinEkle extends StatefulWidget {
@@ -29,10 +27,6 @@ class _BesinEkleState extends State<BesinEkle> {
     var queryHeight = queryData.size.height;
     var queryWidth = queryData.size.width;
 
-    double appbar = AppBar().preferredSize.height;
-    double bottombar=kBottomNavigationBarHeight;
-
-
     return Scaffold(
       backgroundColor: MyApp().bgColor,
       appBar: AppBar(
@@ -45,57 +39,57 @@ class _BesinEkleState extends State<BesinEkle> {
                   Navigator.pushNamed(context, "/routeEklenenBesinler",
                       arguments: eklenen);
                 },
-                icon: Icon(
+                icon: const Icon(
                   LineIcons.shoppingBasket,
                   size: 40,
                 )),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          height: queryHeight-appbar,
-          width: queryWidth,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              buildTextFieldWidget(
-                kontrol: false,
-                control: besinArama,
-                icon: Icons.search,
-                klavyetur: TextInputType.text,
-                str: "Besin Arama",
-              ),
-              Expanded(
-                child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    itemCount: besinler.length,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        borderRadius: BorderRadius.circular(30),
-                        onTap: () {
-                          setState(() {
-                            eklenen.add(besinler[index]);
-                          });
-
-                        },
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          color: Colors.white,
-                          child: Stack(
-                            children: [
-                              build_besin_widget(besinler: besinler,index: index,),
-                            ],
-                          ),
+      body: SizedBox(
+        height: queryHeight,
+        width: queryWidth,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            buildTextFieldWidget(
+              kontrol: false,
+              control: besinArama,
+              icon: Icons.search,
+              klavyetur: TextInputType.text,
+              str: "Besin Arama",
+            ),
+            Expanded(
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: besinler.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(30),
+                      onTap: () {
+                        setState(() {
+                          eklenen.add(besinler[index]);
+                        });
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
                         ),
-                      );
-                    }),
-              ),
-            ],
-          ),
+                        color: Colors.white,
+                        child: Stack(
+                          children: [
+                            build_besin_widget(
+                              besinler: besinler,
+                              index: index,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+          ],
         ),
       ),
     );

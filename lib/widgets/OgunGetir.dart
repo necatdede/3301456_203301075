@@ -21,7 +21,7 @@ class OgunGetir extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 3.0),
       child: InkWell(
-        borderRadius:  BorderRadius.only(
+        borderRadius:  const BorderRadius.only(
             topRight: Radius.circular(60),
             topLeft: Radius.circular(20),
             bottomLeft: Radius.circular(20),
@@ -40,7 +40,7 @@ class OgunGetir extends StatelessWidget {
                   color: renk.withOpacity(1),
                   spreadRadius: 1,
                   blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
+                  offset: const Offset(0, 3), // changes position of shadow
                 ),
               ],
               gradient: LinearGradient(
@@ -51,7 +51,7 @@ class OgunGetir extends StatelessWidget {
                   renk2,
                 ],
               ),
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(60),
                   topLeft: Radius.circular(20),
                   bottomLeft: Radius.circular(20),
@@ -69,13 +69,13 @@ class OgunGetir extends StatelessWidget {
                   ),
                   Text(
                     yazi,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "0 kcal",
                     style: TextStyle(
                       color: Colors.white,
