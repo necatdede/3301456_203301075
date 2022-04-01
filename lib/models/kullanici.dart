@@ -1,12 +1,12 @@
 class Kullanici {
-  String _resimUrl = "https://l24.im/CIT";
-  String _kullaniciAdi;
-  String _sifre;
-  String _ad;
-  bool _cinsiyet;
-  double _kilo;
-  int _boy;
-  int _yas;
+   String _resimUrl = "https://l24.im/CIT";
+   String? _kullaniciAdi;
+   String? _sifre;
+   String? _ad;
+   bool? _cinsiyet;
+   double? _kilo;
+   int? _boy;
+   int? _yas;
 
   Kullanici(this._resimUrl, this._kullaniciAdi, this._sifre, this._ad,
       this._cinsiyet, this._kilo, this._boy, this._yas);
@@ -16,19 +16,19 @@ class Kullanici {
     _resimUrl = value;
   }
 
-  int get yas => _yas;
+  int get yas => _yas!;
 
-  int get boy => _boy;
+  int get boy => _boy!;
 
-  double get kilo => _kilo;
+  double get kilo => _kilo!;
 
-  bool get cinsiyet => _cinsiyet;
+  bool get cinsiyet => _cinsiyet!;
 
-  String get ad => _ad;
+  String get ad => _ad!;
 
-  String get sifre => _sifre;
+  String get sifre => _sifre!;
 
-  String get kullaniciAdi => _kullaniciAdi;
+  String get kullaniciAdi => _kullaniciAdi!;
 
   String get resimUrl => _resimUrl;
 
