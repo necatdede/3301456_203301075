@@ -65,7 +65,7 @@ class _KayitOl extends State<KayitOl> {
     globals.secilenHedef = secilenHedef;
     // TODO: implement build
     return Scaffold(
-      backgroundColor: MyApp().bgColor,
+      backgroundColor: const MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -102,7 +102,7 @@ class _KayitOl extends State<KayitOl> {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
                                         side: BorderSide(
-                                            color: MyApp().bgColor, width: 3),
+                                            color: const MyApp().bgColor, width: 3),
                                       ),
                                       title: const Text(
                                         "Kadın",
@@ -111,7 +111,7 @@ class _KayitOl extends State<KayitOl> {
                                       leading: Radio<Cinsiyet>(
                                         value: Cinsiyet.Kadin,
                                         groupValue: _cinsiyet,
-                                        activeColor: MyApp().textfieldColor,
+                                        activeColor: const MyApp().textfieldColor,
                                         onChanged: (Cinsiyet? value) {
                                           setState(() {
                                             _cinsiyet = value!;
@@ -125,14 +125,14 @@ class _KayitOl extends State<KayitOl> {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
                                         side: BorderSide(
-                                            color: MyApp().bgColor, width: 3),
+                                            color: const MyApp().bgColor, width: 3),
                                       ),
                                       title: const Text(
                                         "Erkek",
                                         style: TextStyle(fontSize: 20),
                                       ),
                                       leading: Radio<Cinsiyet>(
-                                        activeColor: MyApp().textfieldColor,
+                                        activeColor: const MyApp().textfieldColor,
                                         value: Cinsiyet.Erkek,
                                         groupValue: _cinsiyet,
                                         onChanged: (Cinsiyet? value) {
@@ -147,41 +147,41 @@ class _KayitOl extends State<KayitOl> {
                               ),
                             ),
                           ),
-                          buildTextFieldWidget(
+                          BuildTextFieldWidget(
                             control: ad,
                             str: "Ad Soyad",
                             icon: LineIcons.addressCard,
                             kontrol: false,
                             klavyetur: TextInputType.name,
                           ),
-                          buildTextFieldWidget(
+                          BuildTextFieldWidget(
                             control: kullaniciAdi,
                             str: "Kullanıcı Adı",
                             icon: LineIcons.user,
                             kontrol: false,
                             klavyetur: TextInputType.name,
                           ),
-                          buildTextFieldWidget(
+                          BuildTextFieldWidget(
                             control: sifre,
                             str: "Şifre",
                             icon: LineIcons.userLock,
                             kontrol: true,
                             klavyetur: TextInputType.name,
                           ),
-                          buildTextFieldWidget(
+                          BuildTextFieldWidget(
                               control: yas,
                               str: "Yaş (18-100)",
                               icon: LineIcons.birthdayCake,
                               kontrol: false,
                               klavyetur: TextInputType.number),
-                          buildTextFieldWidget(
+                          BuildTextFieldWidget(
                             control: boy,
                             str: "Boy (140-220)",
                             icon: LineIcons.ruler,
                             kontrol: false,
                             klavyetur: TextInputType.number,
                           ),
-                          buildTextFieldWidget(
+                          BuildTextFieldWidget(
                             control: kilo,
                             str: "Kilo (30-200)",
                             icon: LineIcons.weight,
@@ -199,7 +199,6 @@ class _KayitOl extends State<KayitOl> {
                               setState(() {
                                 secilenAktivite = newValue!;
                                 globals.secilenAktivite = newValue;
-                                print(globals.secilenAktivite);
                               });
                             },
                           ),
@@ -214,11 +213,10 @@ class _KayitOl extends State<KayitOl> {
                               setState(() {
                                 secilenHedef = newValue!;
                                 globals.secilenHedef = newValue;
-                                print(globals.secilenHedef);
                               });
                             },
                           ),
-                          build_button_widget(
+                          BuildButtonWidget(
                               context: context,
                               str: "Kayıt Ol",
                               islem: () {

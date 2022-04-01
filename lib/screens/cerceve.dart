@@ -3,12 +3,9 @@ import 'package:diyetlendin/screens/ayarlar.dart';
 import 'package:diyetlendin/screens/profil.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+
 class Cerceve extends StatefulWidget {
   const Cerceve({Key? key}) : super(key: key);
-
-
-
-
 
   @override
   State<StatefulWidget> createState() {
@@ -18,28 +15,32 @@ class Cerceve extends StatefulWidget {
 }
 
 class _CerceveState extends State<Cerceve> {
-  int gecerli_sayfa = 0;
+  int gecerliIndex = 0;
   Widget gecerliSayfa = AnaSayfa();
 
   @override
   Widget build(BuildContext context) {
-
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: const Text("Diyetlendin",)),
+      appBar: AppBar(
+          title: const Text(
+        "Diyetlendin",
+      )),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
-          BottomNavigationBarItem(icon: Icon(LineIcons.home), label: "AnaSayfa"),
-          BottomNavigationBarItem(icon: Icon(LineIcons.addressCard), label: "Profil"),
+          BottomNavigationBarItem(
+              icon: Icon(LineIcons.home), label: "AnaSayfa"),
+          BottomNavigationBarItem(
+              icon: Icon(LineIcons.addressCard), label: "Profil"),
           BottomNavigationBarItem(icon: Icon(LineIcons.cog), label: "Ayarlar"),
         ],
-        currentIndex: gecerli_sayfa,
+        currentIndex: gecerliIndex,
         onTap: (int) {
           setState(() {
-            gecerli_sayfa = int;
-            if(gecerli_sayfa==0)gecerliSayfa=AnaSayfa();
-            if(gecerli_sayfa==1)gecerliSayfa=Profil();
-            if(gecerli_sayfa==2)gecerliSayfa=Ayarlar();
+            gecerliIndex = int;
+            if (gecerliIndex == 0) gecerliSayfa = AnaSayfa();
+            if (gecerliIndex == 1) gecerliSayfa = const Profil();
+            if (gecerliIndex == 2) gecerliSayfa = Ayarlar();
           });
         },
       ),

@@ -22,7 +22,7 @@ class _AcilisState extends State<Acilis> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyApp().bgColor,
+      backgroundColor: const MyApp().bgColor,
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [

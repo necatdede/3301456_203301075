@@ -2,8 +2,8 @@ import 'package:diyetlendin/models/besin.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
-class build_besin_widget extends StatelessWidget {
-  const build_besin_widget({
+class BuildBesinWidget extends StatelessWidget {
+  const BuildBesinWidget({
     Key? key,
     required this.besinler,
     required this.index,

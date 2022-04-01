@@ -1,8 +1,8 @@
 import 'package:diyetlendin/main.dart';
 import 'package:flutter/material.dart';
 
-class build_button_widget extends StatelessWidget {
-  const build_button_widget({
+class BuildButtonWidget extends StatelessWidget {
+  const BuildButtonWidget({
     Key? key,
     required this.str,
     required this.islem,
@@ -37,7 +37,7 @@ class build_button_widget extends StatelessWidget {
       margin: const EdgeInsets.all(8),
       child: ElevatedButton(
         style: TextButton.styleFrom(
-            backgroundColor: MyApp().textfieldColor,
+            backgroundColor: const MyApp().textfieldColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20))),
         onPressed: islem,

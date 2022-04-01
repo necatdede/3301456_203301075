@@ -39,7 +39,7 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                   ),
                   color: Colors.white,
                   child: Stack(children: [
-                    build_besin_widget(besinler: eklenenBesinler, index: index),
+                    BuildBesinWidget(besinler: eklenenBesinler, index: index),
                   ],),
                 ),
               );

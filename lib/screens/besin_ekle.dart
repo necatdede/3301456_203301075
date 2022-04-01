@@ -28,7 +28,7 @@ class _BesinEkleState extends State<BesinEkle> {
     var queryWidth = queryData.size.width;
 
     return Scaffold(
-      backgroundColor: MyApp().bgColor,
+      backgroundColor: const MyApp().bgColor,
       appBar: AppBar(
         title: Text(ogunAdveBesinler[0]),
         actions: [
@@ -52,7 +52,7 @@ class _BesinEkleState extends State<BesinEkle> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            buildTextFieldWidget(
+            BuildTextFieldWidget(
               kontrol: false,
               control: besinArama,
               icon: Icons.search,
@@ -79,7 +79,7 @@ class _BesinEkleState extends State<BesinEkle> {
                         color: Colors.white,
                         child: Stack(
                           children: [
-                            build_besin_widget(
+                            BuildBesinWidget(
                               besinler: besinler,
                               index: index,
                             ),

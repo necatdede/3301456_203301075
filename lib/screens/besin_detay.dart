@@ -27,7 +27,7 @@ class BesinDetay extends StatelessWidget {
       body: Container(
         width: queryWidth,
         height: queryHeight,
-        color: MyApp().bgColor,
+        color: const MyApp().bgColor,
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),

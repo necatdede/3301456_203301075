@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../models/besin.dart';
 import '../widgets/kalori_detay_getir.dart';
-import '../widgets/OgunGetir.dart';
+import '../widgets/ogun_getir.dart';
 import '../widgets/kalori_sayac_getir.dart';
 
 import '../globals.dart' as globals;
 
 class AnaSayfa extends StatefulWidget {
+  const AnaSayfa({Key? key}) : super(key: key);
+
   @override
   State<AnaSayfa> createState() => _AnaSayfaState();
 }
@@ -37,7 +39,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor: MyApp().bgColor,
+      backgroundColor: const MyApp().bgColor,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
@@ -65,8 +67,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
                           child: InkWell(
                             onTap: () {
                               var alert = AlertDialog(
-                                backgroundColor: MyApp().bgColor,
-                                content: Profil(),
+                                backgroundColor: const MyApp().bgColor,
+                                content: const Profil(),
                               );
                               showDialog(
                                   context: context,
@@ -84,7 +86,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                     ],
                   ),
                 ),
-                KaloriSayacGetir(),
+                const KaloriSayacGetir(),
                 Card(
                   elevation: 5,
                   shape: RoundedRectangleBorder(

@@ -23,7 +23,7 @@ class BuildAyarlarWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: MyApp().textfieldColor,
+            color: const MyApp().textfieldColor,
             width: 1,
           ),
         ),

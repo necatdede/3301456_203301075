@@ -7,6 +7,8 @@ import '../globals.dart' as globals;
 import '../widgets/build_ayarlar_widget.dart';
 
 class Ayarlar extends StatefulWidget {
+  const Ayarlar({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -26,12 +28,11 @@ class _Ayarlar extends State<Ayarlar> {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     var queryHeight = queryData.size.height;
-    var queryWidth = queryData.size.width;
 
 
     // TODO: implement build
     return Scaffold(
-      backgroundColor: MyApp().bgColor,
+      backgroundColor: const MyApp().bgColor,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: SizedBox(
@@ -122,13 +123,13 @@ class _Ayarlar extends State<Ayarlar> {
                   var alert = AlertDialog(
                     title: Column(
                       children: [
-                        buildTextFieldWidget(
+                        BuildTextFieldWidget(
                             control: boy,
                             str: "Boy",
                             icon: LineIcons.ruler,
                             kontrol: false,
                             klavyetur: TextInputType.number),
-                        build_button_widget(
+                        BuildButtonWidget(
                             str: "Güncelle",
                             islem: () {
                               setState(() {
@@ -160,13 +161,13 @@ class _Ayarlar extends State<Ayarlar> {
                   var alert = AlertDialog(
                     title: Column(
                       children: [
-                        buildTextFieldWidget(
+                        BuildTextFieldWidget(
                             control: kilo,
                             str: "Kilo",
                             icon: LineIcons.weight,
                             kontrol: false,
                             klavyetur: TextInputType.number),
-                        build_button_widget(
+                        BuildButtonWidget(
                             str: "Güncelle",
                             islem: () {
                               setState(() {
@@ -198,19 +199,19 @@ class _Ayarlar extends State<Ayarlar> {
                   var alert = AlertDialog(
                     title: Column(
                       children: [
-                        buildTextFieldWidget(
+                        BuildTextFieldWidget(
                             control: konu,
                             str: "Konu",
                             icon: Icons.messenger_outline,
                             kontrol: false,
                             klavyetur: TextInputType.text),
-                        buildTextFieldWidget(
+                        BuildTextFieldWidget(
                             control: detay,
                             str: "Detay",
                             icon: Icons.message_outlined,
                             kontrol: false,
                             klavyetur: TextInputType.text),
-                        build_button_widget(
+                        BuildButtonWidget(
                             str: "Gönder",
                             islem: () {
                               Navigator.pop(context);

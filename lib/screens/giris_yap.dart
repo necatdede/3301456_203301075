@@ -42,7 +42,7 @@ class _GirisYapState extends State<GirisYap> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: MyApp().bgColor,
+      backgroundColor: const MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
           child: SizedBox(
@@ -70,19 +70,19 @@ class _GirisYapState extends State<GirisYap> {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          buildTextFieldWidget(
+                          BuildTextFieldWidget(
                             control: kullaniciAdi,
                             str: "Kullanıcı Adı",
                             icon: LineIcons.user,
                             klavyetur: TextInputType.name,
                           ),
-                          buildTextFieldWidget(
+                          BuildTextFieldWidget(
                             control: sifre,
                             str: "Şifre",
                             icon: LineIcons.userLock,
                             kontrol: true,
                           ),
-                          build_button_widget(
+                          BuildButtonWidget(
                               context: context,
                               str: "Giriş Yap",
                               islem: () {

@@ -33,31 +33,31 @@ class Profil extends StatelessWidget {
                           fit: BoxFit.fill,
                           image: NetworkImage(globals.kullanici.resimUrl)),
                     )),
-                buildTextFieldWidget(
+                BuildTextFieldWidget(
                   control: bos,
                   str: globals.kullanici.ad,
                   icon: LineIcons.addressCard,
                   isEnable: false,
                 ),
-                buildTextFieldWidget(
+                BuildTextFieldWidget(
                   control: bos,
                   str: globals.kullanici.kullaniciAdi,
                   icon: LineIcons.user,
                   isEnable: false,
                 ),
-                buildTextFieldWidget(
+                BuildTextFieldWidget(
                   control: bos,
                   str: globals.kullanici.yas.toString(),
                   icon: LineIcons.birthdayCake,
                   isEnable: false,
                 ),
-                buildTextFieldWidget(
+                BuildTextFieldWidget(
                   control: bos,
                   str: globals.kullanici.boy.toString(),
                   icon: LineIcons.ruler,
                   isEnable: false,
                 ),
-                buildTextFieldWidget(
+                BuildTextFieldWidget(
                   control: bos,
                   str: globals.kullanici.kilo.toString(),
                   icon: LineIcons.weight,

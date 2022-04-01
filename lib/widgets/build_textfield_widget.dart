@@ -1,8 +1,8 @@
 import 'package:diyetlendin/main.dart';
 import 'package:flutter/material.dart';
 
-class buildTextFieldWidget extends StatelessWidget {
-  buildTextFieldWidget({
+class BuildTextFieldWidget extends StatelessWidget {
+  BuildTextFieldWidget({
     Key? key,
      required this.control,
     required this.str,

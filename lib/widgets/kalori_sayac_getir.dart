@@ -128,7 +128,7 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
               flex: 1,
               child: CircularPercentIndicator(
                 linearGradient: LinearGradient(
-                  colors: [MyApp().bgColor, MyApp().textfieldColor],
+                  colors: [const MyApp().bgColor, const MyApp().textfieldColor],
                 ),
                 radius: 170,
                 animation: true,
