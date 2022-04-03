@@ -21,12 +21,11 @@ class OgunGetir extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 3.0),
       child: InkWell(
-        borderRadius:  const BorderRadius.only(
+        borderRadius: const BorderRadius.only(
             topRight: Radius.circular(60),
             topLeft: Radius.circular(20),
             bottomLeft: Radius.circular(20),
             bottomRight: Radius.circular(20)),
-
         onTap: ontab,
         child: Padding(
           padding: const EdgeInsets.all(5.0),
@@ -34,7 +33,6 @@ class OgunGetir extends StatelessWidget {
             width: 130,
             height: 160,
             decoration: BoxDecoration(
-
               boxShadow: [
                 BoxShadow(
                   color: renk.withOpacity(1),

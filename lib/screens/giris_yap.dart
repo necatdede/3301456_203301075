@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -15,7 +14,6 @@ class GirisYap extends StatefulWidget {
 }
 
 class _GirisYapState extends State<GirisYap> {
-
   var alert = AlertDialog(
     title: Column(
       children: const [
@@ -48,7 +46,6 @@ class _GirisYapState extends State<GirisYap> {
           child: SizedBox(
             width: screenSize.width,
             height: screenSize.height,
-
             child: Column(
               children: [
                 Image.asset(

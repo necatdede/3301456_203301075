@@ -9,8 +9,6 @@ class Acilis extends StatefulWidget {
 }
 
 class _AcilisState extends State<Acilis> {
-
-
   @override
   void initState() {
     super.initState();
@@ -23,16 +21,25 @@ class _AcilisState extends State<Acilis> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const MyApp().bgColor,
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("images/logo.png"), fit: BoxFit.contain)),
-          ),
-          Image.asset("images/yukleniyor.gif",height: 75,width: 75,),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.9,
+              width: MediaQuery.of(context).size.width * 0.9,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("images/logo.png"),
+                      fit: BoxFit.contain)),
+            ),
+            Image.asset(
+              "images/yukleniyor.gif",
+              height: 75,
+              width: 75,
+            ),
+          ],
+        ),
       ),
     );
   }

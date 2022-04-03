@@ -19,7 +19,7 @@ class BuildAyarlarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 8,top: 8),
+      margin: const EdgeInsets.only(bottom: 8, top: 8),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
@@ -40,11 +40,10 @@ class BuildAyarlarWidget extends StatelessWidget {
           icon,
           size: 35,
         ),
-        trailing: Text(yazi2,style: TextStyle(
-          fontSize: 20,
-          color: Colors.grey.shade600
-
-        ),),
+        trailing: Text(
+          yazi2,
+          style: TextStyle(fontSize: 20, color: Colors.grey.shade600),
+        ),
       ),
     );
   }

@@ -12,12 +12,13 @@ class EklenenBesinler extends StatefulWidget {
 class _EklenenBesinlerState extends State<EklenenBesinler> {
   @override
   Widget build(BuildContext context) {
-
-    List<Besin> eklenenBesinler = ModalRoute.of(context)!.settings.arguments as List<Besin>;
-
+    List<Besin> eklenenBesinler =
+        ModalRoute.of(context)!.settings.arguments as List<Besin>;
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Eklenenler"),),
+      appBar: AppBar(
+        title: const Text("Eklenenler"),
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         margin: const EdgeInsets.only(top: 5, bottom: 5),
@@ -30,7 +31,7 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                 borderRadius: BorderRadius.circular(30),
                 onTap: () {
                   setState(() {
-                   eklenenBesinler.removeAt(index);
+                    eklenenBesinler.removeAt(index);
                   });
                 },
                 child: Card(
@@ -38,13 +39,11 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   color: Colors.white,
-                  child: Stack(children: [
-                    BuildBesinWidget(besinler: eklenenBesinler, index: index),
-                  ],),
+                  child:
+                      BuildBesinWidget(besinler: eklenenBesinler, index: index),
                 ),
               );
             }),
-        // color: MyApp().bgColor,
       ),
     );
   }

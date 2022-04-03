@@ -29,7 +29,6 @@ class _Ayarlar extends State<Ayarlar> {
     queryData = MediaQuery.of(context);
     var queryHeight = queryData.size.height;
 
-
     // TODO: implement build
     return Scaffold(
       backgroundColor: const MyApp().bgColor,
@@ -215,7 +214,7 @@ class _Ayarlar extends State<Ayarlar> {
                             str: "Gönder",
                             islem: () {
                               Navigator.pop(context);
-                              const snackbar =  SnackBar(
+                              const snackbar = SnackBar(
                                 content: Text("Mesajınız Gönderildi!"),
                               );
                               ScaffoldMessenger.of(context)

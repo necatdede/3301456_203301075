@@ -9,8 +9,6 @@ class Profil extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     final bos = TextEditingController();
     return Scaffold(
       backgroundColor: MyApp().bgColor,

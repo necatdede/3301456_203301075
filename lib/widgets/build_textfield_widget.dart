@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class BuildTextFieldWidget extends StatelessWidget {
   BuildTextFieldWidget({
     Key? key,
-     required this.control,
+    required this.control,
     required this.str,
     required this.icon,
     this.isEnable = true,

@@ -16,7 +16,7 @@ class BuildButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width*0.8,
+      width: MediaQuery.of(context).size.width * 0.8,
       decoration: BoxDecoration(
         // border: Border.all(
         //   color: MyApp().bgColor,

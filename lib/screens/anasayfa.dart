@@ -17,10 +17,7 @@ class AnaSayfa extends StatefulWidget {
 }
 
 class _AnaSayfaState extends State<AnaSayfa> {
-
-
-   String? ogunAd;
-
+  String? ogunAd;
 
   List<Besin> besinler = [
     Besin("Muz", 89, 22.84, 1.09, 0.33, "https://l24.im/ckpeG0"),
@@ -33,7 +30,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
   ];
 
   double appbar = AppBar().preferredSize.height;
-  double bottombar=kBottomNavigationBarHeight;
+  double bottombar = kBottomNavigationBarHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +78,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 fit: BoxFit.fill,
-                                image: NetworkImage(globals.kullanici.resimUrl)),
+                                image:
+                                    NetworkImage(globals.kullanici.resimUrl)),
                           )),
                     ],
                   ),

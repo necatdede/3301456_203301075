@@ -8,14 +8,11 @@ import '../globals.dart' as globals;
 class KaloriSayacGetir extends StatefulWidget {
   const KaloriSayacGetir({Key? key}) : super(key: key);
 
-
-
   @override
   State<KaloriSayacGetir> createState() => _KaloriSayacGetirState();
 }
 
 class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
-
   var now = DateTime.now();
 
   String ayHesapla(int ayid) {
@@ -61,9 +58,6 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
     return ay;
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -85,10 +79,10 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
                   TextButton(
                     onPressed: () {
                       showDatePicker(
-                          context: context,
-                          initialDate: now,
-                          firstDate: DateTime(2022),
-                          lastDate: DateTime(2024))
+                              context: context,
+                              initialDate: now,
+                              firstDate: DateTime(2022),
+                              lastDate: DateTime(2024))
                           .then((date) {
                         setState(() {
                           now = date!;
@@ -104,20 +98,21 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
                           size: 80,
                         ),
                         Text(
-                          now.day.toString() +
-                              " " +
-                              ayHesapla(now.month),
+                          now.day.toString() + " " + ayHesapla(now.month),
                           style: const TextStyle(
                             color: Colors.black,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(now.year.toString(),style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),),
+                        Text(
+                          now.year.toString(),
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -139,7 +134,9 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      globals.alinanKalori.toInt().toString()+"/"+globals.gunlukAlinacakKalori.toInt().toString(),
+                      globals.alinanKalori.toInt().toString() +
+                          "/" +
+                          globals.gunlukAlinacakKalori.toInt().toString(),
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30.0,

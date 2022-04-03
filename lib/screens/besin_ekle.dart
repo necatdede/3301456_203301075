@@ -77,13 +77,9 @@ class _BesinEkleState extends State<BesinEkle> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         color: Colors.white,
-                        child: Stack(
-                          children: [
-                            BuildBesinWidget(
-                              besinler: besinler,
-                              index: index,
-                            ),
-                          ],
+                        child: BuildBesinWidget(
+                          besinler: besinler,
+                          index: index,
                         ),
                       ),
                     );

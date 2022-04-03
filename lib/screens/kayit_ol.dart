@@ -102,7 +102,8 @@ class _KayitOl extends State<KayitOl> {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
                                         side: BorderSide(
-                                            color: const MyApp().bgColor, width: 3),
+                                            color: const MyApp().bgColor,
+                                            width: 3),
                                       ),
                                       title: const Text(
                                         "Kadın",
@@ -111,7 +112,8 @@ class _KayitOl extends State<KayitOl> {
                                       leading: Radio<Cinsiyet>(
                                         value: Cinsiyet.Kadin,
                                         groupValue: _cinsiyet,
-                                        activeColor: const MyApp().textfieldColor,
+                                        activeColor:
+                                            const MyApp().textfieldColor,
                                         onChanged: (Cinsiyet? value) {
                                           setState(() {
                                             _cinsiyet = value!;
@@ -125,14 +127,16 @@ class _KayitOl extends State<KayitOl> {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
                                         side: BorderSide(
-                                            color: const MyApp().bgColor, width: 3),
+                                            color: const MyApp().bgColor,
+                                            width: 3),
                                       ),
                                       title: const Text(
                                         "Erkek",
                                         style: TextStyle(fontSize: 20),
                                       ),
                                       leading: Radio<Cinsiyet>(
-                                        activeColor: const MyApp().textfieldColor,
+                                        activeColor:
+                                            const MyApp().textfieldColor,
                                         value: Cinsiyet.Erkek,
                                         groupValue: _cinsiyet,
                                         onChanged: (Cinsiyet? value) {

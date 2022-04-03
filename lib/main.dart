@@ -9,7 +9,6 @@ import 'package:diyetlendin/screens/giris_yap.dart';
 import 'package:diyetlendin/screens/kayit_ol.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "/":(context)=>const Acilis(),
+        "/": (context) => const Acilis(),
         "/routeGirisYap": (context) => const GirisYap(),
         "/routeKayitOl": (context) => const KayitOl(),
         "/routeAnaSayfa": (context) => const AnaSayfa(),
