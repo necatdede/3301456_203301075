@@ -1,5 +1,6 @@
-# 3301456_203301075
-2022 Mobil Programlama
+# Diyetlendin
+
+3301456_203301075 2022 Mobil Programlama
 
 Uygulamayı webde deneyimlemek için [Diyetlendin Web](http://diyetlendin.herokuapp.com/ "Diyetlendin")
 
