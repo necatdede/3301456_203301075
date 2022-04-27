@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../main.dart';
 
@@ -31,21 +33,24 @@ class _BuildDropDownWidgetState extends State<BuildDropDownWidget> {
         borderRadius: BorderRadius.circular(25),
         color: Colors.white,
       ),
-      width: MediaQuery.of(context).size.width,
+      width: Get.width,
+      height: 45.h,
       child: Center(
         child: DropdownButton<String>(
-          alignment: Alignment.center,
-          //itemHeight: 10,
-          style: const TextStyle(
-            fontSize: 15,
-            color: Colors.black,
-          ),
+          iconSize: 20.sp,
+          underline: SizedBox(),
+          isExpanded: true,
           onChanged: widget.islem,
           value: widget.secilen,
           items: widget.veri.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
-              child: Text(value),
+              child: Center(
+                child: Text(
+                  value,
+                  style: TextStyle(fontSize: 13.sp),
+                ),
+              ),
             );
           }).toList(),
         ),

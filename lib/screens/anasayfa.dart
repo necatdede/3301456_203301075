@@ -1,13 +1,15 @@
+import 'package:diyetlendin/controllers/firebase_controller.dart';
+import 'package:diyetlendin/controllers/veri_controller.dart';
 import 'package:diyetlendin/main.dart';
 import 'package:diyetlendin/screens/profil.dart';
+import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-import '../models/besin.dart';
 import '../widgets/kalori_detay_getir.dart';
-import '../widgets/ogun_getir.dart';
 import '../widgets/kalori_sayac_getir.dart';
-
-import '../globals.dart' as globals;
+import '../widgets/ogun_getir.dart';
 
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({Key? key}) : super(key: key);
@@ -17,178 +19,189 @@ class AnaSayfa extends StatefulWidget {
 }
 
 class _AnaSayfaState extends State<AnaSayfa> {
-  String? ogunAd;
+  FirebaseService service = FirebaseService();
+  final c = Get.put(VeriController());
+  final c2 = Get.put(FirebaseController());
 
-  List<Besin> besinler = [
-    Besin("Muz", 89, 22.84, 1.09, 0.33, "https://l24.im/ckpeG0"),
-    Besin("Çilek", 32, 7.68, 0.67, 0.3, "https://l24.im/efWC"),
-    Besin("Yulaf", 351, 57.25, 11.35, 5.8, "https://l24.im/QLewxf"),
-    Besin("Ekmek", 238, 43.91, 10.66, 2.15, "https://l24.im/NRUvAO"),
-    Besin("Çikolata", 528, 57.9, 4.4, 35.1, "https://l24.im/jGiHt2"),
-    Besin("Cips", 532, 7.75, 0.91, 55.39, "https://l24.im/f8GP"),
-    Besin("Peynir", 310, 2.53, 20.38, 24.31, "https://l24.im/ZR7u"),
-  ];
-
-  double appbar = AppBar().preferredSize.height;
-  double bottombar = kBottomNavigationBarHeight;
+  @override
+  void initState() {
+    super.initState();
+    c2.getirKullanici();
+  }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       backgroundColor: const MyApp().bgColor,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              //mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Hoşgeldin,${globals.kullanici.kullaniciAdi}",
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Container(
-                          child: InkWell(
-                            onTap: () {
-                              var alert = AlertDialog(
-                                backgroundColor: const MyApp().bgColor,
-                                content: const Profil(),
-                              );
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) => alert);
-                            },
-                          ),
-                          width: 70,
-                          height: 70,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image:
-                                    NetworkImage(globals.kullanici.resimUrl)),
-                          )),
-                    ],
-                  ),
-                ),
-                const KaloriSayacGetir(),
-                Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  color: Colors.white,
-                  child: Row(
+      body: Obx(
+        () => SizedBox(
+          width: Get.width,
+          child: Padding(
+            padding: EdgeInsets.only(right: 8.0.r, left: 8.0.r, top: 8.r),
+            child: (c2.kullanici.value.ad == null ||
+                    c2.kullanici.value.gunlukKalori == null)
+                ? _waitingWidget
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      KaloriDetayGetir(
-                          tur: "Karbonhidrat",
-                          deger_yol: "images/karbonhidrat.png",
-                          alinan: globals.alinanKarbonhidrat,
-                          alinacak: globals.alinacakKarbonhidrat,
-                          renk: Colors.yellow.shade300,
-                          renk2: Colors.yellow,
-                          renk3: Colors.yellow.shade100),
-                      KaloriDetayGetir(
-                          tur: "Protein",
-                          deger_yol: "images/protein.png",
-                          alinan: globals.alinanProtein,
-                          alinacak: globals.alinacakProtein,
-                          renk: Colors.red.shade300,
-                          renk2: Colors.red,
-                          renk3: Colors.red.shade100),
-                      KaloriDetayGetir(
-                          tur: "Yağ",
-                          deger_yol: "images/yag.png",
-                          alinan: globals.alinanYag,
-                          alinacak: globals.alinacakYag,
-                          renk: Colors.green.shade300,
-                          renk2: Colors.green,
-                          renk3: Colors.green.shade100),
+                      Flexible(
+                        flex: 1,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 4,
+                              child: Text(
+                                "Hoşgeldin,${c2.kullanici.value.ad}",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                  child: InkWell(
+                                    onTap: () {
+                                      var alert = AlertDialog(
+                                        backgroundColor: const MyApp().bgColor,
+                                        content: const Profil(),
+                                      );
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              alert);
+                                    },
+                                  ),
+                                  width: 70.w,
+                                  height: 70.h,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                            c2.kullanici.value.resimUrl!)),
+                                  )),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Flexible(flex: 3, child: KaloriSayacGetir()),
+                      Flexible(
+                        flex: 2,
+                        child: Card(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          color: Colors.white,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              KaloriDetayGetir(
+                                  tur: "Karbonhidrat",
+                                  deger_yol: "images/karbonhidrat.png",
+                                  alinan: c.karbonhidrat.value,
+                                  alinacak:
+                                      c2.kullanici.value.gunlukKarbonhidrat!,
+                                  renk: Colors.yellow.shade300,
+                                  renk2: Colors.yellow,
+                                  renk3: Colors.yellow.shade100),
+                              KaloriDetayGetir(
+                                  tur: "Protein",
+                                  deger_yol: "images/protein.png",
+                                  alinan: c.protein.value,
+                                  alinacak: c2.kullanici.value.gunlukProtein!,
+                                  renk: Colors.red.shade300,
+                                  renk2: Colors.red,
+                                  renk3: Colors.red.shade100),
+                              KaloriDetayGetir(
+                                  tur: "Yağ",
+                                  deger_yol: "images/yag.png",
+                                  alinan: c.yag.value,
+                                  alinacak: c2.kullanici.value.gunlukYag!,
+                                  renk: Colors.green.shade300,
+                                  renk2: Colors.green,
+                                  renk3: Colors.green.shade100),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 3,
+                        child: SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              OgunGetir(
+                                kalori: c.kahvaltiKalori.value.toString(),
+                                tur: "images/breakfast.png",
+                                renk: Colors.lightBlueAccent.shade200,
+                                renk2: const Color(0xffcee1f4),
+                                yazi: "Kahvaltı",
+                                ontab: () {
+                                  c.ogunDegis("Kahvaltı");
+
+                                  Navigator.pushNamed(
+                                      context, "/routeBesinEkle");
+                                },
+                              ),
+                              OgunGetir(
+                                kalori: c.ogleKalori.value.toString(),
+                                tur: "images/lunch.png",
+                                renk: Colors.pinkAccent.shade200,
+                                renk2: const Color(0xfff9dbd2),
+                                yazi: "Öğle Yemeği",
+                                ontab: () {
+                                  c.ogunDegis("Öğle Yemeği");
+
+                                  Navigator.pushNamed(
+                                      context, "/routeBesinEkle");
+                                },
+                              ),
+                              OgunGetir(
+                                kalori: c.aksamKalori.value.toString(),
+                                tur: "images/dinner.png",
+                                renk: Colors.orangeAccent.shade200,
+                                renk2: const Color(0xfffce0a2),
+                                yazi: "Akşam Yemeği",
+                                ontab: () {
+                                  c.ogunDegis("Akşam Yemeği");
+
+                                  Navigator.pushNamed(
+                                      context, "/routeBesinEkle");
+                                },
+                              ),
+                              OgunGetir(
+                                kalori: c.atistirmaKalori.value.toString(),
+                                tur: "images/snack.png",
+                                renk: Colors.lightGreenAccent.shade200,
+                                renk2: const Color(0xffe6edb7),
+                                yazi: "Atıştırma",
+                                ontab: () {
+                                  c.ogunDegis("Atıştırma");
+
+                                  Navigator.pushNamed(
+                                      context, "/routeBesinEkle");
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
-                ),
-                SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      OgunGetir(
-                        tur: "images/breakfast.png",
-                        renk: Colors.lightBlueAccent.shade200,
-                        renk2: const Color(0xffcee1f4),
-                        yazi: "Kahvaltı",
-                        ontab: () {
-                          setState(() {
-                            ogunAd = "Kahvaltı";
-                          });
-
-                          Navigator.pushNamed(context, "/routeBesinEkle",
-                              arguments: [ogunAd, besinler]);
-                        },
-                      ),
-                      OgunGetir(
-                        tur: "images/lunch.png",
-                        renk: Colors.pinkAccent.shade200,
-                        renk2: const Color(0xfff9dbd2),
-                        yazi: "Öğle Yemeği",
-                        ontab: () {
-                          setState(() {
-                            ogunAd = "Öğle Yemeği";
-                          });
-
-                          Navigator.pushNamed(context, "/routeBesinEkle",
-                              arguments: [ogunAd, besinler]);
-                        },
-                      ),
-                      OgunGetir(
-                        tur: "images/dinner.png",
-                        renk: Colors.orangeAccent.shade200,
-                        renk2: const Color(0xfffce0a2),
-                        yazi: "Akşam Yemeği",
-                        ontab: () {
-                          setState(() {
-                            ogunAd = "Akşam Yemeği";
-                          });
-
-                          Navigator.pushNamed(context, "/routeBesinEkle",
-                              arguments: [ogunAd, besinler]);
-                        },
-                      ),
-                      OgunGetir(
-                        tur: "images/snack.png",
-                        renk: Colors.lightGreenAccent.shade200,
-                        renk2: const Color(0xffe6edb7),
-                        yazi: "Atıştırma",
-                        ontab: () {
-                          setState(() {
-                            ogunAd = "Atıştırma";
-                          });
-                          Navigator.pushNamed(context, "/routeBesinEkle",
-                              arguments: [ogunAd, besinler]);
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
           ),
         ),
       ),
     );
   }
+
+  Widget get _waitingWidget => const Center(child: CircularProgressIndicator());
 }

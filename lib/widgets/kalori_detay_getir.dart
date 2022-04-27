@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class KaloriDetayGetir extends StatelessWidget {
@@ -15,8 +16,8 @@ class KaloriDetayGetir extends StatelessWidget {
 
   final String tur;
   final String deger_yol;
-  final double alinan;
-  final double alinacak;
+  final int alinan;
+  final int alinacak;
   final Color renk;
   final Color renk2;
   final Color renk3;
@@ -24,37 +25,42 @@ class KaloriDetayGetir extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
+      padding: EdgeInsets.all(8.r),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            deger_yol,
-            width: 50,
-            height: 50,
-            color: renk2,
+          Image(
+            width: 40.w,
+            height: 40.h,
+            image: AssetImage(deger_yol),
           ),
           Text(tur,
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
+                fontSize: 12.sp,
               )),
           LinearPercentIndicator(
             linearGradient: LinearGradient(
               colors: [renk, renk2],
             ),
-            percent: alinan / alinacak,
-            width: 100,
-            lineHeight: 15,
+            percent: ((alinan / alinacak) <= 1) ? alinan / alinacak : 1,
+            width: 90.w,
+            lineHeight: 8.h,
+            animationDuration: 1200,
             animation: true,
             backgroundColor: renk3,
           ),
-          Text(alinan.toInt().toString() + "/" + alinacak.toInt().toString(),
-              style: const TextStyle(
+          Text(
+              alinan.toInt().toString() +
+                  "/" +
+                  alinacak.toInt().toString() +
+                  " gr",
+              style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
+                fontSize: 12.sp,
               )),
         ],
       ),

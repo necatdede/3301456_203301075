@@ -1,9 +1,12 @@
+import 'package:diyetlendin/controllers/firebase_controller.dart';
+import 'package:diyetlendin/controllers/veri_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../main.dart';
-import '../globals.dart' as globals;
 
 class KaloriSayacGetir extends StatefulWidget {
   const KaloriSayacGetir({Key? key}) : super(key: key);
@@ -60,6 +63,9 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
 
   @override
   Widget build(BuildContext context) {
+    final c = Get.put(VeriController());
+    final c2 = Get.put(FirebaseController());
+    var tarih = DateTime.parse(c.tarih.value);
     return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(
@@ -67,96 +73,105 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
       ),
       elevation: 5,
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Flexible(
-              flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      showDatePicker(
-                              context: context,
-                              initialDate: now,
-                              firstDate: DateTime(2022),
-                              lastDate: DateTime(2024))
-                          .then((date) {
-                        setState(() {
-                          now = date!;
-                        });
-                      });
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          LineIcons.calendarWithDayFocus,
-                          color: Colors.black,
-                          size: 80,
-                        ),
-                        Text(
-                          now.day.toString() + " " + ayHesapla(now.month),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          now.year.toString(),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: CircularPercentIndicator(
-                linearGradient: LinearGradient(
-                  colors: [const MyApp().bgColor, const MyApp().textfieldColor],
-                ),
-                radius: 170,
-                animation: true,
-                animationDuration: 1200,
-                lineWidth: 10.0,
-                percent: globals.alinanKalori / globals.gunlukAlinacakKalori,
-                center: Column(
+        padding: EdgeInsets.all(15.0.r),
+        child: Obx(
+          () => Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Flexible(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      globals.alinanKalori.toInt().toString() +
-                          "/" +
-                          globals.gunlukAlinacakKalori.toInt().toString(),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30.0,
-                          color: Colors.black),
-                    ),
-                    const Text(
-                      "kcal",
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          color: Colors.black38,
-                          fontWeight: FontWeight.bold),
+                    TextButton(
+                      onPressed: () {
+                        showDatePicker(
+                                context: context,
+                                initialDate: DateTime.parse(c.tarih.value),
+                                firstDate: DateTime(2022),
+                                lastDate: DateTime(2024))
+                            .then((date) {
+                          setState(() {
+                            c.tarihDegis(date.toString().substring(0, 10));
+                          });
+                        });
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            LineIcons.calendarWithDayFocus,
+                            color: Colors.black,
+                            size: 70.sp,
+                          ),
+                          Text(
+                            tarih.day.toString() + " " + ayHesapla(tarih.month),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 25.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            tarih.year.toString(),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 25.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                circularStrokeCap: CircularStrokeCap.round,
-                backgroundColor: Colors.grey.shade300,
-                // progressColor: Colors.black,
               ),
-            ),
-          ],
+              Flexible(
+                flex: 1,
+                child: CircularPercentIndicator(
+                  progressColor: MyApp().textfieldColor,
+                  radius: 140.sp,
+                  animation: true,
+                  animationDuration: 1200,
+                  lineWidth: 10.0.w,
+                  percent: ((c.topla() / c2.kullanici.value.gunlukKalori!) <= 1)
+                      ? c.topla() / c2.kullanici.value.gunlukKalori!
+                      : 1,
+                  center: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        c.topla().toString(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25.sp,
+                            color: Colors.black),
+                      ),
+                      Text(
+                        "/" + c2.kullanici.value.gunlukKalori.toString(),
+                        style: TextStyle(
+                            fontSize: 20.sp,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "kcal",
+                        style: TextStyle(
+                            fontSize: 20.sp,
+                            color: Colors.black38,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  circularStrokeCap: CircularStrokeCap.round, //indikatorun ucu
+                  backgroundColor: Colors.grey.shade300,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

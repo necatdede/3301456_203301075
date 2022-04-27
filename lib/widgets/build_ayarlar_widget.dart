@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../main.dart';
 
@@ -19,7 +21,9 @@ class BuildAyarlarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 8, top: 8),
+      width: Get.width,
+      height: 50.h,
+      //margin: EdgeInsets.only(bottom: 8.r, top: 8.r),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
@@ -33,16 +37,16 @@ class BuildAyarlarWidget extends StatelessWidget {
         title: Text(yazi,
             style: TextStyle(
               color: Colors.grey.shade800,
-              fontSize: 25,
+              fontSize: 15.sp,
             )),
         iconColor: Colors.grey.shade600,
         leading: Icon(
           icon,
-          size: 35,
+          size: 20.sp,
         ),
         trailing: Text(
           yazi2,
-          style: TextStyle(fontSize: 20, color: Colors.grey.shade600),
+          style: TextStyle(fontSize: 15.sp, color: Colors.grey.shade600),
         ),
       ),
     );

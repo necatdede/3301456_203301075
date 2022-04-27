@@ -1,5 +1,7 @@
 import 'package:diyetlendin/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class BuildButtonWidget extends StatelessWidget {
   const BuildButtonWidget({
@@ -16,12 +18,8 @@ class BuildButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: Get.width,
       decoration: BoxDecoration(
-        // border: Border.all(
-        //   color: MyApp().bgColor,
-        //   width: 3,
-        // ),
         boxShadow: [
           BoxShadow(
             color: Colors.white.withOpacity(0.5),
@@ -33,7 +31,7 @@ class BuildButtonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
         color: Colors.white,
       ),
-      height: MediaQuery.of(context).size.height / 15,
+      height: 45.h,
       margin: const EdgeInsets.all(8),
       child: ElevatedButton(
         style: TextButton.styleFrom(
@@ -49,7 +47,7 @@ class BuildButtonWidget extends StatelessWidget {
             child: Text(
               str,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey.shade900, fontSize: 15),
+              style: TextStyle(color: Colors.grey.shade900, fontSize: 15.sp),
             ),
           ),
         ),

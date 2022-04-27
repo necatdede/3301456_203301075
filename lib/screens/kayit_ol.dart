@@ -1,11 +1,16 @@
+import 'package:diyetlendin/main.dart';
 import 'package:diyetlendin/models/kullanici.dart';
+import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:diyetlendin/widgets/build_button_widget.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
-import 'package:diyetlendin/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:line_icons/line_icons.dart';
+
+import '../controllers/firebase_controller.dart';
 import '../widgets/build_dropdown_widget.dart';
-import '../globals.dart' as globals;
 
 enum Cinsiyet { Kadin, Erkek } //enum önceden belirlenmiş sabit veriler
 
@@ -17,6 +22,8 @@ class KayitOl extends StatefulWidget {
 }
 
 class _KayitOl extends State<KayitOl> {
+  FirebaseService service = FirebaseService();
+  final c = Get.put(FirebaseController());
   final ad = TextEditingController();
   final kullaniciAdi = TextEditingController();
   final sifre = TextEditingController();
@@ -61,8 +68,6 @@ class _KayitOl extends State<KayitOl> {
 
   @override
   Widget build(BuildContext context) {
-    globals.secilenAktivite = secilenAktivite;
-    globals.secilenHedef = secilenHedef;
     // TODO: implement build
     return Scaffold(
       backgroundColor: const MyApp().bgColor,
@@ -71,16 +76,15 @@ class _KayitOl extends State<KayitOl> {
           physics: const BouncingScrollPhysics(),
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
-            //height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
                 Image.asset(
                   "images/logo.png",
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  height: MediaQuery.of(context).size.height / 1.5,
+                  width: 300.w,
+                  height: 300.h,
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.9,
+                  width: 300.w,
                   child: Card(
                     shape: const RoundedRectangleBorder(
                       borderRadius:
@@ -88,62 +92,76 @@ class _KayitOl extends State<KayitOl> {
                     ),
                     color: Colors.white,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0.r),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0.r),
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width,
                               child: Row(
                                 children: [
                                   Flexible(
-                                    child: ListTile(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                        side: BorderSide(
-                                            color: const MyApp().bgColor,
-                                            width: 3),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(25),
+                                        border: Border.all(
+                                          color: MyApp().bgColor,
+                                          width: 3,
+                                        ),
                                       ),
-                                      title: const Text(
-                                        "Kadın",
-                                        style: TextStyle(fontSize: 20),
-                                      ),
-                                      leading: Radio<Cinsiyet>(
-                                        value: Cinsiyet.Kadin,
-                                        groupValue: _cinsiyet,
-                                        activeColor:
-                                            const MyApp().textfieldColor,
-                                        onChanged: (Cinsiyet? value) {
-                                          setState(() {
-                                            _cinsiyet = value!;
-                                          });
-                                        },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Radio<Cinsiyet>(
+                                            value: Cinsiyet.Kadin,
+                                            groupValue: _cinsiyet,
+                                            activeColor:
+                                                const MyApp().textfieldColor,
+                                            onChanged: (Cinsiyet? value) {
+                                              setState(() {
+                                                _cinsiyet = value!;
+                                              });
+                                            },
+                                          ),
+                                          Text(
+                                            "Kadın",
+                                            style: TextStyle(fontSize: 15.sp),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
                                   Flexible(
-                                    child: ListTile(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                        side: BorderSide(
-                                            color: const MyApp().bgColor,
-                                            width: 3),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(25),
+                                        border: Border.all(
+                                          color: MyApp().bgColor,
+                                          width: 3,
+                                        ),
                                       ),
-                                      title: const Text(
-                                        "Erkek",
-                                        style: TextStyle(fontSize: 20),
-                                      ),
-                                      leading: Radio<Cinsiyet>(
-                                        activeColor:
-                                            const MyApp().textfieldColor,
-                                        value: Cinsiyet.Erkek,
-                                        groupValue: _cinsiyet,
-                                        onChanged: (Cinsiyet? value) {
-                                          setState(() {
-                                            _cinsiyet = value!;
-                                          });
-                                        },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Radio<Cinsiyet>(
+                                            activeColor:
+                                                const MyApp().textfieldColor,
+                                            value: Cinsiyet.Erkek,
+                                            groupValue: _cinsiyet,
+                                            onChanged: (Cinsiyet? value) {
+                                              setState(() {
+                                                _cinsiyet = value!;
+                                              });
+                                            },
+                                          ),
+                                          Text(
+                                            "Erkek",
+                                            style: TextStyle(fontSize: 15.sp),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -160,7 +178,7 @@ class _KayitOl extends State<KayitOl> {
                           ),
                           BuildTextFieldWidget(
                             control: kullaniciAdi,
-                            str: "Kullanıcı Adı",
+                            str: "E-mail",
                             icon: LineIcons.user,
                             kontrol: false,
                             klavyetur: TextInputType.name,
@@ -202,7 +220,7 @@ class _KayitOl extends State<KayitOl> {
                             islem: (String? newValue) {
                               setState(() {
                                 secilenAktivite = newValue!;
-                                globals.secilenAktivite = newValue;
+                                c.secilenAktivite.value = secilenAktivite;
                               });
                             },
                           ),
@@ -216,7 +234,7 @@ class _KayitOl extends State<KayitOl> {
                             islem: (String? newValue) {
                               setState(() {
                                 secilenHedef = newValue!;
-                                globals.secilenHedef = newValue;
+                                c.secilenHedef.value = secilenHedef;
                               });
                             },
                           ),
@@ -227,49 +245,58 @@ class _KayitOl extends State<KayitOl> {
                                 if (bosKontrol()) {
                                   if (kontrol()) {
                                     try {
-                                      var user = Kullanici(
-                                          "https://l24.im/CIT",
-                                          kullaniciAdi.text,
-                                          sifre.text,
-                                          ad.text,
-                                          _cinsiyet.index == 0 ? false : true,
-                                          double.parse(kilo.text),
+                                      c.hesapla(
+                                          int.parse(yas.text),
                                           int.parse(boy.text),
-                                          int.parse(yas.text));
+                                          double.parse(kilo.text),
+                                          _cinsiyet.index == 0 ? false : true);
 
-                                      globals.kullanici = user;
-
-                                      globals.hesapla();
-
-                                      const snackbar = SnackBar(
-                                        content: Text("Kayıt Olundu!"),
+                                      var user = Kullanici(
+                                        gunlukKalori: c.gunlukKalori.value,
+                                        gunlukKarbonhidrat:
+                                            c.gunlukKarbonhidrat.value,
+                                        gunlukProtein: c.gunlukProtein.value,
+                                        gunlukYag: c.gunlukYag.value,
+                                        resimUrl: "https://l24.im/CIT",
+                                        ad: ad.text,
+                                        yas: int.parse(yas.text),
+                                        kilo: int.parse(kilo.text),
+                                        boy: int.parse(boy.text),
+                                        cinsiyet:
+                                            _cinsiyet.index == 0 ? false : true,
                                       );
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(snackbar);
+
+                                      service.createUser(
+                                          kullaniciAdi.text, sifre.text, user);
+
+                                      Get.snackbar(
+                                        "Bilgi",
+                                        "Kayıt Olundu",
+                                        backgroundColor: MyApp().textfieldColor,
+                                      );
 
                                       Navigator.pop(context);
                                     } catch (e) {
-                                      const snackbar = SnackBar(
-                                        content: Text("Kayıt Olunamadı!"),
+                                      print(e);
+                                      Get.snackbar(
+                                        "Hata",
+                                        "Kayıt Olunamadı",
+                                        backgroundColor: MyApp().textfieldColor,
                                       );
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(snackbar);
                                     }
                                   } else {
-                                    const snackbar = SnackBar(
-                                      content: Text(
-                                          "Lütfen Geçerli Değerler Giriniz!"),
+                                    Get.snackbar(
+                                      "Hata",
+                                      "Lütfen Geçerli Değerler Giriniz",
+                                      backgroundColor: MyApp().textfieldColor,
                                     );
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(snackbar);
                                   }
                                 } else {
-                                  const snackbar = SnackBar(
-                                    content: Text(
-                                        "Boş Bırakılan Alanları Doldurunuz!"),
+                                  Get.snackbar(
+                                    "Hata",
+                                    "Boş Bırakılan Alanları Doldurunuz",
+                                    backgroundColor: MyApp().textfieldColor,
                                   );
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(snackbar);
                                 }
                               }),
                         ],

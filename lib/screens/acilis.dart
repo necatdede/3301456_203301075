@@ -1,4 +1,5 @@
 import 'package:diyetlendin/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Acilis extends StatefulWidget {
@@ -13,7 +14,9 @@ class _AcilisState extends State<Acilis> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.popAndPushNamed(context, "/routeGirisYap");
+      (FirebaseAuth.instance.currentUser == null)
+          ? Navigator.popAndPushNamed(context, "/routeGirisYap")
+          : Navigator.popAndPushNamed(context, "/routeCerceve");
     });
   }
 
@@ -23,20 +26,23 @@ class _AcilisState extends State<Acilis> {
       backgroundColor: const MyApp().bgColor,
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.9,
-              width: MediaQuery.of(context).size.width * 0.9,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("images/logo.png"),
-                      fit: BoxFit.contain)),
+            Expanded(
+              flex: 4,
+              child: Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("images/logo.png"),
+                        fit: BoxFit.contain)),
+              ),
             ),
-            Image.asset(
-              "images/yukleniyor.gif",
-              height: 75,
-              width: 75,
+            Expanded(
+              flex: 1,
+              child: Image.asset(
+                "images/yukleniyor.gif",
+                height: 75,
+                width: 75,
+              ),
             ),
           ],
         ),

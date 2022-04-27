@@ -1,10 +1,11 @@
+import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../main.dart';
 import '../widgets/build_button_widget.dart';
 import '../widgets/build_textfield_widget.dart';
-import '../main.dart';
-import '../globals.dart' as globals;
 
 class GirisYap extends StatefulWidget {
   const GirisYap({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class GirisYap extends StatefulWidget {
 }
 
 class _GirisYapState extends State<GirisYap> {
+  FirebaseService service = FirebaseService();
   var alert = AlertDialog(
     title: Column(
       children: const [
@@ -43,6 +45,7 @@ class _GirisYapState extends State<GirisYap> {
       backgroundColor: const MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: SizedBox(
             width: screenSize.width,
             height: screenSize.height,
@@ -50,12 +53,12 @@ class _GirisYapState extends State<GirisYap> {
               children: [
                 Image.asset(
                   "images/logo.png",
-                  width: screenSize.width * 0.7,
-                  height: screenSize.height * 0.5,
+                  width: 350.w,
+                  height: 350.h,
                 ),
                 SizedBox(
-                  width: screenSize.width * 0.7,
-                  height: screenSize.height * 0.5,
+                  width: 300.w,
+                  height: 340.h,
                   child: Card(
                     elevation: 20,
                     shape: const RoundedRectangleBorder(
@@ -64,12 +67,12 @@ class _GirisYapState extends State<GirisYap> {
                     ),
                     color: Colors.white,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0.r),
                       child: Column(
                         children: [
                           BuildTextFieldWidget(
                             control: kullaniciAdi,
-                            str: "Kullanıcı Adı",
+                            str: "E-mail",
                             icon: LineIcons.user,
                             klavyetur: TextInputType.name,
                           ),
@@ -83,18 +86,17 @@ class _GirisYapState extends State<GirisYap> {
                               context: context,
                               str: "Giriş Yap",
                               islem: () {
+                                FocusScope.of(context)
+                                    .unfocus(); // klavyeyi kapatmak icin
                                 try {
-                                  (globals.kullanici.kullaniciAdi ==
-                                              kullaniciAdi.text &&
-                                          globals.kullanici.sifre == sifre.text)
-                                      ? Navigator.popAndPushNamed(
-                                          context,
-                                          "/routeCerceve",
-                                        )
-                                      : showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) =>
-                                              alert);
+                                  service
+                                      .login(kullaniciAdi.text, sifre.text)
+                                      .then((value) {
+                                    Navigator.popAndPushNamed(
+                                      context,
+                                      "/routeCerceve",
+                                    );
+                                  });
                                 } catch (e) {
                                   showDialog(
                                       context: context,
@@ -108,6 +110,7 @@ class _GirisYapState extends State<GirisYap> {
                               child: Text(
                                 "Üye Değil Misin ?",
                                 style: TextStyle(
+                                  fontSize: 12.sp,
                                   color: Colors.grey.shade800,
                                 ),
                               )),
@@ -121,7 +124,6 @@ class _GirisYapState extends State<GirisYap> {
           ),
         ),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

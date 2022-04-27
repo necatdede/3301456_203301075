@@ -1,6 +1,10 @@
-import 'package:diyetlendin/widgets/build_besin_widget.dart';
+import 'package:diyetlendin/controllers/veri_controller.dart';
 import 'package:flutter/material.dart';
-import '../models/besin.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../besinler.dart';
 
 class EklenenBesinler extends StatefulWidget {
   const EklenenBesinler({Key? key}) : super(key: key);
@@ -10,41 +14,85 @@ class EklenenBesinler extends StatefulWidget {
 }
 
 class _EklenenBesinlerState extends State<EklenenBesinler> {
+  final kontrol = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    List<Besin> eklenenBesinler =
-        ModalRoute.of(context)!.settings.arguments as List<Besin>;
+    final c = Get.put(VeriController());
 
     return Scaffold(
       appBar: AppBar(
         title: const Text("Eklenenler"),
       ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        margin: const EdgeInsets.only(top: 5, bottom: 5),
-        child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
+      body: Obx(
+        () => ListView.builder(
+            physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
-            itemCount: eklenenBesinler.length,
-            itemBuilder: (context, index) {
-              return InkWell(
-                borderRadius: BorderRadius.circular(30),
-                onTap: () {
-                  setState(() {
-                    eklenenBesinler.removeAt(index);
-                  });
-                },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+            itemCount: c.items.length,
+            itemBuilder: (context, index) => InkWell(
+                  borderRadius: BorderRadius.circular(25),
+                  onTap: () {
+                    c.besinSil(c.items[index].besinId!);
+                    //c.guncelleHesap(c.hesapItems[0], false);
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    color: Colors.white,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 100.h,
+                          width: 100.h,
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              topLeft: Radius.circular(30),
+                            ),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                Besinler()
+                                    .besinler[c.items[index].besinId!]
+                                    .besinFoto,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              " " +
+                                  Besinler()
+                                      .besinler[c.items[index].besinId!]
+                                      .besinAd,
+                              style: TextStyle(
+                                  fontSize: 25.sp,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              " " +
+                                  c.items[index].besinGram.toString() +
+                                  " Gram",
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  color: Colors.white,
-                  child:
-                      BuildBesinWidget(besinler: eklenenBesinler, index: index),
-                ),
-              );
-            }),
+                )),
       ),
     );
   }
+
+  Widget get _notFoundWidget => const Center(
+        child: Text("Not Found"),
+      );
+  Widget get _waitingWidget => Center(child: CircularProgressIndicator());
 }

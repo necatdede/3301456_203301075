@@ -2,14 +2,27 @@ import 'package:diyetlendin/screens/acilis.dart';
 import 'package:diyetlendin/screens/anasayfa.dart';
 import 'package:diyetlendin/screens/ayarlar.dart';
 import 'package:diyetlendin/screens/besin_detay.dart';
-import 'package:diyetlendin/screens/cerceve.dart';
 import 'package:diyetlendin/screens/besin_ekle.dart';
+import 'package:diyetlendin/screens/cerceve.dart';
 import 'package:diyetlendin/screens/eklenen_besinler.dart';
 import 'package:diyetlendin/screens/giris_yap.dart';
 import 'package:diyetlendin/screens/kayit_ol.dart';
+import 'package:diyetlendin/services/firebase_service.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-void main() {
+import 'functions/veri_islem.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  final db = await VeriIslem.ac();
+
+  Get.put(db);
+  Get.put(FirebaseService());
   runApp(const MyApp());
 }
 
@@ -22,24 +35,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: "/",
-      routes: {
-        "/": (context) => const Acilis(),
-        "/routeGirisYap": (context) => const GirisYap(),
-        "/routeKayitOl": (context) => const KayitOl(),
-        "/routeAnaSayfa": (context) => const AnaSayfa(),
-        "/routeAyarlar": (context) => const Ayarlar(),
-        "/routeCerceve": (context) => const Cerceve(),
-        "/routeBesinEkle": (context) => const BesinEkle(),
-        "/routeBesinDetay": (context) => const BesinDetay(),
-        "/routeEklenenBesinler": (context) => const EklenenBesinler(),
-      },
-      title: 'Diyetlendin',
-      theme: ThemeData().copyWith(
-        colorScheme: ThemeData().colorScheme.copyWith(primary: textfieldColor),
-      ),
-    );
+    return ScreenUtilInit(builder: (context) {
+      return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: "/",
+        routes: {
+          "/": (context) => const Acilis(),
+          "/routeGirisYap": (context) => const GirisYap(),
+          "/routeKayitOl": (context) => const KayitOl(),
+          "/routeAnaSayfa": (context) => const AnaSayfa(),
+          "/routeAyarlar": (context) => const Ayarlar(),
+          "/routeCerceve": (context) => const Cerceve(),
+          "/routeBesinEkle": (context) => const BesinEkle(),
+          "/routeBesinDetay": (context) => const BesinDetay(),
+          "/routeEklenenBesinler": (context) => const EklenenBesinler(),
+        },
+        title: 'Diyetlendin',
+        theme: ThemeData().copyWith(
+          colorScheme:
+              ThemeData().colorScheme.copyWith(primary: textfieldColor),
+        ),
+      );
+    });
   }
 }

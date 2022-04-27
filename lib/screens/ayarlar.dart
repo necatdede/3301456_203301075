@@ -1,9 +1,13 @@
+import 'package:diyetlendin/controllers/firebase_controller.dart';
 import 'package:diyetlendin/main.dart';
+import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:diyetlendin/widgets/build_button_widget.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
-import '../globals.dart' as globals;
+
 import '../widgets/build_ayarlar_widget.dart';
 
 class Ayarlar extends StatefulWidget {
@@ -17,6 +21,8 @@ class Ayarlar extends StatefulWidget {
 }
 
 class _Ayarlar extends State<Ayarlar> {
+  final c = Get.put(FirebaseController());
+  FirebaseService service = FirebaseService();
   final boy = TextEditingController();
   final kilo = TextEditingController();
 
@@ -43,13 +49,11 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Hakkımızda",
                 icon: LineIcons.infoCircle,
                 islem: () {
-                  var alert = const AlertDialog(
-                    title: Text(
-                        "Bu uygulama,\nüstad Ahmet Cevahir ÇINAR tarafından verilen,\n3301456 numaralı Mobil Programlama dersinin ara sınavı için,\nBekir Necat Dede tarafından yapılmıştır.\n\nİletişim için,\n05419714711"),
-                  );
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) => alert);
+                  Get.defaultDialog(
+                      titleStyle: TextStyle(fontSize: 20.sp),
+                      title: "Hakkımızda",
+                      content: Text(
+                          "Bu uygulama,\nüstad Ahmet Cevahir ÇINAR tarafından verilen,\n3301456 numaralı Mobil Programlama dersinin ara sınavı için,\nBekir Necat Dede tarafından yapılmıştır.\n\nİletişim için,\n05419714711"));
                 },
               ),
               BuildAyarlarWidget(
@@ -57,30 +61,27 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Gizlilik ve Koşullar",
                 icon: LineIcons.alternateShield,
                 islem: () {
-                  var alert = AlertDialog(
-                    title: Column(
+                  Get.defaultDialog(
+                    titleStyle: TextStyle(fontSize: 20.sp),
+                    title: "Gizlilik ve Koşullar",
+                    content: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "Gizlilik",
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 18.sp),
                         ),
-                        Text(
+                        const Text(
                             "Gizlilik, ayrı bir sayfada, kişisel verilerinizin tarafımızca işlenmesinin esaslarını düzenlemek üzere mevcuttur. Diyetlendin'i kullandığınız takdirde, bu verilerin işlenmesinin gizlilik politikasına uygun olarak gerçekleştiğini kabul edersiniz.\n"),
                         Text(
                           "Kullanım Koşulları",
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 18.sp),
                         ),
-                        Text(
+                        const Text(
                             "Sevgili ziyaretçimiz, lütfen Diyetlendin'i ziyaret etmeden önce işbu kullanım koşulları sözleşmesini dikkatlice okuyunuz. Uygulamaya erişiminiz tamamen bu sözleşmeyi kabulünüze ve bu sözleşme ile belirlenen şartlara uymanıza bağlıdır."),
                       ],
                     ),
                   );
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) => alert);
                 },
               ),
               BuildAyarlarWidget(
@@ -88,34 +89,31 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Sıkça Sorulan Sorular",
                 icon: LineIcons.questionCircle,
                 islem: () {
-                  var alert = AlertDialog(
-                    title: Column(
+                  Get.defaultDialog(
+                    titleStyle: TextStyle(fontSize: 20.sp),
+                    title: "Sıkça Sorulan Sorular",
+                    content: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "Diyetlendin Nedir?",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 25),
+                          style: TextStyle(fontSize: 18.sp),
                         ),
                         Text(
                             "Diyetlendin seni ideal kilona ve sağlıklı bir yaşama kavuşturmak için var olan ücretsiz bir online diyet uygulamasıdır."),
                         Text(
                           "\nDiyetlendin Üyeliğinde Yaş Sınırı Var Mı?",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 25),
+                          style: TextStyle(fontSize: 18.sp),
                         ),
                         Text(
                             "Diyetlendin hukuki gerekçelerle 18 yaşın altındaki kişilere diyet önerisinde bulunamaz."),
                       ],
                     ),
                   );
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) => alert);
                 },
               ),
               BuildAyarlarWidget(
-                yazi2: globals.kullanici.boy.toString(),
+                yazi2: c.kullanici.value.boy.toString(),
                 yazi: "Boy",
                 icon: LineIcons.ruler,
                 islem: () {
@@ -131,17 +129,9 @@ class _Ayarlar extends State<Ayarlar> {
                         BuildButtonWidget(
                             str: "Güncelle",
                             islem: () {
-                              setState(() {
-                                (boy.text.isEmpty)
-                                    ? globals.kullanici.boy =
-                                        globals.kullanici.boy
-                                    : globals.kullanici.boy =
-                                        (int.parse(boy.text));
-                              });
+                              setState(() {});
                               boy.text = "";
                               Navigator.pop(context);
-
-                              //  print(globals.boy);
                             },
                             context: context),
                       ],
@@ -153,7 +143,7 @@ class _Ayarlar extends State<Ayarlar> {
                 },
               ),
               BuildAyarlarWidget(
-                yazi2: globals.kullanici.kilo.toString(),
+                yazi2: c.kullanici.value.kilo.toString(),
                 yazi: "Kilo",
                 icon: LineIcons.weight,
                 islem: () {
@@ -169,17 +159,9 @@ class _Ayarlar extends State<Ayarlar> {
                         BuildButtonWidget(
                             str: "Güncelle",
                             islem: () {
-                              setState(() {
-                                (kilo.text.isEmpty)
-                                    ? globals.kullanici.kilo =
-                                        globals.kullanici.kilo
-                                    : globals.kullanici.kilo =
-                                        (double.parse(kilo.text));
-                              });
+                              setState(() {});
                               kilo.text = "";
                               Navigator.pop(context);
-
-                              //  print(globals.boy);
                             },
                             context: context),
                       ],
@@ -234,6 +216,7 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Çıkış",
                 icon: LineIcons.doorOpen,
                 islem: () {
+                  service.out();
                   Navigator.popAndPushNamed(context, "/");
                 },
               ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OgunGetir extends StatelessWidget {
   const OgunGetir({
     Key? key,
+    required this.kalori,
     required this.tur,
     required this.renk,
     required this.renk2,
@@ -10,6 +12,7 @@ class OgunGetir extends StatelessWidget {
     required this.ontab,
   }) : super(key: key);
 
+  final String kalori;
   final String tur;
   final Color renk;
   final Color renk2;
@@ -19,7 +22,7 @@ class OgunGetir extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 3.0),
+      padding: EdgeInsets.only(top: 3.0.r),
       child: InkWell(
         borderRadius: const BorderRadius.only(
             topRight: Radius.circular(60),
@@ -28,10 +31,10 @@ class OgunGetir extends StatelessWidget {
             bottomRight: Radius.circular(20)),
         onTap: ontab,
         child: Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: EdgeInsets.all(8.0.r),
           child: Container(
-            width: 130,
-            height: 160,
+            width: 150.w,
+            height: 300.h,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -55,34 +58,32 @@ class OgunGetir extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20)),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    tur,
-                    width: 100,
-                    height: 100,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image(
+                  width: 100.w,
+                  height: 100.h,
+                  image: AssetImage(tur),
+                ),
+                Text(
+                  yazi,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(
-                    yazi,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                Text(
+                  kalori + " kcal",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const Text(
-                    "0 kcal",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

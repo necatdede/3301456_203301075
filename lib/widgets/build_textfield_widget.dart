@@ -1,5 +1,8 @@
 import 'package:diyetlendin/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class BuildTextFieldWidget extends StatelessWidget {
   BuildTextFieldWidget({
@@ -13,7 +16,7 @@ class BuildTextFieldWidget extends StatelessWidget {
   }) : super(key: key);
 
   TextEditingController control;
-  final String str;
+  String str;
   final IconData icon;
   final bool kontrol;
   final TextInputType klavyetur;
@@ -22,40 +25,44 @@ class BuildTextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.all(8),
+        margin: EdgeInsets.only(left: 8.r, right: 8.r, top: 4.r, bottom: 4.r),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           color: Colors.white,
         ),
-        width: MediaQuery.of(context).size.width,
-        //height: MediaQuery.of(context).size.height,
-        //padding: const EdgeInsets.all(8),
+        width: Get.width,
+        height: 45.h,
         child: TextField(
+          textAlignVertical: TextAlignVertical.center,
+          style: TextStyle(fontSize: 12.sp),
+          onChanged: (value) {
+            str = value;
+          },
           enabled: isEnable,
           keyboardType: klavyetur,
           obscureText: kontrol,
           controller: control,
           autocorrect: true,
           decoration: InputDecoration(
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: MyApp().textfieldColor, width: 3),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: MyApp().bgColor, width: 3),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            disabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.white, width: 3),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            prefixIcon: Icon(
-              icon,
-              size: 25,
-              //color: MyApp().textfieldColor,
-            ),
-            hintText: str,
-          ),
+              isCollapsed: true,
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: MyApp().textfieldColor, width: 3),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: MyApp().bgColor, width: 3),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white, width: 3),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              prefixIcon: Icon(
+                icon,
+                size: 20.sp,
+              ),
+              hintText: str,
+              hintStyle: TextStyle(fontSize: 12.sp)),
         ));
   }
 }
