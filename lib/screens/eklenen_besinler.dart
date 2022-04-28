@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../besinler.dart';
+import '../models/hesap.dart';
 
 class EklenenBesinler extends StatefulWidget {
   const EklenenBesinler({Key? key}) : super(key: key);
@@ -32,7 +33,31 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                   borderRadius: BorderRadius.circular(25),
                   onTap: () {
                     c.besinSil(c.items[index].besinId!);
-                    //c.guncelleHesap(c.hesapItems[0], false);
+                    num gram = num.parse(c.items[index].besinGram.toString());
+                    num kalori = (gram /
+                        100 *
+                        Besinler().besinler[c.items[index].besinId!].kalori);
+                    num karbonhidrat = (gram /
+                        100 *
+                        Besinler()
+                            .besinler[c.items[index].besinId!]
+                            .karbonhidrat);
+                    num protein = (gram /
+                        100 *
+                        Besinler().besinler[c.items[index].besinId!].protein);
+                    num yag = (gram /
+                        100 *
+                        Besinler().besinler[c.items[index].besinId!].yag);
+
+                    HesapModel hesap = HesapModel(
+                        kalori: kalori,
+                        karbonhidrat: karbonhidrat,
+                        protein: protein,
+                        yag: yag,
+                        ogun: c.ogun.value,
+                        tarih: c.tarih.value);
+
+                    c.guncelleHesap(hesap, false);
                   },
                   child: Card(
                     shape: RoundedRectangleBorder(
