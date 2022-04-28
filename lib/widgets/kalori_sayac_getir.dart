@@ -104,13 +104,13 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
                           Icon(
                             LineIcons.calendarWithDayFocus,
                             color: Colors.black,
-                            size: 70.sp,
+                            size: 60.sp,
                           ),
                           Text(
                             tarih.day.toString() + " " + ayHesapla(tarih.month),
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 25.sp,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -118,7 +118,7 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
                             tarih.year.toString(),
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 25.sp,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -132,10 +132,10 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
                 flex: 1,
                 child: CircularPercentIndicator(
                   progressColor: MyApp().textfieldColor,
-                  radius: 140.sp,
+                  radius: 120.sp,
                   animation: true,
                   animationDuration: 1200,
-                  lineWidth: 10.0.w,
+                  lineWidth: 8.0.w,
                   percent: ((c.topla() / c2.kullanici.value.gunlukKalori!) <= 1)
                       ? c.topla() / c2.kullanici.value.gunlukKalori!
                       : 1,

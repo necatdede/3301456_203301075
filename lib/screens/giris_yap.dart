@@ -1,6 +1,7 @@
 import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../main.dart';
@@ -40,15 +41,14 @@ class _GirisYapState extends State<GirisYap> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: const MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: SizedBox(
-            width: screenSize.width,
-            height: screenSize.height,
+            width: Get.width,
+            height: Get.height,
             child: Column(
               children: [
                 Image.asset(

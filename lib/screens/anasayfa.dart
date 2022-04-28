@@ -44,7 +44,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                 ? _waitingWidget
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Flexible(
                         flex: 1,

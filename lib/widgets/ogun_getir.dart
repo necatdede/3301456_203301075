@@ -33,7 +33,7 @@ class OgunGetir extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(8.0.r),
           child: Container(
-            width: 150.w,
+            width: 130.w,
             height: 300.h,
             decoration: BoxDecoration(
               boxShadow: [

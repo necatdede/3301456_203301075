@@ -62,32 +62,11 @@ class _BesinEkleState extends State<BesinEkle> {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData queryData;
-    queryData = MediaQuery.of(context);
-    var queryHeight = queryData.size.height;
-    var queryWidth = queryData.size.width;
-
     return Scaffold(
       backgroundColor: const MyApp().bgColor,
       appBar: AppBar(
         title: Text(c.ogun.value),
         actions: [
-          IconButton(
-              onPressed: () {
-                c.temizle();
-              },
-              icon: const Icon(
-                LineIcons.removeFormat,
-                size: 40,
-              )),
-          IconButton(
-              onPressed: () {
-                c.kapat();
-              },
-              icon: const Icon(
-                LineIcons.windowClose,
-                size: 40,
-              )),
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: IconButton(
@@ -102,8 +81,8 @@ class _BesinEkleState extends State<BesinEkle> {
         ],
       ),
       body: SizedBox(
-        height: queryHeight,
-        width: queryWidth,
+        height: Get.height,
+        width: Get.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

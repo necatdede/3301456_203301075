@@ -31,17 +31,13 @@ class _Ayarlar extends State<Ayarlar> {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData queryData;
-    queryData = MediaQuery.of(context);
-    var queryHeight = queryData.size.height;
-
     // TODO: implement build
     return Scaffold(
       backgroundColor: const MyApp().bgColor,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: SizedBox(
-          height: queryHeight,
+          height: Get.height,
           child: Column(
             children: [
               BuildAyarlarWidget(
