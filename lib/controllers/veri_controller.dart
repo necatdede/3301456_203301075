@@ -131,5 +131,8 @@ class VeriController extends GetxController {
   Future<void> temizle() async {
     await Get.find<VeriIslem>().temizleHareket();
     await Get.find<VeriIslem>().temizleHesap();
+    secVeri();
+    hesapGetir();
+    kaloriGetir();
   }
 }

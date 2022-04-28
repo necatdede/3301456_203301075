@@ -1,7 +1,7 @@
 import 'package:diyetlendin/controllers/firebase_controller.dart';
+import 'package:diyetlendin/controllers/veri_controller.dart';
 import 'package:diyetlendin/main.dart';
 import 'package:diyetlendin/services/firebase_service.dart';
-import 'package:diyetlendin/widgets/build_button_widget.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +21,8 @@ class Ayarlar extends StatefulWidget {
 }
 
 class _Ayarlar extends State<Ayarlar> {
-  final c = Get.put(FirebaseController());
+  final firebaseControl = Get.put(FirebaseController());
+  final veriControl = Get.put(VeriController());
   FirebaseService service = FirebaseService();
   final boy = TextEditingController();
   final kilo = TextEditingController();
@@ -109,63 +110,47 @@ class _Ayarlar extends State<Ayarlar> {
                 },
               ),
               BuildAyarlarWidget(
-                yazi2: c.kullanici.value.boy.toString(),
+                yazi2: firebaseControl.kullanici.value.boy.toString(),
                 yazi: "Boy",
                 icon: LineIcons.ruler,
                 islem: () {
-                  var alert = AlertDialog(
-                    title: Column(
-                      children: [
-                        BuildTextFieldWidget(
-                            control: boy,
-                            str: "Boy",
-                            icon: LineIcons.ruler,
-                            kontrol: false,
-                            klavyetur: TextInputType.number),
-                        BuildButtonWidget(
-                            str: "Güncelle",
-                            islem: () {
-                              setState(() {});
-                              boy.text = "";
-                              Navigator.pop(context);
-                            },
-                            context: context),
-                      ],
-                    ),
-                  );
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) => alert);
+                  buildDialog("Boyunu Güncelle", () {
+                    Get.back(closeOverlays: true);
+                    buildSnackBar(
+                        "Bilgi", "Boyunuz Güncellendi!", SnackPosition.BOTTOM);
+                  },
+                      Column(
+                        children: [
+                          BuildTextFieldWidget(
+                              control: boy,
+                              str: "Boy",
+                              icon: LineIcons.ruler,
+                              kontrol: false,
+                              klavyetur: TextInputType.number),
+                        ],
+                      ));
                 },
               ),
               BuildAyarlarWidget(
-                yazi2: c.kullanici.value.kilo.toString(),
+                yazi2: firebaseControl.kullanici.value.kilo.toString(),
                 yazi: "Kilo",
                 icon: LineIcons.weight,
                 islem: () {
-                  var alert = AlertDialog(
-                    title: Column(
-                      children: [
-                        BuildTextFieldWidget(
-                            control: kilo,
-                            str: "Kilo",
-                            icon: LineIcons.weight,
-                            kontrol: false,
-                            klavyetur: TextInputType.number),
-                        BuildButtonWidget(
-                            str: "Güncelle",
-                            islem: () {
-                              setState(() {});
-                              kilo.text = "";
-                              Navigator.pop(context);
-                            },
-                            context: context),
-                      ],
-                    ),
-                  );
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) => alert);
+                  buildDialog("Kilonu Güncelle", () {
+                    Get.back(closeOverlays: true);
+                    buildSnackBar(
+                        "Bilgi", "Kilonuz Güncellendi!", SnackPosition.BOTTOM);
+                  },
+                      Column(
+                        children: [
+                          BuildTextFieldWidget(
+                              control: kilo,
+                              str: "Kilo",
+                              icon: LineIcons.weight,
+                              kontrol: false,
+                              klavyetur: TextInputType.number),
+                        ],
+                      ));
                 },
               ),
               BuildAyarlarWidget(
@@ -173,38 +158,40 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Bize Ulaşmak İçin",
                 icon: LineIcons.comments,
                 islem: () {
-                  var alert = AlertDialog(
-                    title: Column(
-                      children: [
-                        BuildTextFieldWidget(
-                            control: konu,
-                            str: "Konu",
-                            icon: Icons.messenger_outline,
-                            kontrol: false,
-                            klavyetur: TextInputType.text),
-                        BuildTextFieldWidget(
-                            control: detay,
-                            str: "Detay",
-                            icon: Icons.message_outlined,
-                            kontrol: false,
-                            klavyetur: TextInputType.text),
-                        BuildButtonWidget(
-                            str: "Gönder",
-                            islem: () {
-                              Navigator.pop(context);
-                              const snackbar = SnackBar(
-                                content: Text("Mesajınız Gönderildi!"),
-                              );
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackbar);
-                            },
-                            context: context),
-                      ],
-                    ),
-                  );
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) => alert);
+                  buildDialog("Bize Ulaşın", () {
+                    Get.back(closeOverlays: true);
+                    buildSnackBar(
+                        "Bilgi", "Mesajınız Gönderildi!", SnackPosition.BOTTOM);
+                  },
+                      Column(
+                        children: [
+                          BuildTextFieldWidget(
+                              control: konu,
+                              str: "Konu",
+                              icon: Icons.messenger_outline,
+                              kontrol: false,
+                              klavyetur: TextInputType.text),
+                          BuildTextFieldWidget(
+                              control: detay,
+                              str: "Detay",
+                              icon: Icons.message_outlined,
+                              kontrol: false,
+                              klavyetur: TextInputType.text),
+                        ],
+                      ));
+                },
+              ),
+              BuildAyarlarWidget(
+                yazi2: "",
+                yazi: "Tüm Verileri Sil",
+                icon: LineIcons.trash,
+                islem: () {
+                  buildDialog("Uyarı", () {
+                    veriControl.temizle();
+                    Get.back(closeOverlays: true);
+                    buildSnackBar(
+                        "Bilgi", "Tüm veriler silindi.", SnackPosition.BOTTOM);
+                  }, const Text("Tüm veriler silinsin mi?"));
                 },
               ),
               BuildAyarlarWidget(
@@ -221,5 +208,27 @@ class _Ayarlar extends State<Ayarlar> {
         ),
       ),
     );
+  }
+
+  void buildSnackBar(
+      String title, String message, SnackPosition snackPosition) {
+    Get.rawSnackbar(
+        title: title,
+        message: message,
+        snackPosition: snackPosition,
+        backgroundColor: MyApp().textfieldColor.withOpacity(0.9));
+  }
+
+  void buildDialog(String title, Function() islem, Widget content) {
+    Get.defaultDialog(
+        content: content,
+        title: title,
+        onConfirm: islem,
+        onCancel: () {},
+        buttonColor: MyApp().textfieldColor,
+        textCancel: "İptal",
+        textConfirm: "Onayla",
+        confirmTextColor: Colors.white,
+        cancelTextColor: Colors.black);
   }
 }

@@ -22,30 +22,37 @@ class _BesinEkleState extends State<BesinEkle> {
   final besinArama = TextEditingController();
   final besinGram = TextEditingController();
 
+  void buildSnackBar(
+      String title, String message, SnackPosition snackPosition) {
+    Get.rawSnackbar(
+        title: title,
+        message: message,
+        snackPosition: snackPosition,
+        backgroundColor: MyApp().textfieldColor.withOpacity(0.9));
+  }
+
   Future<void> hareketKontrol(
       VeriModel model, int besinId, String ogun, num besinGram) async {
     bool sonuc = await c.tarihVeri(besinId);
     FocusScope.of(context).unfocus();
     if (sonuc) {
       await c.guncelleVeri(model);
-      Get.snackbar(
+      buildSnackBar(
           c.ogun.value,
           model.besinGram.toString() +
               " gram " +
               Besinler().besinler[model.besinId!].besinAd +
               " güncellendi.",
-          backgroundColor: MyApp().textfieldColor,
-          snackPosition: SnackPosition.BOTTOM);
+          SnackPosition.BOTTOM);
     } else {
       await c.ekleVeri(model);
-      Get.snackbar(
+      buildSnackBar(
           c.ogun.value,
           model.besinGram.toString() +
               " gram " +
               Besinler().besinler[model.besinId!].besinAd +
               " eklendi.",
-          backgroundColor: MyApp().textfieldColor,
-          snackPosition: SnackPosition.BOTTOM);
+          SnackPosition.BOTTOM);
     }
   }
 
