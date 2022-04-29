@@ -132,14 +132,18 @@ class VeriIslem {
     print("temizlendi");
   }
 
-  Future<void> guncelle(
+  Future<void> guncelleHareket(
+    bool islem,
     String tarih,
     int besinId,
     String ogun,
     num besinGram,
   ) async {
-    await database.execute(
-        "update hareket set besinGram=$besinGram where besinId=$besinId and ogun='$ogun' and tarih='$tarih'");
+    (islem)
+        ? await database.execute(
+            "update hareket set besinGram=besinGram+$besinGram where besinId=$besinId and ogun='$ogun' and tarih='$tarih'")
+        : await database.execute(
+            "update hareket set besinGram=besinGram-$besinGram where besinId=$besinId and ogun='$ogun' and tarih='$tarih' and besinGram>=$besinGram");
     print("guncellendi");
   }
 
@@ -156,7 +160,7 @@ class VeriIslem {
         ? await database.execute(
             "update hesap set kalori=kalori+$kalori,karbonhidrat=karbonhidrat+$karbonhidrat,protein=protein+$protein,yag=yag+$yag where ogun='$ogun' and tarih='$tarih'")
         : await database.execute(
-            "update hesap set kalori=kalori-$kalori,karbonhidrat=karbonhidrat-$karbonhidrat,protein=protein-$protein,yag=yag-$yag where ogun='$ogun' and tarih='$tarih'");
+            "update hesap set kalori=kalori-$kalori,karbonhidrat=karbonhidrat-$karbonhidrat,protein=protein-$protein,yag=yag-$yag where ogun='$ogun' and tarih='$tarih' and kalori>=$kalori");
     print("guncellendi");
   }
 

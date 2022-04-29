@@ -61,9 +61,9 @@ class VeriController extends GetxController {
     secVeri();
   }
 
-  Future<void> guncelleVeri(VeriModel model) async {
+  Future<void> guncelleVeri(int besinId, bool islem, int besinGram) async {
     await Get.find<VeriIslem>()
-        .guncelle(tarih.value, model.besinId!, ogun.value, model.besinGram!);
+        .guncelleHareket(islem, tarih.value, besinId, ogun.value, besinGram);
     secVeri();
   }
 
