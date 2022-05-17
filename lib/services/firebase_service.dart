@@ -39,7 +39,6 @@ class FirebaseService {
     data = response.data();
 
     Kullanici kullanici = Kullanici.fromJson(data);
-
     return kullanici;
   }
 
