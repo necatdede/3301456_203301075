@@ -14,7 +14,7 @@ class Profil extends StatelessWidget {
     final c = Get.put(FirebaseController());
     final bos = TextEditingController();
     return Scaffold(
-      backgroundColor: MyApp().bgColor,
+      backgroundColor: const MyApp().bgColor,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: SizedBox(
@@ -33,7 +33,7 @@ class Profil extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: NetworkImage(c.kullanici.value.resimUrl!)),
+                            image: NetworkImage(c.imageUrl.value)),
                       )),
                   BuildTextFieldWidget(
                     control: bos,

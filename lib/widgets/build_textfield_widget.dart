@@ -1,5 +1,4 @@
 import 'package:diyetlendin/main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -46,11 +45,11 @@ class BuildTextFieldWidget extends StatelessWidget {
           decoration: InputDecoration(
               isCollapsed: true,
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: MyApp().textfieldColor, width: 3),
+                borderSide: BorderSide(color: const MyApp().textfieldColor, width: 3),
                 borderRadius: BorderRadius.circular(25),
               ),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: MyApp().bgColor, width: 3),
+                borderSide: BorderSide(color: const MyApp().bgColor, width: 3),
                 borderRadius: BorderRadius.circular(25),
               ),
               disabledBorder: OutlineInputBorder(

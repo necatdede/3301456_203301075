@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_icons/line_icons.dart';
 
 class BuildBesinWidget extends StatelessWidget {
-  BuildBesinWidget({
+  const BuildBesinWidget({
     Key? key,
     required this.besinler,
     required this.index,
@@ -51,7 +51,7 @@ class BuildBesinWidget extends StatelessWidget {
             ),
             Flexible(
               flex: 2,
-              child: Container(
+              child: SizedBox(
                 height: 100.h,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

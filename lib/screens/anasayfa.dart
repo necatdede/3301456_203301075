@@ -39,7 +39,8 @@ class _AnaSayfaState extends State<AnaSayfa> {
           width: Get.width,
           child: Padding(
             padding: EdgeInsets.only(right: 8.0.r, left: 8.0.r, top: 8.r),
-            child: (c2.kullanici.value.ad == null ||
+            child: (c2.imageUrl.value == "" ||
+                    c2.kullanici.value.ad == null ||
                     c2.kullanici.value.gunlukKalori == null)
                 ? _waitingWidget
                 : Column(
@@ -83,8 +84,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         fit: BoxFit.fill,
-                                        image: NetworkImage(
-                                            c2.kullanici.value.resimUrl!)),
+                                        image: NetworkImage(c2.imageUrl.value)),
                                   )),
                             ),
                           ],

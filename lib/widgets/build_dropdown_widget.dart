@@ -27,7 +27,7 @@ class _BuildDropDownWidgetState extends State<BuildDropDownWidget> {
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(
-          color: MyApp().bgColor,
+          color: const MyApp().bgColor,
           width: 3,
         ),
         borderRadius: BorderRadius.circular(25),
@@ -38,7 +38,7 @@ class _BuildDropDownWidgetState extends State<BuildDropDownWidget> {
       child: Center(
         child: DropdownButton<String>(
           iconSize: 20.sp,
-          underline: SizedBox(),
+          underline: const SizedBox(),
           isExpanded: true,
           onChanged: widget.islem,
           value: widget.secilen,

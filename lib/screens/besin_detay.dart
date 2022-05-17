@@ -58,9 +58,9 @@ class BesinDetay extends StatelessWidget {
     );
   }
 
-  Container buildBesinDetayWidget(
+  SizedBox buildBesinDetayWidget(
       num besin, String resim, Color renk, BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 190.h,
       width: 160.w,
       child: Card(

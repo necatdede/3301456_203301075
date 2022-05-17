@@ -149,7 +149,7 @@ class _BesinEkleState extends State<BesinEkle> {
         title: title,
         message: message,
         snackPosition: snackPosition,
-        backgroundColor: MyApp().textfieldColor.withOpacity(0.9));
+        backgroundColor: const MyApp().textfieldColor.withOpacity(0.9));
   }
 
   void buildDialog(String title, Function() islem, Widget content) {
@@ -158,7 +158,7 @@ class _BesinEkleState extends State<BesinEkle> {
         title: title,
         onConfirm: islem,
         onCancel: () {},
-        buttonColor: MyApp().textfieldColor,
+        buttonColor: const MyApp().textfieldColor,
         textCancel: "İptal",
         textConfirm: "Onayla",
         confirmTextColor: Colors.white,

@@ -8,48 +8,44 @@ class Kullanici {
   int? _gunlukProtein;
   int? _gunlukYag;
   bool? _cinsiyet;
-  String? _resimUrl;
 
-  Kullanici(
-      {String? ad,
-      int? boy,
-      int? kilo,
-      int? yas,
-      int? gunlukKalori,
-      int? gunlukKarbonhidrat,
-      int? gunlukProtein,
-      int? gunlukYag,
-      bool? cinsiyet,
-      String? resimUrl}) {
+  Kullanici({
+    String? ad,
+    int? boy,
+    int? kilo,
+    int? yas,
+    int? gunlukKalori,
+    int? gunlukKarbonhidrat,
+    int? gunlukProtein,
+    int? gunlukYag,
+    bool? cinsiyet,
+  }) {
     if (ad != null) {
-      this._ad = ad;
+      _ad = ad;
     }
     if (boy != null) {
-      this._boy = boy;
+      _boy = boy;
     }
     if (kilo != null) {
-      this._kilo = kilo;
+      _kilo = kilo;
     }
     if (yas != null) {
-      this._yas = yas;
+      _yas = yas;
     }
     if (gunlukKalori != null) {
-      this._gunlukKalori = gunlukKalori;
+      _gunlukKalori = gunlukKalori;
     }
     if (gunlukKarbonhidrat != null) {
-      this._gunlukKarbonhidrat = gunlukKarbonhidrat;
+      _gunlukKarbonhidrat = gunlukKarbonhidrat;
     }
     if (gunlukProtein != null) {
-      this._gunlukProtein = gunlukProtein;
+      _gunlukProtein = gunlukProtein;
     }
     if (gunlukYag != null) {
-      this._gunlukYag = gunlukYag;
+      _gunlukYag = gunlukYag;
     }
     if (cinsiyet != null) {
-      this._cinsiyet = cinsiyet;
-    }
-    if (resimUrl != null) {
-      this._resimUrl = resimUrl;
+      _cinsiyet = cinsiyet;
     }
   }
 
@@ -72,8 +68,6 @@ class Kullanici {
   set gunlukYag(int? gunlukYag) => _gunlukYag = gunlukYag;
   bool? get cinsiyet => _cinsiyet;
   set cinsiyet(bool? cinsiyet) => _cinsiyet = cinsiyet;
-  String? get resimUrl => _resimUrl;
-  set resimUrl(String? resimUrl) => _resimUrl = resimUrl;
 
   Kullanici.fromJson(Map<String, dynamic> json) {
     _ad = json['ad'];
@@ -85,7 +79,6 @@ class Kullanici {
     _gunlukProtein = json['gunlukProtein'];
     _gunlukYag = json['gunlukYag'];
     _cinsiyet = json['cinsiyet'];
-    _resimUrl = json['resimUrl'];
   }
 
   Map<String, dynamic> toJson() {
@@ -99,7 +92,6 @@ class Kullanici {
     data['gunlukProtein'] = _gunlukProtein;
     data['gunlukYag'] = _gunlukYag;
     data['cinsiyet'] = _cinsiyet;
-    data['resimUrl'] = _resimUrl;
     return data;
   }
 }

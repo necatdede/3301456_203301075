@@ -131,7 +131,7 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
               Flexible(
                 flex: 1,
                 child: CircularPercentIndicator(
-                  progressColor: MyApp().textfieldColor,
+                  progressColor: const MyApp().textfieldColor,
                   radius: 120.sp,
                   animation: true,
                   animationDuration: 1200,

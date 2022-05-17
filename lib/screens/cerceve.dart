@@ -16,7 +16,7 @@ class Cerceve extends StatefulWidget {
 
 class _CerceveState extends State<Cerceve> {
   int gecerliIndex = 0;
-  Widget gecerliSayfa = AnaSayfa();
+  Widget gecerliSayfa = const AnaSayfa();
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,9 @@ class _CerceveState extends State<Cerceve> {
         onTap: (int) {
           setState(() {
             gecerliIndex = int;
-            if (gecerliIndex == 0) gecerliSayfa = AnaSayfa();
+            if (gecerliIndex == 0) gecerliSayfa = const AnaSayfa();
             if (gecerliIndex == 1) gecerliSayfa = const Profil();
-            if (gecerliIndex == 2) gecerliSayfa = Ayarlar();
+            if (gecerliIndex == 2) gecerliSayfa = const Ayarlar();
           });
         },
       ),

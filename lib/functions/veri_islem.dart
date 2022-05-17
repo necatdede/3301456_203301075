@@ -119,17 +119,14 @@ class VeriIslem {
   Future<void> sil(String tarih, int besinId, String ogun) async {
     await database.execute(
         "DELETE FROM hareket WHERE ogun='$ogun' and besinId=$besinId and tarih='$tarih'");
-    print("silindi");
   }
 
   Future<void> temizleHareket() async {
     await database.execute("DELETE FROM hareket");
-    print("temizlendi");
   }
 
   Future<void> temizleHesap() async {
     await database.execute("DELETE FROM hesap");
-    print("temizlendi");
   }
 
   Future<void> guncelleHareket(
@@ -144,7 +141,6 @@ class VeriIslem {
             "update hareket set besinGram=besinGram+$besinGram where besinId=$besinId and ogun='$ogun' and tarih='$tarih'")
         : await database.execute(
             "update hareket set besinGram=besinGram-$besinGram where besinId=$besinId and ogun='$ogun' and tarih='$tarih' and besinGram>=$besinGram");
-    print("guncellendi");
   }
 
   Future<void> guncelleHesap(
@@ -161,7 +157,6 @@ class VeriIslem {
             "update hesap set kalori=kalori+$kalori,karbonhidrat=karbonhidrat+$karbonhidrat,protein=protein+$protein,yag=yag+$yag where ogun='$ogun' and tarih='$tarih'")
         : await database.execute(
             "update hesap set kalori=kalori-$kalori,karbonhidrat=karbonhidrat-$karbonhidrat,protein=protein-$protein,yag=yag-$yag where ogun='$ogun' and tarih='$tarih' and kalori>=$kalori");
-    print("guncellendi");
   }
 
   Future<void> kapat() async {

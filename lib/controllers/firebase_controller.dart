@@ -1,4 +1,6 @@
 import 'package:diyetlendin/models/kullanici.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 
 import '../services/firebase_service.dart';
@@ -13,6 +15,8 @@ class FirebaseController extends GetxController {
   final gunlukProtein = 10.obs;
 
   final gunlukYag = 10.obs;
+
+  final imageUrl = "".obs;
 
   final secilenAktivite = "Az Hareketli".obs;
   final secilenHedef = "Kilomu Korumak".obs;
@@ -46,12 +50,19 @@ class FirebaseController extends GetxController {
                 hedef[secilenHedef.value]!)
             .toInt();
 
-    gunlukKarbonhidrat.value = (gunlukKalori * 0.5 / 4).toInt();
-    gunlukProtein.value = (gunlukKalori * 0.2 / 4).toInt();
-    gunlukYag.value = (gunlukKalori * 0.3 / 9).toInt();
+    gunlukKarbonhidrat.value = gunlukKalori * 0.5 ~/ 4;
+    gunlukProtein.value = gunlukKalori * 0.2 ~/ 4;
+    gunlukYag.value = gunlukKalori * 0.3 ~/ 9;
   }
 
   Future<void> getirKullanici() async {
     kullanici.value = await Get.find<FirebaseService>().getUser();
+    resimGetir();
+  }
+
+  Future<void> resimGetir() async {
+    User? user = await FirebaseAuth.instance.currentUser;
+    Reference reference = await FirebaseStorage.instance.ref().child(user!.uid);
+    imageUrl.value = await reference.getDownloadURL();
   }
 }

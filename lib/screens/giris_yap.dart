@@ -45,7 +45,7 @@ class _GirisYapState extends State<GirisYap> {
       backgroundColor: const MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: SizedBox(
             width: Get.width,
             height: Get.height,

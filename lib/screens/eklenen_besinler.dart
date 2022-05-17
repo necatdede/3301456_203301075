@@ -3,7 +3,6 @@ import 'package:diyetlendin/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../besinler.dart';
@@ -32,7 +31,7 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
         () => (c.items.isEmpty)
             ? _notFoundWidget
             : ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 itemCount: c.items.length,
                 itemBuilder: (context, index) => InkWell(
@@ -69,7 +68,7 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                             ),
                             Flexible(
                               flex: 2,
-                              child: Container(
+                              child: SizedBox(
                                 height: 100.h,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -106,7 +105,6 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                                       Besinler()
                                           .besinler[c.items[index].besinId!]
                                           .besinAd, () {
-                                    //c.besinSil(c.items[index].besinId!);
                                     c.guncelleVeri(c.items[index].besinId!,
                                         false, int.parse(besinGram.text));
                                     num gram =
@@ -179,7 +177,7 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
         title: title,
         message: message,
         snackPosition: snackPosition,
-        backgroundColor: MyApp().textfieldColor.withOpacity(0.9));
+        backgroundColor: const MyApp().textfieldColor.withOpacity(0.9));
   }
 
   void buildDialog(String title, Function() islem, Widget content) {
@@ -188,7 +186,7 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
         title: title,
         onConfirm: islem,
         onCancel: () {},
-        buttonColor: MyApp().textfieldColor,
+        buttonColor: const MyApp().textfieldColor,
         textCancel: "İptal",
         textConfirm: "Onayla",
         confirmTextColor: Colors.white,

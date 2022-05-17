@@ -49,7 +49,7 @@ class _Ayarlar extends State<Ayarlar> {
                   Get.defaultDialog(
                       titleStyle: TextStyle(fontSize: 20.sp),
                       title: "Hakkımızda",
-                      content: Text(
+                      content: const Text(
                           "Bu uygulama,\nüstad Ahmet Cevahir ÇINAR tarafından verilen,\n3301456 numaralı Mobil Programlama dersinin ara sınavı için,\nBekir Necat Dede tarafından yapılmıştır.\n\nİletişim için,\n05419714711"));
                 },
               ),
@@ -96,13 +96,13 @@ class _Ayarlar extends State<Ayarlar> {
                           "Diyetlendin Nedir?",
                           style: TextStyle(fontSize: 18.sp),
                         ),
-                        Text(
+                        const Text(
                             "Diyetlendin seni ideal kilona ve sağlıklı bir yaşama kavuşturmak için var olan ücretsiz bir online diyet uygulamasıdır."),
                         Text(
                           "\nDiyetlendin Üyeliğinde Yaş Sınırı Var Mı?",
                           style: TextStyle(fontSize: 18.sp),
                         ),
-                        Text(
+                        const Text(
                             "Diyetlendin hukuki gerekçelerle 18 yaşın altındaki kişilere diyet önerisinde bulunamaz."),
                       ],
                     ),
@@ -216,7 +216,7 @@ class _Ayarlar extends State<Ayarlar> {
         title: title,
         message: message,
         snackPosition: snackPosition,
-        backgroundColor: MyApp().textfieldColor.withOpacity(0.9));
+        backgroundColor: const MyApp().textfieldColor.withOpacity(0.9));
   }
 
   void buildDialog(String title, Function() islem, Widget content) {
@@ -225,7 +225,7 @@ class _Ayarlar extends State<Ayarlar> {
         title: title,
         onConfirm: islem,
         onCancel: () {},
-        buttonColor: MyApp().textfieldColor,
+        buttonColor: const MyApp().textfieldColor,
         textCancel: "İptal",
         textConfirm: "Onayla",
         confirmTextColor: Colors.white,
