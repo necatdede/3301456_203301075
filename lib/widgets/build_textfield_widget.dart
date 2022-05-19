@@ -9,6 +9,7 @@ class BuildTextFieldWidget extends StatelessWidget {
     required this.control,
     required this.str,
     required this.icon,
+    this.onChanged,
     this.isEnable = true,
     this.kontrol = false,
     this.klavyetur = TextInputType.text,
@@ -20,6 +21,7 @@ class BuildTextFieldWidget extends StatelessWidget {
   final bool kontrol;
   final TextInputType klavyetur;
   final bool isEnable;
+  final Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +36,7 @@ class BuildTextFieldWidget extends StatelessWidget {
         child: TextField(
           textAlignVertical: TextAlignVertical.center,
           style: TextStyle(fontSize: 12.sp),
-          onChanged: (value) {
-            str = value;
-          },
+          onChanged: onChanged,
           enabled: isEnable,
           keyboardType: klavyetur,
           obscureText: kontrol,
@@ -45,7 +45,8 @@ class BuildTextFieldWidget extends StatelessWidget {
           decoration: InputDecoration(
               isCollapsed: true,
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: const MyApp().textfieldColor, width: 3),
+                borderSide:
+                    BorderSide(color: const MyApp().textfieldColor, width: 3),
                 borderRadius: BorderRadius.circular(25),
               ),
               enabledBorder: OutlineInputBorder(
