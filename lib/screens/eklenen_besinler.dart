@@ -1,3 +1,4 @@
+import 'package:diyetlendin/controllers/firebase_controller.dart';
 import 'package:diyetlendin/controllers/veri_controller.dart';
 import 'package:diyetlendin/main.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../besinler.dart';
 import '../models/hesap.dart';
 import '../widgets/build_textfield_widget.dart';
 
@@ -21,6 +21,7 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
   @override
   Widget build(BuildContext context) {
     final c = Get.put(VeriController());
+    final fController = Get.put(FirebaseController());
     final besinGram = TextEditingController();
 
     return Scaffold(
@@ -58,9 +59,10 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                                   image: DecorationImage(
                                     fit: BoxFit.fill,
                                     image: NetworkImage(
-                                      Besinler()
+                                      fController
                                           .besinler[c.items[index].besinId!]
-                                          .besinFoto,
+                                          .besinUrl
+                                          .toString(),
                                     ),
                                   ),
                                 ),
@@ -76,9 +78,10 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                                   children: [
                                     Text(
                                       " " +
-                                          Besinler()
+                                          fController
                                               .besinler[c.items[index].besinId!]
-                                              .besinAd,
+                                              .besinAd
+                                              .toString(),
                                       style: TextStyle(
                                           fontSize: 25.sp,
                                           color: Colors.black,
@@ -102,33 +105,34 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                               child: IconButton(
                                 onPressed: () {
                                   buildDialog(
-                                      Besinler()
+                                      fController
                                           .besinler[c.items[index].besinId!]
-                                          .besinAd, () {
+                                          .besinAd
+                                          .toString(), () {
                                     c.guncelleVeri(c.items[index].besinId!,
                                         false, int.parse(besinGram.text));
                                     num gram =
                                         num.parse(besinGram.text.toString());
                                     num kalori = (gram /
                                         100 *
-                                        Besinler()
+                                        fController
                                             .besinler[c.items[index].besinId!]
-                                            .kalori);
+                                            .kalori!);
                                     num karbonhidrat = (gram /
                                         100 *
-                                        Besinler()
+                                        fController
                                             .besinler[c.items[index].besinId!]
-                                            .karbonhidrat);
+                                            .karbonhidrat!);
                                     num protein = (gram /
                                         100 *
-                                        Besinler()
+                                        fController
                                             .besinler[c.items[index].besinId!]
-                                            .protein);
+                                            .protein!);
                                     num yag = (gram /
                                         100 *
-                                        Besinler()
+                                        fController
                                             .besinler[c.items[index].besinId!]
-                                            .yag);
+                                            .yag!);
 
                                     HesapModel hesap = HesapModel(
                                         kalori: kalori,
@@ -144,10 +148,11 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                                         c.ogun.value,
                                         besinGram.text.toString() +
                                             " gram " +
-                                            Besinler()
+                                            fController
                                                 .besinler[
                                                     c.items[index].besinId!]
-                                                .besinAd +
+                                                .besinAd
+                                                .toString() +
                                             " silindi.",
                                         SnackPosition.BOTTOM);
                                     besinGram.clear();

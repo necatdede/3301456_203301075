@@ -45,7 +45,7 @@ class BuildBesinWidget extends StatelessWidget {
                   ),
                   image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: NetworkImage(besinler[index].besinFoto)),
+                      image: NetworkImage(besinler[index].besinUrl.toString())),
                 ),
               ),
             ),
@@ -53,19 +53,20 @@ class BuildBesinWidget extends StatelessWidget {
               flex: 2,
               child: SizedBox(
                 height: 100.h,
+                width: 200.w,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      " " + besinler[index].besinAd,
+                      besinler[index].besinAd.toString(),
                       style: TextStyle(
                           fontSize: 25.sp,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      " " + besinler[index].kalori.toString() + " Kalori",
+                      besinler[index].kalori.toString() + " Kalori",
                       style: TextStyle(
                           color: Colors.blue,
                           fontSize: 20.sp,

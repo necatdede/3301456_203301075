@@ -14,7 +14,7 @@ class BesinDetay extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(besin.besinAd),
+        title: Text(besin.besinAd.toString()),
       ),
       body: Container(
         width: Get.width,
@@ -32,23 +32,26 @@ class BesinDetay extends StatelessWidget {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           fit: BoxFit.contain,
-                          image: NetworkImage(besin.besinFoto)),
+                          image: NetworkImage(besin.besinUrl.toString())),
                     )),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      buildBesinDetayWidget(besin.kalori, "images/kalori.png",
-                          Colors.blue, context),
-                      buildBesinDetayWidget(besin.karbonhidrat,
-                          "images/karbonhidrat.png", Colors.yellow, context),
+                      buildBesinDetayWidget(num.parse(besin.kalori.toString()),
+                          "images/kalori.png", Colors.blue, context),
+                      buildBesinDetayWidget(
+                          num.parse(besin.karbonhidrat.toString()),
+                          "images/karbonhidrat.png",
+                          Colors.yellow,
+                          context),
                     ]),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      buildBesinDetayWidget(besin.protein, "images/protein.png",
-                          Colors.red, context),
-                      buildBesinDetayWidget(
-                          besin.yag, "images/yag.png", Colors.green, context),
+                      buildBesinDetayWidget(num.parse(besin.protein.toString()),
+                          "images/protein.png", Colors.red, context),
+                      buildBesinDetayWidget(num.parse(besin.yag.toString()),
+                          "images/yag.png", Colors.green, context),
                     ]),
               ],
             ),

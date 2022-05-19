@@ -3,10 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 
+import '../models/besin.dart';
 import '../services/firebase_service.dart';
 
 class FirebaseController extends GetxController {
   final kullanici = Kullanici().obs;
+
+  final besinler = <Besin>[].obs;
 
   final gunlukKalori = 10.obs;
 
@@ -37,6 +40,7 @@ class FirebaseController extends GetxController {
   void onInit() {
     super.onInit();
     getirKullanici();
+    getirBesin();
   }
 
   void hesapla(int yas, int boy, double kilo, bool cinsiyet) {
@@ -64,5 +68,9 @@ class FirebaseController extends GetxController {
     User? user = await FirebaseAuth.instance.currentUser;
     Reference reference = await FirebaseStorage.instance.ref().child(user!.uid);
     imageUrl.value = await reference.getDownloadURL();
+  }
+
+  Future<void> getirBesin() async {
+    besinler.value = await Get.find<FirebaseService>().getBesinler();
   }
 }

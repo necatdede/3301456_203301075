@@ -146,6 +146,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                 renk2: const Color(0xffcee1f4),
                                 yazi: "Kahvaltı",
                                 ontab: () {
+                                  c2.getirBesin();
                                   c.ogunDegis("Kahvaltı");
 
                                   Navigator.pushNamed(

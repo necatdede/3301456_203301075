@@ -1,3 +1,4 @@
+import 'package:diyetlendin/controllers/firebase_controller.dart';
 import 'package:diyetlendin/controllers/veri_controller.dart';
 import 'package:diyetlendin/main.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
@@ -5,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../besinler.dart';
 import '../models/hesap.dart';
 import '../models/veri.dart';
 import '../widgets/build_besin_widget.dart';
@@ -19,6 +19,7 @@ class BesinEkle extends StatefulWidget {
 
 class _BesinEkleState extends State<BesinEkle> {
   final c = Get.put(VeriController());
+  final fController = Get.put(FirebaseController());
   final besinArama = TextEditingController();
   final besinGram = TextEditingController();
 
@@ -78,64 +79,70 @@ class _BesinEkleState extends State<BesinEkle> {
               str: "Besin Arama",
             ),
             Expanded(
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemCount: Besinler().besinler.length,
-                  itemBuilder: (context, index) {
-                    return BuildBesinWidget(
-                      tiklama: () {
-                        buildDialog(Besinler().besinler[index].besinAd, () {
-                          VeriModel veri = VeriModel(
-                              besinId: index,
-                              besinGram: num.parse(besinGram.text),
-                              ogun: c.ogun.value,
-                              tarih: c.tarih.value);
-                          num gram = num.parse(besinGram.text);
-                          num kalori =
-                              (gram / 100 * Besinler().besinler[index].kalori);
-                          num karbonhidrat = (gram /
-                              100 *
-                              Besinler().besinler[index].karbonhidrat);
-                          num protein =
-                              (gram / 100 * Besinler().besinler[index].protein);
-                          num yag =
-                              (gram / 100 * Besinler().besinler[index].yag);
+              child: Obx(
+                () => ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: fController.besinler.length,
+                    itemBuilder: (context, index) {
+                      return BuildBesinWidget(
+                        tiklama: () {
+                          buildDialog(
+                              fController.besinler[index].besinAd.toString(),
+                              () {
+                            VeriModel veri = VeriModel(
+                                besinId: index,
+                                besinGram: num.parse(besinGram.text),
+                                ogun: c.ogun.value,
+                                tarih: c.tarih.value);
+                            num gram = num.parse(besinGram.text);
+                            num kalori = (gram /
+                                100 *
+                                fController.besinler[index].kalori!);
+                            num karbonhidrat = (gram /
+                                100 *
+                                fController.besinler[index].karbonhidrat!);
+                            num protein = (gram /
+                                100 *
+                                fController.besinler[index].protein!);
+                            num yag =
+                                (gram / 100 * fController.besinler[index].yag!);
 
-                          HesapModel hesap = HesapModel(
-                              kalori: kalori,
-                              karbonhidrat: karbonhidrat,
-                              protein: protein,
-                              yag: yag,
-                              ogun: c.ogun.value,
-                              tarih: c.tarih.value);
+                            HesapModel hesap = HesapModel(
+                                kalori: kalori,
+                                karbonhidrat: karbonhidrat,
+                                protein: protein,
+                                yag: yag,
+                                ogun: c.ogun.value,
+                                tarih: c.tarih.value);
 
-                          hareketKontrol(veri, index, c.ogun.value,
-                              num.parse(besinGram.text));
-                          hesapKontrol(hesap, index, c.ogun.value, gram);
+                            hareketKontrol(veri, index, c.ogun.value,
+                                num.parse(besinGram.text));
+                            hesapKontrol(hesap, index, c.ogun.value, gram);
 
-                          Get.back();
-                          buildSnackBar(
-                              c.ogun.value,
-                              besinGram.text.toString() +
-                                  " gram " +
-                                  Besinler().besinler[index].besinAd +
-                                  " eklendi.",
-                              SnackPosition.BOTTOM);
-                          besinGram.clear();
+                            Get.back();
+                            buildSnackBar(
+                                c.ogun.value,
+                                besinGram.text.toString() +
+                                    " gram " +
+                                    fController.besinler[index].besinAd! +
+                                    " eklendi.",
+                                SnackPosition.BOTTOM);
+                            besinGram.clear();
+                          },
+                              BuildTextFieldWidget(
+                                str: "Gram",
+                                icon: LineIcons.weight,
+                                control: besinGram,
+                                klavyetur: TextInputType.number,
+                              ));
                         },
-                            BuildTextFieldWidget(
-                              str: "Gram",
-                              icon: LineIcons.weight,
-                              control: besinGram,
-                              klavyetur: TextInputType.number,
-                            ));
-                      },
-                      kontrol: besinGram,
-                      besinler: Besinler().besinler,
-                      index: index,
-                    );
-                  }),
+                        kontrol: besinGram,
+                        besinler: fController.besinler,
+                        index: index,
+                      );
+                    }),
+              ),
             ),
           ],
         ),
