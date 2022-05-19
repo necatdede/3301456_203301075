@@ -63,14 +63,12 @@ class VeriIslem {
 
   Future<bool> ekle(VeriModel model) async {
     final dataMaps = await database.insert("hareket", model.toJson());
-    print("eklendi");
 
     return dataMaps != null;
   }
 
   Future<bool> ekleHesap(HesapModel hesap) async {
     final dataMaps = await database.insert("hesap", hesap.toJson());
-    print("hesap eklendi");
     return dataMaps != null;
   }
 
