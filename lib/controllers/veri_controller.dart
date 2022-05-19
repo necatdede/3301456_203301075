@@ -8,8 +8,6 @@ class VeriController extends GetxController {
   final items = <VeriModel>[].obs;
   final hesapItems = <HesapModel>[].obs;
 
-  final detay = [].obs;
-
   final kahvaltiKalori = 0.obs;
   final ogleKalori = 0.obs;
   final aksamKalori = 0.obs;

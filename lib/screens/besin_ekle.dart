@@ -109,9 +109,10 @@ class _BesinEkleState extends State<BesinEkle> {
                   itemBuilder: (context, index) {
                     return BuildBesinWidget(
                       tiklama: () {
+                        print(arananBesin[index].besinId);
                         buildDialog(arananBesin[index].besinAd.toString(), () {
                           VeriModel veri = VeriModel(
-                              besinId: index,
+                              besinId: arananBesin[index].besinId!,
                               besinGram: num.parse(besinGram.text),
                               ogun: c.ogun.value,
                               tarih: c.tarih.value);
@@ -131,10 +132,12 @@ class _BesinEkleState extends State<BesinEkle> {
                               yag: yag,
                               ogun: c.ogun.value,
                               tarih: c.tarih.value);
+                          print(arananBesin[index].besinId);
 
-                          hareketKontrol(veri, index, c.ogun.value,
-                              num.parse(besinGram.text));
-                          hesapKontrol(hesap, index, c.ogun.value, gram);
+                          hareketKontrol(veri, arananBesin[index].besinId!,
+                              c.ogun.value, num.parse(besinGram.text));
+                          hesapKontrol(hesap, arananBesin[index].besinId!,
+                              c.ogun.value, gram);
 
                           Get.back();
                           buildSnackBar(
