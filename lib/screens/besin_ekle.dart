@@ -25,6 +25,7 @@ class _BesinEkleState extends State<BesinEkle> {
   final besinGram = TextEditingController();
 
   List<Besin> arananBesin = [];
+  List<Besin> aranacakBesin = [];
 
   @override
   void initState() {
@@ -32,17 +33,29 @@ class _BesinEkleState extends State<BesinEkle> {
     super.initState();
 
     setState(() {
-      arananBesin = fController.besinler;
+      filtrele(0);
     });
   }
 
   onSearch(String search) {
     setState(() {
-      arananBesin = fController.besinler
+      arananBesin = aranacakBesin
           .where((besinler) =>
               besinler.besinAd.toString().toLowerCase().contains(search))
           .toList();
     });
+  }
+
+  filtrele(int kategoriId) {
+    arananBesin.clear();
+    setState(() {
+      for (int i = 0; i < fController.besinler.length; i++) {
+        if (fController.besinler[i].kategoriId == kategoriId) {
+          arananBesin.add(fController.besinler[i]);
+        }
+      }
+    });
+    aranacakBesin = arananBesin;
   }
 
   Future<void> hareketKontrol(
@@ -67,100 +80,132 @@ class _BesinEkleState extends State<BesinEkle> {
     }
   }
 
+  TabBar get tabBar => TabBar(
+        unselectedLabelColor: Colors.white,
+        physics: BouncingScrollPhysics(),
+        onTap: (int) {
+          filtrele(int);
+        },
+        isScrollable: true,
+        indicatorColor: Colors.white,
+        indicatorWeight: 3,
+        labelColor: Colors.white,
+        tabs: const [
+          Tab(text: "Et, Tavuk & Balık"),
+          Tab(text: "Su & İçecek"),
+          Tab(text: "Meyve & Sebze"),
+          Tab(text: "Temel Gıda"),
+          Tab(text: "Süt Ürünleri"),
+          Tab(text: "Kahvaltılık"),
+          Tab(text: "Atıştırmalık"),
+        ],
+      );
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const MyApp().bgColor,
-      appBar: AppBar(
-        title: Text(c.ogun.value),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, "/routeEklenenBesinler");
-                },
-                icon: const Icon(
-                  LineIcons.shoppingBasket,
-                  size: 40,
-                )),
-          ),
-        ],
-      ),
-      body: SizedBox(
-        height: Get.height,
-        width: Get.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            BuildTextFieldWidget(
-              onChanged: (value) => onSearch(value),
-              kontrol: false,
-              control: besinArama,
-              icon: Icons.search,
-              klavyetur: TextInputType.text,
-              str: "Besin Arama",
+    return DefaultTabController(
+      length: 7,
+      child: Scaffold(
+        backgroundColor: const MyApp().bgColor,
+        appBar: AppBar(
+          bottom: PreferredSize(
+            preferredSize: tabBar.preferredSize,
+            child: ColoredBox(
+              color: Color(0xff70D188),
+              child: tabBar,
             ),
-            Expanded(
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemCount: arananBesin.length,
-                  itemBuilder: (context, index) {
-                    return BuildBesinWidget(
-                      tiklama: () {
-                        buildDialog(arananBesin[index].besinAd.toString(), () {
-                          VeriModel veri = VeriModel(
-                              besinId: arananBesin[index].besinId!,
-                              besinGram: num.parse(besinGram.text),
-                              ogun: c.ogun.value,
-                              tarih: c.tarih.value);
-                          num gram = num.parse(besinGram.text);
-                          num kalori =
-                              (gram / 100 * arananBesin[index].kalori!);
-                          num karbonhidrat =
-                              (gram / 100 * arananBesin[index].karbonhidrat!);
-                          num protein =
-                              (gram / 100 * arananBesin[index].protein!);
-                          num yag = (gram / 100 * arananBesin[index].yag!);
-
-                          HesapModel hesap = HesapModel(
-                              kalori: kalori,
-                              karbonhidrat: karbonhidrat,
-                              protein: protein,
-                              yag: yag,
-                              ogun: c.ogun.value,
-                              tarih: c.tarih.value);
-
-                          hareketKontrol(veri, arananBesin[index].besinId!,
-                              c.ogun.value, num.parse(besinGram.text));
-                          hesapKontrol(hesap, arananBesin[index].besinId!,
-                              c.ogun.value, gram);
-
-                          Get.back();
-                          buildSnackBar(
-                              c.ogun.value,
-                              besinGram.text.toString() +
-                                  " gram " +
-                                  arananBesin[index].besinAd! +
-                                  " eklendi.",
-                              SnackPosition.BOTTOM);
-                          besinGram.clear();
-                        },
-                            BuildTextFieldWidget(
-                              str: "Gram",
-                              icon: LineIcons.weight,
-                              control: besinGram,
-                              klavyetur: TextInputType.number,
-                            ));
-                      },
-                      kontrol: besinGram,
-                      besinler: arananBesin,
-                      index: index,
-                    );
-                  }),
+          ),
+          title: Text(c.ogun.value),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/routeEklenenBesinler");
+                  },
+                  icon: const Icon(
+                    LineIcons.shoppingBasket,
+                    size: 40,
+                  )),
             ),
           ],
+        ),
+        body: SizedBox(
+          height: Get.height,
+          width: Get.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              BuildTextFieldWidget(
+                onChanged: (value) => onSearch(value),
+                kontrol: false,
+                control: besinArama,
+                icon: Icons.search,
+                klavyetur: TextInputType.text,
+                str: "Besin Arama",
+              ),
+              Expanded(
+                child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: arananBesin.length,
+                    itemBuilder: (context, index) {
+                      return BuildBesinWidget(
+                        tiklama: () {
+                          buildDialog(arananBesin[index].besinAd.toString(),
+                              () {
+                            VeriModel veri = VeriModel(
+                                besinId: arananBesin[index].besinId!,
+                                besinGram: num.parse(besinGram.text),
+                                ogun: c.ogun.value,
+                                tarih: c.tarih.value);
+                            num gram = num.parse(besinGram.text);
+                            num kalori =
+                                (gram / 100 * arananBesin[index].kalori!);
+                            num karbonhidrat =
+                                (gram / 100 * arananBesin[index].karbonhidrat!);
+                            num protein =
+                                (gram / 100 * arananBesin[index].protein!);
+                            num yag = (gram / 100 * arananBesin[index].yag!);
+
+                            HesapModel hesap = HesapModel(
+                                kalori: kalori,
+                                karbonhidrat: karbonhidrat,
+                                protein: protein,
+                                yag: yag,
+                                ogun: c.ogun.value,
+                                tarih: c.tarih.value);
+
+                            hareketKontrol(veri, arananBesin[index].besinId!,
+                                c.ogun.value, num.parse(besinGram.text));
+                            hesapKontrol(hesap, arananBesin[index].besinId!,
+                                c.ogun.value, gram);
+
+                            Get.back();
+                            buildSnackBar(
+                                c.ogun.value,
+                                besinGram.text.toString() +
+                                    " gram " +
+                                    arananBesin[index].besinAd! +
+                                    " eklendi.",
+                                SnackPosition.BOTTOM);
+                            besinGram.clear();
+                          },
+                              BuildTextFieldWidget(
+                                str: "Gram",
+                                icon: LineIcons.weight,
+                                control: besinGram,
+                                klavyetur: TextInputType.number,
+                              ));
+                        },
+                        kontrol: besinGram,
+                        besinler: arananBesin,
+                        index: index,
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
       ),
     );
