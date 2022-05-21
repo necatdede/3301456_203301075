@@ -73,4 +73,8 @@ class FirebaseController extends GetxController {
   Future<void> getirBesin() async {
     besinler.value = await Get.find<FirebaseService>().getBesinler();
   }
+
+  Future<void> cikis() async {
+    await Get.find<FirebaseService>().out();
+  }
 }

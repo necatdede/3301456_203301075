@@ -1,6 +1,5 @@
 import 'package:diyetlendin/controllers/firebase_controller.dart';
 import 'package:diyetlendin/controllers/veri_controller.dart';
-import 'package:diyetlendin/main.dart';
 import 'package:diyetlendin/models/besin.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ import 'package:line_icons/line_icons.dart';
 import '../models/hesap.dart';
 import '../models/veri.dart';
 import '../widgets/build_besin_widget.dart';
+import '../widgets/build_dialog_snackbar.dart';
 
 class BesinEkle extends StatefulWidget {
   const BesinEkle({Key? key}) : super(key: key);
@@ -106,7 +106,6 @@ class _BesinEkleState extends State<BesinEkle> {
     return DefaultTabController(
       length: 7,
       child: Scaffold(
-        backgroundColor: const MyApp().bgColor,
         appBar: AppBar(
           bottom: PreferredSize(
             preferredSize: tabBar.preferredSize,
@@ -209,27 +208,5 @@ class _BesinEkleState extends State<BesinEkle> {
         ),
       ),
     );
-  }
-
-  void buildSnackBar(
-      String title, String message, SnackPosition snackPosition) {
-    Get.rawSnackbar(
-        title: title,
-        message: message,
-        snackPosition: snackPosition,
-        backgroundColor: const MyApp().textfieldColor.withOpacity(0.9));
-  }
-
-  void buildDialog(String title, Function() islem, Widget content) {
-    Get.defaultDialog(
-        content: content,
-        title: title,
-        onConfirm: islem,
-        onCancel: () {},
-        buttonColor: const MyApp().textfieldColor,
-        textCancel: "İptal",
-        textConfirm: "Onayla",
-        confirmTextColor: Colors.white,
-        cancelTextColor: Colors.black);
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../main.dart';
 import '../widgets/build_button_widget.dart';
 import '../widgets/build_textfield_widget.dart';
 
@@ -42,7 +41,6 @@ class _GirisYapState extends State<GirisYap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const MyApp().bgColor,
       body: Center(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),

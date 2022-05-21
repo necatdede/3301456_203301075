@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:diyetlendin/main.dart';
 import 'package:diyetlendin/models/kullanici.dart';
 import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:diyetlendin/widgets/build_button_widget.dart';
@@ -13,6 +12,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../controllers/firebase_controller.dart';
+import '../my_theme.dart';
 import '../widgets/build_dropdown_widget.dart';
 
 enum Cinsiyet { Kadin, Erkek } //enum önceden belirlenmiş sabit veriler
@@ -90,7 +90,6 @@ class _KayitOl extends State<KayitOl> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor: const MyApp().bgColor,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -165,7 +164,7 @@ class _KayitOl extends State<KayitOl> {
                                           borderRadius:
                                               BorderRadius.circular(25),
                                           border: Border.all(
-                                            color: const MyApp().bgColor,
+                                            color: bgColor,
                                             width: 3,
                                           ),
                                         ),
@@ -176,8 +175,7 @@ class _KayitOl extends State<KayitOl> {
                                             Radio<Cinsiyet>(
                                               value: Cinsiyet.Kadin,
                                               groupValue: _cinsiyet,
-                                              activeColor:
-                                                  const MyApp().textfieldColor,
+                                              activeColor: textfieldColor,
                                               onChanged: (Cinsiyet? value) {
                                                 setState(() {
                                                   _cinsiyet = value!;
@@ -198,7 +196,7 @@ class _KayitOl extends State<KayitOl> {
                                           borderRadius:
                                               BorderRadius.circular(25),
                                           border: Border.all(
-                                            color: const MyApp().bgColor,
+                                            color: bgColor,
                                             width: 3,
                                           ),
                                         ),
@@ -207,8 +205,7 @@ class _KayitOl extends State<KayitOl> {
                                               MainAxisAlignment.start,
                                           children: [
                                             Radio<Cinsiyet>(
-                                              activeColor:
-                                                  const MyApp().textfieldColor,
+                                              activeColor: textfieldColor,
                                               value: Cinsiyet.Erkek,
                                               groupValue: _cinsiyet,
                                               onChanged: (Cinsiyet? value) {
@@ -334,8 +331,7 @@ class _KayitOl extends State<KayitOl> {
                                         Get.snackbar(
                                           "Bilgi",
                                           "Kayıt Olundu",
-                                          backgroundColor:
-                                              const MyApp().textfieldColor,
+                                          backgroundColor: textfieldColor,
                                         );
 
                                         Navigator.pop(context);
@@ -344,24 +340,21 @@ class _KayitOl extends State<KayitOl> {
                                         Get.snackbar(
                                           "Hata",
                                           "Kayıt Olunamadı",
-                                          backgroundColor:
-                                              const MyApp().textfieldColor,
+                                          backgroundColor: textfieldColor,
                                         );
                                       }
                                     } else {
                                       Get.snackbar(
                                         "Hata",
                                         "Lütfen Geçerli Değerler Giriniz",
-                                        backgroundColor:
-                                            const MyApp().textfieldColor,
+                                        backgroundColor: textfieldColor,
                                       );
                                     }
                                   } else {
                                     Get.snackbar(
                                       "Hata",
                                       "Boş Bırakılan Alanları Doldurunuz",
-                                      backgroundColor:
-                                          const MyApp().textfieldColor,
+                                      backgroundColor: textfieldColor,
                                     );
                                   }
                                 }),

@@ -1,6 +1,6 @@
-import 'package:diyetlendin/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Acilis extends StatefulWidget {
   const Acilis({Key? key}) : super(key: key);
@@ -23,7 +23,6 @@ class _AcilisState extends State<Acilis> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const MyApp().bgColor,
       body: Center(
         child: Column(
           children: [
@@ -40,8 +39,8 @@ class _AcilisState extends State<Acilis> {
               flex: 1,
               child: Image.asset(
                 "images/yukleniyor.gif",
-                height: 75,
-                width: 75,
+                height: 75.h,
+                width: 75.w,
               ),
             ),
           ],

@@ -1,12 +1,12 @@
 import 'package:diyetlendin/controllers/firebase_controller.dart';
 import 'package:diyetlendin/controllers/veri_controller.dart';
-import 'package:diyetlendin/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../models/hesap.dart';
+import '../widgets/build_dialog_snackbar.dart';
 import '../widgets/build_textfield_widget.dart';
 
 class EklenenBesinler extends StatefulWidget {
@@ -174,28 +174,6 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                     )),
       ),
     );
-  }
-
-  void buildSnackBar(
-      String title, String message, SnackPosition snackPosition) {
-    Get.rawSnackbar(
-        title: title,
-        message: message,
-        snackPosition: snackPosition,
-        backgroundColor: const MyApp().textfieldColor.withOpacity(0.9));
-  }
-
-  void buildDialog(String title, Function() islem, Widget content) {
-    Get.defaultDialog(
-        content: content,
-        title: title,
-        onConfirm: islem,
-        onCancel: () {},
-        buttonColor: const MyApp().textfieldColor,
-        textCancel: "İptal",
-        textConfirm: "Onayla",
-        confirmTextColor: Colors.white,
-        cancelTextColor: Colors.black);
   }
 
   Widget get _notFoundWidget => const Center(

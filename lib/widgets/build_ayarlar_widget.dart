@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../main.dart';
+import '../my_theme.dart';
 
 class BuildAyarlarWidget extends StatelessWidget {
   const BuildAyarlarWidget({
@@ -23,11 +23,10 @@ class BuildAyarlarWidget extends StatelessWidget {
     return Container(
       width: Get.width,
       height: 50.h,
-      //margin: EdgeInsets.only(bottom: 8.r, top: 8.r),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: const MyApp().textfieldColor,
+            color: textfieldColor,
             width: 1,
           ),
         ),

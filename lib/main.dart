@@ -1,3 +1,4 @@
+import 'package:diyetlendin/my_theme.dart';
 import 'package:diyetlendin/screens/acilis.dart';
 import 'package:diyetlendin/screens/anasayfa.dart';
 import 'package:diyetlendin/screens/ayarlar.dart';
@@ -27,8 +28,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final Color bgColor = const Color(0xffEDF0F2);
-  final Color textfieldColor = const Color(0xff70D188);
+  //final Color bgColor = const Color(0xffEDF0F2);
+  //final Color textfieldColor = const Color(0xff70D188);
 
   const MyApp({Key? key}) : super(key: key);
 
@@ -51,10 +52,7 @@ class MyApp extends StatelessWidget {
           "/routeEklenenBesinler": (context) => const EklenenBesinler(),
         },
         title: 'Diyetlendin',
-        theme: ThemeData().copyWith(
-          colorScheme:
-              ThemeData().colorScheme.copyWith(primary: textfieldColor),
-        ),
+        theme: myTheme,
       );
     });
   }

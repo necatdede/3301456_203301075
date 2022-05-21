@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../main.dart';
+import '../my_theme.dart';
 
 class BuildDropDownWidget extends StatefulWidget {
   const BuildDropDownWidget({
@@ -27,11 +27,10 @@ class _BuildDropDownWidgetState extends State<BuildDropDownWidget> {
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(
-          color: const MyApp().bgColor,
+          color: bgColor,
           width: 3,
         ),
         borderRadius: BorderRadius.circular(25),
-        color: Colors.white,
       ),
       width: Get.width,
       height: 45.h,

@@ -1,5 +1,4 @@
 import 'package:diyetlendin/controllers/firebase_controller.dart';
-import 'package:diyetlendin/main.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +13,6 @@ class Profil extends StatelessWidget {
     final c = Get.put(FirebaseController());
     final bos = TextEditingController();
     return Scaffold(
-      backgroundColor: const MyApp().bgColor,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: SizedBox(

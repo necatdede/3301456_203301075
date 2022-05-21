@@ -1,7 +1,5 @@
 import 'package:diyetlendin/controllers/firebase_controller.dart';
 import 'package:diyetlendin/controllers/veri_controller.dart';
-import 'package:diyetlendin/main.dart';
-import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../widgets/build_ayarlar_widget.dart';
+import '../widgets/build_dialog_snackbar.dart';
 
 class Ayarlar extends StatefulWidget {
   const Ayarlar({Key? key}) : super(key: key);
@@ -23,7 +22,6 @@ class Ayarlar extends StatefulWidget {
 class _Ayarlar extends State<Ayarlar> {
   final firebaseControl = Get.put(FirebaseController());
   final veriControl = Get.put(VeriController());
-  FirebaseService service = FirebaseService();
   final boy = TextEditingController();
   final kilo = TextEditingController();
 
@@ -34,7 +32,6 @@ class _Ayarlar extends State<Ayarlar> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor: const MyApp().bgColor,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: SizedBox(
@@ -199,7 +196,7 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Çıkış",
                 icon: LineIcons.doorOpen,
                 islem: () {
-                  service.out();
+                  firebaseControl.cikis();
                   Navigator.popAndPushNamed(context, "/");
                 },
               ),
@@ -208,27 +205,5 @@ class _Ayarlar extends State<Ayarlar> {
         ),
       ),
     );
-  }
-
-  void buildSnackBar(
-      String title, String message, SnackPosition snackPosition) {
-    Get.rawSnackbar(
-        title: title,
-        message: message,
-        snackPosition: snackPosition,
-        backgroundColor: const MyApp().textfieldColor.withOpacity(0.9));
-  }
-
-  void buildDialog(String title, Function() islem, Widget content) {
-    Get.defaultDialog(
-        content: content,
-        title: title,
-        onConfirm: islem,
-        onCancel: () {},
-        buttonColor: const MyApp().textfieldColor,
-        textCancel: "İptal",
-        textConfirm: "Onayla",
-        confirmTextColor: Colors.white,
-        cancelTextColor: Colors.black);
   }
 }

@@ -1,4 +1,3 @@
-import 'package:diyetlendin/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -16,10 +15,9 @@ class BesinDetay extends StatelessWidget {
       appBar: AppBar(
         title: Text(besin.besinAd.toString()),
       ),
-      body: Container(
+      body: SizedBox(
         width: Get.width,
         height: Get.height,
-        color: const MyApp().bgColor,
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(16.r),

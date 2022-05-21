@@ -1,6 +1,6 @@
 import 'package:diyetlendin/controllers/firebase_controller.dart';
 import 'package:diyetlendin/controllers/veri_controller.dart';
-import 'package:diyetlendin/main.dart';
+import 'package:diyetlendin/my_theme.dart';
 import 'package:diyetlendin/screens/profil.dart';
 import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,6 @@ class _AnaSayfaState extends State<AnaSayfa> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor: const MyApp().bgColor,
       body: Obx(
         () => SizedBox(
           width: Get.width,
@@ -68,9 +67,9 @@ class _AnaSayfaState extends State<AnaSayfa> {
                               child: Container(
                                   child: InkWell(
                                     onTap: () {
-                                      var alert = AlertDialog(
-                                        backgroundColor: const MyApp().bgColor,
-                                        content: const Profil(),
+                                      var alert = const AlertDialog(
+                                        backgroundColor: bgColor,
+                                        content: Profil(),
                                       );
                                       showDialog(
                                           context: context,

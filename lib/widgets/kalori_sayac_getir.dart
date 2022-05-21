@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../main.dart';
+import '../my_theme.dart';
 
 class KaloriSayacGetir extends StatefulWidget {
   const KaloriSayacGetir({Key? key}) : super(key: key);
@@ -131,7 +131,7 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
               Flexible(
                 flex: 1,
                 child: CircularPercentIndicator(
-                  progressColor: const MyApp().textfieldColor,
+                  progressColor: textfieldColor,
                   radius: 120.sp,
                   animation: true,
                   animationDuration: 1200,
