@@ -31,21 +31,23 @@ class BuildAyarlarWidget extends StatelessWidget {
           ),
         ),
       ),
-      child: ListTile(
-        onTap: islem,
-        title: Text(yazi,
-            style: TextStyle(
-              color: Colors.grey.shade800,
-              fontSize: 15.sp,
-            )),
-        iconColor: Colors.grey.shade600,
-        leading: Icon(
-          icon,
-          size: 20.sp,
-        ),
-        trailing: Text(
-          yazi2,
-          style: TextStyle(fontSize: 15.sp, color: Colors.grey.shade600),
+      child: Center(
+        child: ListTile(
+          onTap: islem,
+          title: Text(yazi,
+              style: TextStyle(
+                color: Colors.grey.shade800,
+                fontSize: 15.sp,
+              )),
+          iconColor: Colors.grey.shade600,
+          leading: Icon(
+            icon,
+            size: 20.sp,
+          ),
+          trailing: Text(
+            yazi2,
+            style: TextStyle(fontSize: 15.sp, color: Colors.grey.shade600),
+          ),
         ),
       ),
     );

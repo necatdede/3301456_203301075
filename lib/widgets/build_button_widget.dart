@@ -26,7 +26,7 @@ class BuildButtonWidget extends StatelessWidget {
         style: TextButton.styleFrom(
             backgroundColor: textfieldColor,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20))),
+                borderRadius: BorderRadius.circular(25))),
         onPressed: islem,
         child: Text(
           str,
