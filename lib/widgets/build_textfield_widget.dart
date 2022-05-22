@@ -31,7 +31,6 @@ class BuildTextFieldWidget extends StatelessWidget {
           color: Colors.white,
         ),
         width: Get.width,
-        height: 45.h,
         child: TextField(
             textAlignVertical: TextAlignVertical.center,
             style: TextStyle(fontSize: 12.sp),

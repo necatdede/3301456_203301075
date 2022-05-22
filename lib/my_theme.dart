@@ -19,4 +19,8 @@ final ThemeData myTheme = ThemeData().copyWith(
         borderSide: const BorderSide(color: bgColor, width: 3),
         borderRadius: BorderRadius.circular(25),
       ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Colors.white, width: 3),
+        borderRadius: BorderRadius.circular(25),
+      ),
     ));

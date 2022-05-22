@@ -28,9 +28,6 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  //final Color bgColor = const Color(0xffEDF0F2);
-  //final Color textfieldColor = const Color(0xff70D188);
-
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
