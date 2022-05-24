@@ -1,4 +1,5 @@
 import 'package:diyetlendin/models/hesap.dart';
+import 'package:diyetlendin/models/rapor.dart';
 import 'package:get/get.dart';
 
 import '../functions/veri_islem.dart';
@@ -7,6 +8,8 @@ import '../models/veri.dart';
 class VeriController extends GetxController {
   final items = <VeriModel>[].obs;
   final hesapItems = <HesapModel>[].obs;
+
+  final raporItems = <RaporModel>[].obs;
 
   final kahvaltiKalori = 0.obs;
   final ogleKalori = 0.obs;
@@ -48,10 +51,15 @@ class VeriController extends GetxController {
     secVeri();
     hesapGetir();
     kaloriGetir();
+    secRapor();
   }
 
   Future<void> secVeri() async {
     items.value = await Get.find<VeriIslem>().getir(tarih.value, ogun.value);
+  }
+
+  Future<void> secRapor() async {
+    raporItems.value = await Get.find<VeriIslem>().getirRapor();
   }
 
   Future<void> ekleVeri(VeriModel model) async {
@@ -70,6 +78,7 @@ class VeriController extends GetxController {
         hesap.kalori!, hesap.karbonhidrat!, hesap.protein!, hesap.yag!);
     hesapGetir();
     kaloriGetir();
+    secRapor();
   }
 
   Future<bool> tarihVeri(int besinId) async {
@@ -115,6 +124,7 @@ class VeriController extends GetxController {
     await Get.find<VeriIslem>().ekleHesap(hesap);
     hesapGetir();
     kaloriGetir();
+    secRapor();
   }
 
   Future<void> besinSil(int id) async {

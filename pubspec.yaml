@@ -38,11 +38,12 @@ dependencies:
   sqflite: ^2.0.2+1
   get: 4.6.1
   flutter_screenutil: 5.4.0+1
-  firebase_auth: ^3.3.15
-  firebase_core: ^1.15.0
-  cloud_firestore: ^3.1.13
+  firebase_auth: ^3.3.17
+  firebase_core: ^1.16.0
+  cloud_firestore: ^3.1.14
   image_picker: ^0.8.5+3
   firebase_storage: ^10.2.16
+  fl_chart: 0.50.1
 
 
 

@@ -90,7 +90,7 @@ class _KaloriSayacGetirState extends State<KaloriSayacGetir> {
                                 context: context,
                                 initialDate: DateTime.parse(c.tarih.value),
                                 firstDate: DateTime(2022),
-                                lastDate: DateTime(2024))
+                                lastDate: DateTime.now())
                             .then((date) {
                           setState(() {
                             c.tarihDegis(date.toString().substring(0, 10));

@@ -83,7 +83,7 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                                               .besinAd
                                               .toString(),
                                       style: TextStyle(
-                                          fontSize: 25.sp,
+                                          fontSize: 18.sp,
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -93,7 +93,7 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                                           " Gram",
                                       style: TextStyle(
                                           color: Colors.blue,
-                                          fontSize: 20.sp,
+                                          fontSize: 18.sp,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],

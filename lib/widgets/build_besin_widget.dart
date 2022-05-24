@@ -61,7 +61,7 @@ class BuildBesinWidget extends StatelessWidget {
                     Text(
                       besinler[index].besinAd.toString(),
                       style: TextStyle(
-                          fontSize: 25.sp,
+                          fontSize: 18.sp,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
@@ -69,7 +69,7 @@ class BuildBesinWidget extends StatelessWidget {
                       besinler[index].kalori.toString() + " Kalori",
                       style: TextStyle(
                           color: Colors.blue,
-                          fontSize: 20.sp,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.bold),
                     ),
                   ],

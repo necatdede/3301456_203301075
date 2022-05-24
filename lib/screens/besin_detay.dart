@@ -4,9 +4,14 @@ import 'package:get/get.dart';
 
 import '../models/besin.dart';
 
-class BesinDetay extends StatelessWidget {
-  const BesinDetay({Key? key}) : super(key: key);
+class BesinDetay extends StatefulWidget {
+  BesinDetay({Key? key}) : super(key: key);
 
+  @override
+  State<BesinDetay> createState() => _BesinDetayState();
+}
+
+class _BesinDetayState extends State<BesinDetay> {
   @override
   Widget build(BuildContext context) {
     Besin besin = ModalRoute.of(context)?.settings.arguments as Besin;
@@ -18,41 +23,33 @@ class BesinDetay extends StatelessWidget {
       body: SizedBox(
         width: Get.width,
         height: Get.height,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(16.r),
-            child: Column(
-              children: [
-                Container(
-                    width: 200.w,
-                    height: 200.h,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          fit: BoxFit.contain,
-                          image: NetworkImage(besin.besinUrl.toString())),
-                    )),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      buildBesinDetayWidget(num.parse(besin.kalori.toString()),
-                          "images/kalori.png", Colors.blue, context),
-                      buildBesinDetayWidget(
-                          num.parse(besin.karbonhidrat.toString()),
-                          "images/karbonhidrat.png",
-                          Colors.yellow,
-                          context),
-                    ]),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      buildBesinDetayWidget(num.parse(besin.protein.toString()),
-                          "images/protein.png", Colors.red, context),
-                      buildBesinDetayWidget(num.parse(besin.yag.toString()),
-                          "images/yag.png", Colors.green, context),
-                    ]),
-              ],
-            ),
+        child: Padding(
+          padding: EdgeInsets.all(16.r),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                  width: 200.w,
+                  height: 200.h,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        fit: BoxFit.contain,
+                        image: NetworkImage(besin.besinUrl.toString())),
+                  )),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                buildBesinDetayWidget(num.parse(besin.kalori.toString()),
+                    "images/kalori.png", Colors.blue, context),
+                buildBesinDetayWidget(num.parse(besin.karbonhidrat.toString()),
+                    "images/karbonhidrat.png", Colors.yellow, context),
+              ]),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                buildBesinDetayWidget(num.parse(besin.protein.toString()),
+                    "images/protein.png", Colors.red, context),
+                buildBesinDetayWidget(num.parse(besin.yag.toString()),
+                    "images/yag.png", Colors.green, context),
+              ]),
+            ],
           ),
         ),
       ),

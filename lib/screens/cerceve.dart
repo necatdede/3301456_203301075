@@ -1,6 +1,7 @@
 import 'package:diyetlendin/screens/anasayfa.dart';
 import 'package:diyetlendin/screens/ayarlar.dart';
 import 'package:diyetlendin/screens/profil.dart';
+import 'package:diyetlendin/screens/raporlar.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -27,11 +28,14 @@ class _CerceveState extends State<Cerceve> {
         "Diyetlendin",
       )),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(LineIcons.home), label: "AnaSayfa"),
           BottomNavigationBarItem(
               icon: Icon(LineIcons.addressCard), label: "Profil"),
+          BottomNavigationBarItem(
+              icon: Icon(LineIcons.barChartAlt), label: "Raporlar"),
           BottomNavigationBarItem(icon: Icon(LineIcons.cog), label: "Ayarlar"),
         ],
         currentIndex: gecerliIndex,
@@ -40,7 +44,8 @@ class _CerceveState extends State<Cerceve> {
             gecerliIndex = int;
             if (gecerliIndex == 0) gecerliSayfa = const AnaSayfa();
             if (gecerliIndex == 1) gecerliSayfa = const Profil();
-            if (gecerliIndex == 2) gecerliSayfa = const Ayarlar();
+            if (gecerliIndex == 2) gecerliSayfa = const Raporlar();
+            if (gecerliIndex == 3) gecerliSayfa = const Ayarlar();
           });
         },
       ),

@@ -4,6 +4,8 @@ import 'package:diyetlendin/models/hesap.dart';
 import 'package:diyetlendin/models/veri.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../models/rapor.dart';
+
 class VeriIslem {
   static Future<VeriIslem> ac() async {
     final db = VeriIslem();
@@ -77,40 +79,48 @@ class VeriIslem {
         where: 'tarih=?', whereArgs: [tarih], orderBy: 'ogun');
     return select.map((e) => HesapModel.fromJson(e)).toList();
   }
+  //select tarih,sum(kalori) from hesap GROUP by tarih
+
+  Future<List<RaporModel>> getirRapor() async {
+    var select = await database.rawQuery(
+        "select tarih,sum(kalori) as kalori from hesap GROUP by tarih order by tarih desc limit 7");
+    var sonuc = select.map((e) => RaporModel.fromJson(e)).toList();
+    return sonuc;
+  }
 
   Future<int> getirKarbonhidrat(String tarih) async {
     var select = await database.rawQuery(
         "Select sum(karbonhidrat) as karbonhidrat FROM hesap WHERE tarih='$tarih'");
-    var deneme = select.map((e) => HesapModel.fromJson(e)).toList();
-    return (deneme.isNotEmpty && deneme[0].karbonhidrat != null)
-        ? deneme[0].karbonhidrat!.toInt()
+    var sonuc = select.map((e) => HesapModel.fromJson(e)).toList();
+    return (sonuc.isNotEmpty && sonuc[0].karbonhidrat != null)
+        ? sonuc[0].karbonhidrat!.toInt()
         : 0;
   }
 
   Future<int> getirProtein(String tarih) async {
     var select = await database.rawQuery(
         "Select sum(protein) as protein FROM hesap WHERE tarih='$tarih'");
-    var deneme = select.map((e) => HesapModel.fromJson(e)).toList();
-    return (deneme.isNotEmpty && deneme[0].protein != null)
-        ? deneme[0].protein!.toInt()
+    var sonuc = select.map((e) => HesapModel.fromJson(e)).toList();
+    return (sonuc.isNotEmpty && sonuc[0].protein != null)
+        ? sonuc[0].protein!.toInt()
         : 0;
   }
 
   Future<int> getirYag(String tarih) async {
     var select = await database
         .rawQuery("Select sum(yag) as yag FROM hesap WHERE tarih='$tarih'");
-    var deneme = select.map((e) => HesapModel.fromJson(e)).toList();
-    return (deneme.isNotEmpty && deneme[0].yag != null)
-        ? deneme[0].yag!.toInt()
+    var sonuc = select.map((e) => HesapModel.fromJson(e)).toList();
+    return (sonuc.isNotEmpty && sonuc[0].yag != null)
+        ? sonuc[0].yag!.toInt()
         : 0;
   }
 
   Future<int> getirKalori(String tarih, String ogun) async {
     var select = await database
         .query("hesap", where: 'tarih=? and ogun=?', whereArgs: [tarih, ogun]);
-    var deneme = select.map((e) => HesapModel.fromJson(e)).toList();
-    return (deneme.isNotEmpty && deneme[0].kalori != null)
-        ? deneme[0].kalori!.toInt()
+    var sonuc = select.map((e) => HesapModel.fromJson(e)).toList();
+    return (sonuc.isNotEmpty && sonuc[0].kalori != null)
+        ? sonuc[0].kalori!.toInt()
         : 0;
   }
 
