@@ -1,4 +1,5 @@
 import 'package:diyetlendin/controllers/veri_controller.dart';
+import 'package:diyetlendin/my_theme.dart';
 import 'package:diyetlendin/widgets/build_raporlar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,24 +25,29 @@ class _RaporlarState extends State<Raporlar> {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.all(8.0.r),
+        padding: EdgeInsets.only(left: 8.0.r, right: 8.r),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
-              "Son 7 günlük alınan kalori miktarları",
-              style: TextStyle(
-                fontSize: 20.sp,
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Text(
+                  "Son 7 günlük alınan kalori miktarları",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                  ),
+                ),
               ),
             ),
-            AspectRatio(
-              aspectRatio: 0.7.sp,
+            Expanded(
+              flex: 9,
               child: Obx(
                 () => Card(
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  color: Colors.white,
+                  color: bgColor,
                   child: (veriController.raporItems.isNotEmpty)
                       ? RaporlarWidget(raporList: veriController.raporItems)
                       : _waitingWidget,

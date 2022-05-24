@@ -86,10 +86,10 @@ class RaporlarWidget extends StatelessWidget {
   FlTitlesData get titlesData => FlTitlesData(
         show: true,
         bottomTitles: AxisTitles(
-          axisNameSize: 10,
+          axisNameSize: 10.sp,
           sideTitles: SideTitles(
             showTitles: true,
-            reservedSize: 60,
+            reservedSize: 60.sp,
             getTitlesWidget: getTitles,
           ),
         ),
@@ -105,6 +105,7 @@ class RaporlarWidget extends StatelessWidget {
       );
 
   FlBorderData get borderData => FlBorderData(
-        show: false,
+        border: Border.all(color: textfieldColor, width: 3),
+        show: true,
       );
 }
