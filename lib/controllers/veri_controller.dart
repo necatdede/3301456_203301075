@@ -11,6 +11,8 @@ class VeriController extends GetxController {
 
   final raporItems = <RaporModel>[].obs;
 
+  final logoSize = 0.0.obs;
+
   final kahvaltiKalori = 0.obs;
   final ogleKalori = 0.obs;
   final aksamKalori = 0.obs;
@@ -19,6 +21,10 @@ class VeriController extends GetxController {
   final karbonhidrat = 0.obs;
   final protein = 0.obs;
   final yag = 0.obs;
+
+  void changeLogoSize() {
+    logoSize.value += 400;
+  }
 
   int topla() {
     int sonuc = kahvaltiKalori.value +

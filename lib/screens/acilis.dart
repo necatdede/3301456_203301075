@@ -1,6 +1,8 @@
+import 'package:diyetlendin/controllers/veri_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class Acilis extends StatefulWidget {
   const Acilis({Key? key}) : super(key: key);
@@ -10,9 +12,15 @@ class Acilis extends StatefulWidget {
 }
 
 class _AcilisState extends State<Acilis> {
+  VeriController veriController = VeriController();
+
   @override
   void initState() {
     super.initState();
+    Future.delayed(const Duration(seconds: 1), () {
+      veriController.changeLogoSize();
+    });
+
     Future.delayed(const Duration(seconds: 3), () {
       (FirebaseAuth.instance.currentUser == null)
           ? Navigator.popAndPushNamed(context, "/routeGirisYap")
@@ -28,11 +36,21 @@ class _AcilisState extends State<Acilis> {
           children: [
             Expanded(
               flex: 4,
-              child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("images/logo.png"),
-                        fit: BoxFit.contain)),
+              child: Center(
+                child: Obx(
+                  () => AnimatedContainer(
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.bounceOut,
+                    width: veriController.logoSize.value.w,
+                    height: veriController.logoSize.value.h,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("images/logo.png"),
+                              fit: BoxFit.contain)),
+                    ),
+                  ),
+                ),
               ),
             ),
             Expanded(
