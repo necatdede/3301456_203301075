@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../my_theme.dart';
 
 class RaporlarWidget extends StatelessWidget {
-  RaporlarWidget({Key? key, required this.raporList}) : super(key: key);
+  const RaporlarWidget({Key? key, required this.raporList}) : super(key: key);
 
   final List<RaporModel> raporList;
 
@@ -61,7 +61,7 @@ class RaporlarWidget extends StatelessWidget {
             return BarTooltipItem(
               rod.toY.round().toString() + " kcal",
               TextStyle(
-                color: Color(0xff7589a2),
+                color: const Color(0xff7589a2),
                 fontWeight: FontWeight.bold,
                 fontSize: 10.sp,
               ),
@@ -72,7 +72,7 @@ class RaporlarWidget extends StatelessWidget {
 
   Widget getTitles(double value, TitleMeta meta) {
     var style = TextStyle(
-      color: Color(0xff7589a2),
+      color: const Color(0xff7589a2),
       fontWeight: FontWeight.bold,
       fontSize: 9.sp,
     );

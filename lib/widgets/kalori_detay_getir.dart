@@ -6,7 +6,7 @@ class KaloriDetayGetir extends StatelessWidget {
   const KaloriDetayGetir({
     Key? key,
     required this.tur,
-    required this.deger_yol,
+    required this.degerYol,
     required this.alinan,
     required this.alinacak,
     required this.renk,
@@ -15,7 +15,7 @@ class KaloriDetayGetir extends StatelessWidget {
   }) : super(key: key);
 
   final String tur;
-  final String deger_yol;
+  final String degerYol;
   final int alinan;
   final int alinacak;
   final Color renk;
@@ -33,7 +33,7 @@ class KaloriDetayGetir extends StatelessWidget {
           Image(
             width: 40.w,
             height: 40.h,
-            image: AssetImage(deger_yol),
+            image: AssetImage(degerYol),
           ),
           Text(tur,
               style: TextStyle(

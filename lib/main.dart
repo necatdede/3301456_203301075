@@ -7,7 +7,10 @@ import 'package:diyetlendin/screens/besin_ekle.dart';
 import 'package:diyetlendin/screens/cerceve.dart';
 import 'package:diyetlendin/screens/eklenen_besinler.dart';
 import 'package:diyetlendin/screens/giris_yap.dart';
+import 'package:diyetlendin/screens/icerik.dart';
+import 'package:diyetlendin/screens/icerikler.dart';
 import 'package:diyetlendin/screens/kayit_ol.dart';
+import 'package:diyetlendin/screens/kesfet.dart';
 import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -51,8 +54,11 @@ class MyApp extends StatelessWidget {
           "/routeAyarlar": (context) => const Ayarlar(),
           "/routeCerceve": (context) => const Cerceve(),
           "/routeBesinEkle": (context) => const BesinEkle(),
-          "/routeBesinDetay": (context) => BesinDetay(),
+          "/routeBesinDetay": (context) => const BesinDetay(),
           "/routeEklenenBesinler": (context) => const EklenenBesinler(),
+          "/routeIcerik": (context) => const Icerik(),
+          "/routeIcerikler": (context) => const Icerikler(),
+          "/routeKesfet": (context) => const Kesfet(),
         },
         title: 'Diyetlendin',
         theme: myTheme,

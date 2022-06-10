@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class BuildTextFieldWidget extends StatelessWidget {
-  BuildTextFieldWidget({
+  const BuildTextFieldWidget({
     Key? key,
     required this.control,
     required this.str,
@@ -14,8 +14,8 @@ class BuildTextFieldWidget extends StatelessWidget {
     this.klavyetur = TextInputType.text,
   }) : super(key: key);
 
-  TextEditingController control;
-  String str;
+  final TextEditingController control;
+  final String str;
   final IconData icon;
   final bool kontrol;
   final TextInputType klavyetur;

@@ -65,8 +65,8 @@ class FirebaseController extends GetxController {
   }
 
   Future<void> resimGetir() async {
-    User? user = await FirebaseAuth.instance.currentUser;
-    Reference reference = await FirebaseStorage.instance.ref().child(user!.uid);
+    User? user = FirebaseAuth.instance.currentUser;
+    Reference reference = FirebaseStorage.instance.ref().child(user!.uid);
     imageUrl.value = await reference.getDownloadURL();
   }
 

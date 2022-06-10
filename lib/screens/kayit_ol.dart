@@ -15,7 +15,7 @@ import '../controllers/firebase_controller.dart';
 import '../my_theme.dart';
 import '../widgets/build_dropdown_widget.dart';
 
-enum Cinsiyet { Kadin, Erkek } //enum önceden belirlenmiş sabit veriler
+enum Cinsiyet { kadin, erkek } //enum önceden belirlenmiş sabit veriler
 
 class KayitOl extends StatefulWidget {
   const KayitOl({Key? key}) : super(key: key);
@@ -81,14 +81,13 @@ class _KayitOl extends State<KayitOl> {
     return sonuc;
   }
 
-  Cinsiyet _cinsiyet = Cinsiyet.Kadin;
+  Cinsiyet _cinsiyet = Cinsiyet.kadin;
   String secilenAktivite = "Az Hareketli";
 
   String secilenHedef = "Kilomu Korumak";
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -112,7 +111,7 @@ class _KayitOl extends State<KayitOl> {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   fit: BoxFit.fill, image: FileImage(image!))))
-                      : Container(
+                      : SizedBox(
                           width: 200.w,
                           height: 200.h,
                           child: ElevatedButton(
@@ -135,8 +134,8 @@ class _KayitOl extends State<KayitOl> {
                               ],
                             ),
                             style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              padding: EdgeInsets.all(24),
+                              shape: const CircleBorder(),
+                              padding: const EdgeInsets.all(24),
                             ),
                           ),
                         ),
@@ -173,7 +172,7 @@ class _KayitOl extends State<KayitOl> {
                                               MainAxisAlignment.start,
                                           children: [
                                             Radio<Cinsiyet>(
-                                              value: Cinsiyet.Kadin,
+                                              value: Cinsiyet.kadin,
                                               groupValue: _cinsiyet,
                                               activeColor: textfieldColor,
                                               onChanged: (Cinsiyet? value) {
@@ -206,7 +205,7 @@ class _KayitOl extends State<KayitOl> {
                                           children: [
                                             Radio<Cinsiyet>(
                                               activeColor: textfieldColor,
-                                              value: Cinsiyet.Erkek,
+                                              value: Cinsiyet.erkek,
                                               groupValue: _cinsiyet,
                                               onChanged: (Cinsiyet? value) {
                                                 setState(() {
@@ -336,7 +335,6 @@ class _KayitOl extends State<KayitOl> {
 
                                         Navigator.pop(context);
                                       } catch (e) {
-                                        print(e);
                                         Get.snackbar(
                                           "Hata",
                                           "Kayıt Olunamadı",

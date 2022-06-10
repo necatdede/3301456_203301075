@@ -14,7 +14,6 @@ class Ayarlar extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _Ayarlar();
   }
 }
@@ -30,7 +29,6 @@ class _Ayarlar extends State<Ayarlar> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

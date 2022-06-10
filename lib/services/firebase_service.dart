@@ -35,14 +35,12 @@ class FirebaseService {
   }
 
   Future<Kullanici> getUser() async {
-    var data;
     CollectionReference ref = firestore.collection("kullanicilar");
     String uid = auth.currentUser!.uid;
     var document = ref.doc(uid);
     var response = await document.get();
-    data = response.data();
 
-    Kullanici kullanici = Kullanici.fromJson(data);
+    Kullanici kullanici = Kullanici.fromJson(response.data() as dynamic);
     return kullanici;
   }
 
@@ -51,10 +49,10 @@ class FirebaseService {
   }
 
   Future uploadImage(File imageFile) async {
-    User? user = await FirebaseAuth.instance.currentUser;
-    Reference reference = await FirebaseStorage.instance.ref().child(user!.uid);
+    User? user = FirebaseAuth.instance.currentUser;
+    Reference reference = FirebaseStorage.instance.ref().child(user!.uid);
     UploadTask task = reference.putFile(imageFile);
-    TaskSnapshot snapshot = await task;
+    await task;
   }
 
   Future<List<Besin>> getBesinler() async {

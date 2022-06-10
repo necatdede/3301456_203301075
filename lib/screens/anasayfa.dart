@@ -31,7 +31,6 @@ class _AnaSayfaState extends State<AnaSayfa> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: Obx(
         () => SizedBox(
@@ -104,7 +103,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                             children: [
                               KaloriDetayGetir(
                                   tur: "Karbonhidrat",
-                                  deger_yol: "images/karbonhidrat.png",
+                                  degerYol: "images/karbonhidrat.png",
                                   alinan: c.karbonhidrat.value,
                                   alinacak:
                                       c2.kullanici.value.gunlukKarbonhidrat!,
@@ -113,7 +112,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                   renk3: Colors.yellow.shade100),
                               KaloriDetayGetir(
                                   tur: "Protein",
-                                  deger_yol: "images/protein.png",
+                                  degerYol: "images/protein.png",
                                   alinan: c.protein.value,
                                   alinacak: c2.kullanici.value.gunlukProtein!,
                                   renk: Colors.red.shade300,
@@ -121,7 +120,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                   renk3: Colors.red.shade100),
                               KaloriDetayGetir(
                                   tur: "Yağ",
-                                  deger_yol: "images/yag.png",
+                                  degerYol: "images/yag.png",
                                   alinan: c.yag.value,
                                   alinacak: c2.kullanici.value.gunlukYag!,
                                   renk: Colors.green.shade300,

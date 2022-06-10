@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../models/besin.dart';
 
 class BesinDetay extends StatefulWidget {
-  BesinDetay({Key? key}) : super(key: key);
+  const BesinDetay({Key? key}) : super(key: key);
 
   @override
   State<BesinDetay> createState() => _BesinDetayState();

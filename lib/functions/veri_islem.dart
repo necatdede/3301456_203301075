@@ -63,15 +63,12 @@ class VeriIslem {
     return sonuc;
   }
 
-  Future<bool> ekle(VeriModel model) async {
-    final dataMaps = await database.insert("hareket", model.toJson());
-
-    return dataMaps != null;
+  Future<void> ekle(VeriModel model) async {
+    await database.insert("hareket", model.toJson());
   }
 
-  Future<bool> ekleHesap(HesapModel hesap) async {
-    final dataMaps = await database.insert("hesap", hesap.toJson());
-    return dataMaps != null;
+  Future<void> ekleHesap(HesapModel hesap) async {
+    await database.insert("hesap", hesap.toJson());
   }
 
   Future<List<HesapModel>> getirHesap(String tarih) async {
@@ -79,7 +76,6 @@ class VeriIslem {
         where: 'tarih=?', whereArgs: [tarih], orderBy: 'ogun');
     return select.map((e) => HesapModel.fromJson(e)).toList();
   }
-  //select tarih,sum(kalori) from hesap GROUP by tarih
 
   Future<List<RaporModel>> getirRapor() async {
     var select = await database.rawQuery(

@@ -29,7 +29,6 @@ class _BesinEkleState extends State<BesinEkle> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     setState(() {
@@ -82,9 +81,9 @@ class _BesinEkleState extends State<BesinEkle> {
 
   TabBar get tabBar => TabBar(
         unselectedLabelColor: Colors.white,
-        physics: BouncingScrollPhysics(),
-        onTap: (int) {
-          filtrele(int);
+        physics: const BouncingScrollPhysics(),
+        onTap: (index) {
+          filtrele(index);
         },
         isScrollable: true,
         indicatorColor: Colors.white,
@@ -110,7 +109,7 @@ class _BesinEkleState extends State<BesinEkle> {
           bottom: PreferredSize(
             preferredSize: tabBar.preferredSize,
             child: ColoredBox(
-              color: Color(0xff70D188),
+              color: const Color(0xff70D188),
               child: tabBar,
             ),
           ),

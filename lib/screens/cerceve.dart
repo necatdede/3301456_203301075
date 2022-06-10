@@ -1,5 +1,7 @@
 import 'package:diyetlendin/screens/anasayfa.dart';
 import 'package:diyetlendin/screens/ayarlar.dart';
+import 'package:diyetlendin/screens/icerikler.dart';
+import 'package:diyetlendin/screens/kesfet.dart';
 import 'package:diyetlendin/screens/profil.dart';
 import 'package:diyetlendin/screens/raporlar.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,6 @@ class Cerceve extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _CerceveState();
   }
 }
@@ -21,12 +22,18 @@ class _CerceveState extends State<Cerceve> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+          actions: [
+            Visibility(
+              visible: (gecerliIndex == 2) ? true : false,
+              child: IconButton(
+                  onPressed: () {}, icon: const Icon(LineIcons.plus)),
+            )
+          ],
           title: const Text(
-        "Diyetlendin",
-      )),
+            "Diyetlendin",
+          )),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const [
@@ -35,17 +42,23 @@ class _CerceveState extends State<Cerceve> {
           BottomNavigationBarItem(
               icon: Icon(LineIcons.addressCard), label: "Profil"),
           BottomNavigationBarItem(
+              icon: Icon(LineIcons.compass), label: "Keşfet"),
+          BottomNavigationBarItem(
+              icon: Icon(LineIcons.newspaper), label: "İçerik"),
+          BottomNavigationBarItem(
               icon: Icon(LineIcons.barChartAlt), label: "Raporlar"),
           BottomNavigationBarItem(icon: Icon(LineIcons.cog), label: "Ayarlar"),
         ],
         currentIndex: gecerliIndex,
-        onTap: (int) {
+        onTap: (index) {
           setState(() {
-            gecerliIndex = int;
+            gecerliIndex = index;
             if (gecerliIndex == 0) gecerliSayfa = const AnaSayfa();
             if (gecerliIndex == 1) gecerliSayfa = const Profil();
-            if (gecerliIndex == 2) gecerliSayfa = const Raporlar();
-            if (gecerliIndex == 3) gecerliSayfa = const Ayarlar();
+            if (gecerliIndex == 2) gecerliSayfa = const Kesfet();
+            if (gecerliIndex == 3) gecerliSayfa = const Icerikler();
+            if (gecerliIndex == 4) gecerliSayfa = const Raporlar();
+            if (gecerliIndex == 5) gecerliSayfa = const Ayarlar();
           });
         },
       ),
