@@ -11,6 +11,7 @@ import 'package:diyetlendin/screens/icerik.dart';
 import 'package:diyetlendin/screens/icerikler.dart';
 import 'package:diyetlendin/screens/kayit_ol.dart';
 import 'package:diyetlendin/screens/kesfet.dart';
+import 'package:diyetlendin/screens/paylasim_yap.dart';
 import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,6 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(builder: (context) {
@@ -59,6 +59,7 @@ class MyApp extends StatelessWidget {
           "/routeIcerik": (context) => const Icerik(),
           "/routeIcerikler": (context) => const Icerikler(),
           "/routeKesfet": (context) => const Kesfet(),
+          "/routePaylasimYap": (context) => const PaylasimYap(),
         },
         title: 'Diyetlendin',
         theme: myTheme,

@@ -28,7 +28,10 @@ class _CerceveState extends State<Cerceve> {
             Visibility(
               visible: (gecerliIndex == 2) ? true : false,
               child: IconButton(
-                  onPressed: () {}, icon: const Icon(LineIcons.plus)),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/routePaylasimYap");
+                  },
+                  icon: const Icon(LineIcons.plus)),
             )
           ],
           title: const Text(

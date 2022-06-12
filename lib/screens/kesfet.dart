@@ -17,26 +17,30 @@ class Kesfet extends StatelessWidget {
                   avatarUrl:
                       "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/770.jpg",
                   name: "Nellie Mraz",
-                  content: "quis voluptas et",
-                  imageUrl: "http://placeimg.com/640/480/animals"),
+                  content: "Bugünkü kahvaltımmm 🙂",
+                  imageUrl:
+                      "https://www.gulyurt.com.tr/yuklemeler/2021/09/klasik-kahvalti-scaled-8.jpg"),
               BuildKesfetWidget(
                   avatarUrl:
                       "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1056.jpg",
                   name: "Ismael Cartwright",
-                  content: "perferendis consequatur numquam",
-                  imageUrl: "http://placeimg.com/640/480/abstract"),
+                  content: "Anlık gelen açlıkkk 🤣",
+                  imageUrl:
+                      "https://cdn.ye-mek.net/App_UI/Img/out/650/2013/10/citir-sogan-halkalari-resimli-yemek-tarifi(12).jpg"),
               BuildKesfetWidget(
                   avatarUrl:
                       "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/91.jpg",
                   name: "Miss Myrtle Swaniawski",
-                  content: "deserunt laudantium molestias",
-                  imageUrl: "http://placeimg.com/640/480/nightlife"),
+                  content: "Günaydınnn",
+                  imageUrl:
+                      "https://firsat.me/img/big1024/18.07.02_15.23.00_1637x1080_1.jpg"),
               BuildKesfetWidget(
                   avatarUrl:
                       "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/477.jpg",
                   name: "Kristine Denesik",
-                  content: "architecto facere alias",
-                  imageUrl: "http://placeimg.com/640/480/city"),
+                  content: "Kapanışşş",
+                  imageUrl:
+                      "https://i.nefisyemektarifleri.com/2019/11/16/20-dakikada-aksam-yemegi-menusu.jpg"),
             ],
           )),
     );

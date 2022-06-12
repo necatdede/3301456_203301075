@@ -35,9 +35,42 @@ class _EklenenBesinlerState extends State<EklenenBesinler> {
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 itemCount: c.items.length,
-                itemBuilder: (context, index) => InkWell(
-                      borderRadius: BorderRadius.circular(25),
-                      onTap: () {},
+                itemBuilder: (context, index) => GestureDetector(
+                      onDoubleTap: () {
+                        num gram =
+                            num.parse(c.items[index].besinGram.toString());
+                        num kalori = (gram /
+                            100 *
+                            fController
+                                .besinler[c.items[index].besinId!].kalori!);
+                        num karbonhidrat = (gram /
+                            100 *
+                            fController.besinler[c.items[index].besinId!]
+                                .karbonhidrat!);
+                        num protein = (gram /
+                            100 *
+                            fController
+                                .besinler[c.items[index].besinId!].protein!);
+                        num yag = (gram /
+                            100 *
+                            fController.besinler[c.items[index].besinId!].yag!);
+
+                        HesapModel hesap = HesapModel(
+                            kalori: kalori,
+                            karbonhidrat: karbonhidrat,
+                            protein: protein,
+                            yag: yag,
+                            ogun: c.ogun.value,
+                            tarih: c.tarih.value);
+
+                        buildDialog("Silinsin Mi?", () {
+                          c.besinSil(c.items[index].besinId!);
+                          c.guncelleVeri(c.items[index].besinId!, false,
+                              int.parse(c.items[index].besinGram.toString()));
+                          c.guncelleHesap(hesap, false);
+                          Get.back();
+                        }, const Text("Emin Misin?"));
+                      },
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),

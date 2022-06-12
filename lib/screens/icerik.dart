@@ -17,8 +17,10 @@ class Icerik extends StatelessWidget {
       body: SizedBox(
         height: Get.size.height,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: BuildIcerikWidget(
               imageUrl: icerikData[index].imageUrl!,
+              imageUrl2: icerikData[index].imageUrl2!,
               title: icerikData[index].title!,
               content: icerikData[index].content!),
         ),

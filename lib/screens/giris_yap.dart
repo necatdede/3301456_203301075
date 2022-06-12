@@ -1,3 +1,4 @@
+import 'package:diyetlendin/file_utils.dart';
 import 'package:diyetlendin/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -90,6 +91,10 @@ class _GirisYapState extends State<GirisYap> {
                                   service
                                       .login(kullaniciAdi.text, sifre.text)
                                       .then((value) {
+                                    FileUtils.saveToFile(DateTime.now()
+                                        .toString()
+                                        .substring(0, 16));
+
                                     Navigator.popAndPushNamed(
                                       context,
                                       "/routeCerceve",

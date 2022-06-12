@@ -44,6 +44,7 @@ dependencies:
   image_picker: ^0.8.5+3
   firebase_storage: ^10.2.16
   fl_chart: 0.50.1
+  path_provider: ^2.0.11
 
 
 

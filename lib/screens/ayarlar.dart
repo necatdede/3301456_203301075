@@ -29,6 +29,7 @@ class _Ayarlar extends State<Ayarlar> {
 
   @override
   Widget build(BuildContext context) {
+    veriControl.sonGirisGetir();
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -188,6 +189,14 @@ class _Ayarlar extends State<Ayarlar> {
                         "Bilgi", "Tüm veriler silindi.", SnackPosition.BOTTOM);
                   }, const Text("Tüm veriler silinsin mi?"));
                 },
+              ),
+              Obx(
+                () => BuildAyarlarWidget(
+                  yazi2: veriControl.sonGiris.value,
+                  yazi: "Son Giriş",
+                  icon: LineIcons.history,
+                  islem: () {},
+                ),
               ),
               BuildAyarlarWidget(
                 yazi2: "",

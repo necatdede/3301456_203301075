@@ -3,6 +3,7 @@ import 'package:diyetlendin/models/icerik.dart';
 List<Icerik> icerikData = [
   Icerik(
       "https://www.diyetkolik.com/site_media/media/customvideo_images/ki_1_333x323.png",
+      "https://productimages.hepsiburada.net/s/32/375/10376985346098.jpg",
       "Kuru İncirin Faydaları Nedir?", '''
     1. Tansiyon Hastalığına İyi Gelir. 
     Kuru incir, iyi bir potasyum kaynağıdır. Potasyum kan basıncını ve tansiyon dengelemeyi sağlayan bir maddedir. Bu özelliği sayesinde yeterli miktarda tüketilen kuru incir tansiyon hastalığına iyi gelir. Bir araştırmada 8 hafta boyunca potasyum ve kalsiyum oranı yüksek bir beslenme planı uygulamanın, kişilerin tansiyonu 5.5/3 puan azalttığı gösterilmiştir. Günde bir adet kuru incir tüketmek, potasyum ihtiyacının %7’sini karşılamaktadır.
@@ -25,6 +26,7 @@ List<Icerik> icerikData = [
       '''),
   Icerik(
       "https://www.diyetkolik.com/site_media/media/customvideo_images/ki.png",
+      "https://media-cdn.t24.com.tr/media/library/2021/11/1636193963697-ilac.jpg",
       "Kilo Aldıran İlaçlar Nelerdir?", '''
     1. Antidepresanlar
     Önemli kilo alımı, özellikle en yaygın olarak reçete edilen antidepresan sınıfı olan bir SSRI (seçici serotonin geri alım inhibitörü), ilacın kendisinin bir yan etkisi olabilir. Bu nedenle Paroksetin (Paxil), sertralin (Zoloft) ve sitalopram (Celexa) içeren SSRI'lar, beyindeki serotonin miktarını artırarak çalışır. Ancak, serotonin iştah ve kiloyu kontrol eden biyolojik ve nöronal mekanizmalarda da rol oynar. Bu yüzden iştah mekanizmasındaki etkisiyle kilo aldırıcı etkiye sahiptir. 
@@ -41,6 +43,7 @@ List<Icerik> icerikData = [
       '''),
   Icerik(
       "https://www.diyetkolik.com/site_media/media/customvideo_images/yumurta.png",
+      "https://im.haberturk.com/2020/10/30/ver1604019387/2852963_414x414.jpg",
       "Yumurta Diyeti Nedir?", '''
      Yumurta diyeti, düşük kalori ve karbonhidrat içeren basit bir diyet türüdür. 72 kaloriye sahip olan yumurta, çeşitli mineral ve vitaminler bakımından çok yüksektir. Aynı zamanda iyi bir protein kaynağıdır. Bununla birlikte yumurtada A, B6, B2, B12, D ve E vitaminleri ile kalsiyum, fosfor, selenyum demir, bakır gibi mineralleri bulunmaktadır. Yüksek besin değerine sahip yumurta diyeti, metabolizmanın ve yağ yakımının hızlanmasına yardımcı olur. Bu sayede kısa sürede kilo vermeye yardımcı olabilir. Yumurta diyeti çeşitli şekillerde yapılabilmektedir, ancak tümünde sadece su veya kalorisiz içecekler tüketilebilmektedir. Birçok meyve, makarna, ekmek ve pirinç gibi karbonhidrat ve doğal şeker açısından yüksek besinlerin tüketimi yasaktır. Yumurta diyetinin süresi 14 gündür. Bu diyet türü kahvaltı, öğle yemeği ve akşam yemeği olmak üzere üç öğünden oluşmaktadır. Kalorisiz içecekler ve su dışında herhangi bir atıştırmalık tüketilmemektedir. Yazının devamını okumadan önce en doğru diyet biçiminin size özel ve sürdürülebilir diyet olduğunu ve bu kadar kalori kısıtlı diyetlerin uzman gözetiminde yapılmasının doğru olduğunu unutmayın.
 

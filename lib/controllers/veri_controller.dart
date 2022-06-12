@@ -11,6 +11,8 @@ class VeriController extends GetxController {
 
   final raporItems = <RaporModel>[].obs;
 
+  final sonGiris = "".obs;
+
   final logoSize = 0.0.obs;
 
   final kahvaltiKalori = 0.obs;
@@ -58,6 +60,10 @@ class VeriController extends GetxController {
     hesapGetir();
     kaloriGetir();
     secRapor();
+  }
+
+  Future<void> sonGirisGetir() async {
+    sonGiris.value = await Get.find<VeriIslem>().sonGiris();
   }
 
   Future<void> secVeri() async {

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:diyetlendin/file_utils.dart';
 import 'package:diyetlendin/models/hesap.dart';
 import 'package:diyetlendin/models/veri.dart';
 import 'package:sqflite/sqflite.dart';
@@ -123,6 +124,12 @@ class VeriIslem {
   Future<void> sil(String tarih, int besinId, String ogun) async {
     await database.execute(
         "DELETE FROM hareket WHERE ogun='$ogun' and besinId=$besinId and tarih='$tarih'");
+  }
+
+  Future<String> sonGiris() async {
+    String sonuc = "";
+    await FileUtils.readFromFile().then((value) => sonuc = value);
+    return sonuc;
   }
 
   Future<void> temizleHareket() async {
