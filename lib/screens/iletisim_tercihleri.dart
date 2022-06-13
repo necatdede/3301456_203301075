@@ -23,7 +23,7 @@ class _IletisimTercihleriState extends State<IletisimTercihleri> {
         child: Column(children: [
           build_iletisim_widget(
               "E-posta",
-              "Kampanyalarla ilgili e-posta almak istiyorum.",
+              "Bilgilendirilmek için e-posta almak istiyorum.",
               isEposta, (value) {
             setState(() {
               isEposta = value;
@@ -31,14 +31,14 @@ class _IletisimTercihleriState extends State<IletisimTercihleri> {
           }),
           build_iletisim_widget(
               "Bildirim",
-              "Kampanyalarla ilgili bildirim almak istiyorum.",
+              "Bilgilendirilmek için bildirim almak istiyorum.",
               isBildirim, (value) {
             setState(() {
               isBildirim = value;
             });
           }),
           build_iletisim_widget(
-              "SMS", "Kampanyalarla ilgili SMS almak istiyorum.", isSMS,
+              "SMS", "Bilgilendirilmek için SMS almak istiyorum.", isSMS,
               (value) {
             setState(() {
               isSMS = value;
@@ -46,7 +46,7 @@ class _IletisimTercihleriState extends State<IletisimTercihleri> {
           }),
           build_iletisim_widget(
               "Telefon",
-              "Kampanyalarla ilgili cep telefonumdan aranmak istiyorum.",
+              "Bilgilendirilmek için cep telefonumdan aranmak istiyorum.",
               isAra, (value) {
             setState(() {
               isAra = value;

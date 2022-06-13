@@ -103,7 +103,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                             children: [
                               KaloriDetayGetir(
                                   tur: "Karbonhidrat",
-                                  degerYol: "images/karbonhidrat.png",
+                                  degerYol: "assets/images/karbonhidrat.png",
                                   alinan: c.karbonhidrat.value,
                                   alinacak:
                                       c2.kullanici.value.gunlukKarbonhidrat!,
@@ -112,7 +112,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                   renk3: Colors.yellow.shade100),
                               KaloriDetayGetir(
                                   tur: "Protein",
-                                  degerYol: "images/protein.png",
+                                  degerYol: "assets/images/protein.png",
                                   alinan: c.protein.value,
                                   alinacak: c2.kullanici.value.gunlukProtein!,
                                   renk: Colors.red.shade300,
@@ -120,7 +120,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                                   renk3: Colors.red.shade100),
                               KaloriDetayGetir(
                                   tur: "Yağ",
-                                  degerYol: "images/yag.png",
+                                  degerYol: "assets/images/yag.png",
                                   alinan: c.yag.value,
                                   alinacak: c2.kullanici.value.gunlukYag!,
                                   renk: Colors.green.shade300,
@@ -139,7 +139,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                             children: [
                               OgunGetir(
                                 kalori: c.kahvaltiKalori.value.toString(),
-                                tur: "images/breakfast.png",
+                                tur: "assets/images/breakfast.png",
                                 renk: Colors.lightBlueAccent.shade200,
                                 renk2: const Color(0xffcee1f4),
                                 yazi: "Kahvaltı",
@@ -153,7 +153,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                               ),
                               OgunGetir(
                                 kalori: c.ogleKalori.value.toString(),
-                                tur: "images/lunch.png",
+                                tur: "assets/images/lunch.png",
                                 renk: Colors.pinkAccent.shade200,
                                 renk2: const Color(0xfff9dbd2),
                                 yazi: "Öğle Yemeği",
@@ -166,7 +166,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                               ),
                               OgunGetir(
                                 kalori: c.aksamKalori.value.toString(),
-                                tur: "images/dinner.png",
+                                tur: "assets/images/dinner.png",
                                 renk: Colors.orangeAccent.shade200,
                                 renk2: const Color(0xfffce0a2),
                                 yazi: "Akşam Yemeği",
@@ -179,7 +179,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
                               ),
                               OgunGetir(
                                 kalori: c.atistirmaKalori.value.toString(),
-                                tur: "images/snack.png",
+                                tur: "assets/images/snack.png",
                                 renk: Colors.lightGreenAccent.shade200,
                                 renk2: const Color(0xffe6edb7),
                                 yazi: "Atıştırma",

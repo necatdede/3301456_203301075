@@ -46,7 +46,7 @@ class _AcilisState extends State<Acilis> {
                     child: Container(
                       decoration: const BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("images/logo.png"),
+                              image: AssetImage("assets/images/logo.png"),
                               fit: BoxFit.contain)),
                     ),
                   ),
@@ -56,7 +56,7 @@ class _AcilisState extends State<Acilis> {
             Expanded(
               flex: 1,
               child: Image.asset(
-                "images/yukleniyor.gif",
+                "assets/images/yukleniyor.gif",
                 height: 75.h,
                 width: 75.w,
               ),
