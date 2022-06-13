@@ -2,7 +2,6 @@ import 'package:diyetlendin/controllers/firebase_controller.dart';
 import 'package:diyetlendin/controllers/veri_controller.dart';
 import 'package:diyetlendin/widgets/build_textfield_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -24,9 +23,6 @@ class _Ayarlar extends State<Ayarlar> {
   final boy = TextEditingController();
   final kilo = TextEditingController();
 
-  final konu = TextEditingController();
-  final detay = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     veriControl.sonGirisGetir();
@@ -42,11 +38,7 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Hakkımızda",
                 icon: LineIcons.infoCircle,
                 islem: () {
-                  Get.defaultDialog(
-                      titleStyle: TextStyle(fontSize: 20.sp),
-                      title: "Hakkımızda",
-                      content: const Text(
-                          "Bu uygulama,\nüstad Ahmet Cevahir ÇINAR tarafından verilen,\n3301456 numaralı Mobil Programlama dersinin ara sınavı için,\nBekir Necat Dede tarafından yapılmıştır.\n\nİletişim için,\n05419714711"));
+                  Navigator.pushNamed(context, "/routeHakkimizda");
                 },
               ),
               BuildAyarlarWidget(
@@ -54,27 +46,7 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Gizlilik ve Koşullar",
                 icon: LineIcons.alternateShield,
                 islem: () {
-                  Get.defaultDialog(
-                    titleStyle: TextStyle(fontSize: 20.sp),
-                    title: "Gizlilik ve Koşullar",
-                    content: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Gizlilik",
-                          style: TextStyle(fontSize: 18.sp),
-                        ),
-                        const Text(
-                            "Gizlilik, ayrı bir sayfada, kişisel verilerinizin tarafımızca işlenmesinin esaslarını düzenlemek üzere mevcuttur. Diyetlendin'i kullandığınız takdirde, bu verilerin işlenmesinin gizlilik politikasına uygun olarak gerçekleştiğini kabul edersiniz.\n"),
-                        Text(
-                          "Kullanım Koşulları",
-                          style: TextStyle(fontSize: 18.sp),
-                        ),
-                        const Text(
-                            "Sevgili ziyaretçimiz, lütfen Diyetlendin'i ziyaret etmeden önce işbu kullanım koşulları sözleşmesini dikkatlice okuyunuz. Uygulamaya erişiminiz tamamen bu sözleşmeyi kabulünüze ve bu sözleşme ile belirlenen şartlara uymanıza bağlıdır."),
-                      ],
-                    ),
-                  );
+                  Navigator.pushNamed(context, "/routeGizlilikKosullar");
                 },
               ),
               BuildAyarlarWidget(
@@ -82,27 +54,15 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Sıkça Sorulan Sorular",
                 icon: LineIcons.questionCircle,
                 islem: () {
-                  Get.defaultDialog(
-                    titleStyle: TextStyle(fontSize: 20.sp),
-                    title: "Sıkça Sorulan Sorular",
-                    content: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Diyetlendin Nedir?",
-                          style: TextStyle(fontSize: 18.sp),
-                        ),
-                        const Text(
-                            "Diyetlendin seni ideal kilona ve sağlıklı bir yaşama kavuşturmak için var olan ücretsiz bir online diyet uygulamasıdır."),
-                        Text(
-                          "\nDiyetlendin Üyeliğinde Yaş Sınırı Var Mı?",
-                          style: TextStyle(fontSize: 18.sp),
-                        ),
-                        const Text(
-                            "Diyetlendin hukuki gerekçelerle 18 yaşın altındaki kişilere diyet önerisinde bulunamaz."),
-                      ],
-                    ),
-                  );
+                  Navigator.pushNamed(context, "/routeSSS");
+                },
+              ),
+              BuildAyarlarWidget(
+                yazi2: "",
+                yazi: "İletişim Tercihleri",
+                icon: LineIcons.questionCircle,
+                islem: () {
+                  Navigator.pushNamed(context, "/routeIletisimTercihleri");
                 },
               ),
               BuildAyarlarWidget(
@@ -154,27 +114,15 @@ class _Ayarlar extends State<Ayarlar> {
                 yazi: "Bize Ulaşmak İçin",
                 icon: LineIcons.comments,
                 islem: () {
-                  buildDialog("Bize Ulaşın", () {
-                    Get.back(closeOverlays: true);
-                    buildSnackBar(
-                        "Bilgi", "Mesajınız Gönderildi!", SnackPosition.BOTTOM);
-                  },
-                      Column(
-                        children: [
-                          BuildTextFieldWidget(
-                              control: konu,
-                              str: "Konu",
-                              icon: Icons.messenger_outline,
-                              kontrol: false,
-                              klavyetur: TextInputType.text),
-                          BuildTextFieldWidget(
-                              control: detay,
-                              str: "Detay",
-                              icon: Icons.message_outlined,
-                              kontrol: false,
-                              klavyetur: TextInputType.text),
-                        ],
-                      ));
+                  Navigator.pushNamed(context, "/routeBizeUlasin");
+                },
+              ),
+              BuildAyarlarWidget(
+                yazi2: "",
+                yazi: "Kaynaklar",
+                icon: LineIcons.file,
+                islem: () {
+                  Navigator.pushNamed(context, "/routeKaynaklar");
                 },
               ),
               BuildAyarlarWidget(
