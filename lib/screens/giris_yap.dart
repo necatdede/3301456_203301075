@@ -51,7 +51,7 @@ class _GirisYapState extends State<GirisYap> {
             child: Column(
               children: [
                 Image.asset(
-                  "images/logo.png",
+                  "assets/images/logo.png",
                   width: 350.w,
                   height: 350.h,
                 ),
