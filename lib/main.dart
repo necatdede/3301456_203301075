@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
           "/routeSSS": (context) => const SSS(),
           "/routeBizeUlasin": (context) => BizeUlasin(),
           "/routeKaynaklar": (context) => const Kaynaklar(),
-          "/routeIletisimTercihleri": (context) => IletisimTercihleri(),
+          "/routeIletisimTercihleri": (context) => const IletisimTercihleri(),
         },
         title: 'Diyetlendin',
         theme: myTheme,

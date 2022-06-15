@@ -42,32 +42,4 @@ class BizeUlasin extends StatelessWidget {
       ),
     );
   }
-
-  /*
-
-buildDialog("Bize Ulaşın", () {
-                    Get.back(closeOverlays: true);
-                    buildSnackBar(
-                        "Bilgi", "Mesajınız Gönderildi!", SnackPosition.BOTTOM);
-                  },
-                      Column(
-                        children: [
-                          BuildTextFieldWidget(
-                              control: konu,
-                              str: "Konu",
-                              icon: Icons.messenger_outline,
-                              kontrol: false,
-                              klavyetur: TextInputType.text),
-                          BuildTextFieldWidget(
-                              control: detay,
-                              str: "Detay",
-                              icon: Icons.message_outlined,
-                              kontrol: false,
-                              klavyetur: TextInputType.text),
-                        ],
-                      ));
-
-
-
-  */
 }

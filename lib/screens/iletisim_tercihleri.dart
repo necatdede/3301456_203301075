@@ -21,7 +21,7 @@ class _IletisimTercihleriState extends State<IletisimTercihleri> {
       body: SizedBox(
         height: Get.height,
         child: Column(children: [
-          build_iletisim_widget(
+          buildIletisimWidget(
               "E-posta",
               "Bilgilendirilmek için e-posta almak istiyorum.",
               isEposta, (value) {
@@ -29,7 +29,7 @@ class _IletisimTercihleriState extends State<IletisimTercihleri> {
               isEposta = value;
             });
           }),
-          build_iletisim_widget(
+          buildIletisimWidget(
               "Bildirim",
               "Bilgilendirilmek için bildirim almak istiyorum.",
               isBildirim, (value) {
@@ -37,14 +37,14 @@ class _IletisimTercihleriState extends State<IletisimTercihleri> {
               isBildirim = value;
             });
           }),
-          build_iletisim_widget(
+          buildIletisimWidget(
               "SMS", "Bilgilendirilmek için SMS almak istiyorum.", isSMS,
               (value) {
             setState(() {
               isSMS = value;
             });
           }),
-          build_iletisim_widget(
+          buildIletisimWidget(
               "Telefon",
               "Bilgilendirilmek için cep telefonumdan aranmak istiyorum.",
               isAra, (value) {
@@ -57,7 +57,7 @@ class _IletisimTercihleriState extends State<IletisimTercihleri> {
     );
   }
 
-  ListTile build_iletisim_widget(
+  ListTile buildIletisimWidget(
       String title, String content, bool kontrol, Function(bool) onChanged) {
     return ListTile(
       title: Text(title),
